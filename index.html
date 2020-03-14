@@ -12,42 +12,44 @@
 <title>Test Page</title>
 </head>
 <body>
-  <h1>My test page</h1>
-  <h2>Online Dungeon Quest</h2>
+  <h1>Dungeon Quest Online</h1>
   <p>
   	<div>Alone in a dungeon haunted by monsters, a lonely hero must make his way out before he gets killed</div>
   	<div>Ascii graphics; external library: rot.js</div>
   </p>
-  <input id="instruction-btn" type="button" value="Instruction">
+  <input id="instruction-btn" type="button" value="Instruction" onclick="show_hide()">
   <p id="txt-lbl"></p>
-  <input id="rnd" type="button" value="GET RANDOM STATICS">
+  <input id="rnd" type="button" value="GET RANDOM STATICS" onclick="random_stats()">
+  
   <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <input class="char-btn" type="button" value="FOR">
-    </div>
-    <div class="col-sm">
-      <p class="contatore-lbl">0</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm">
-      <input class="char-btn" type="button" value="DES">
-    </div>
-    <div class="col-sm">
-      <p class="contatore-lbl">0</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm">
-      <input class="char-btn" type="button" value="INT">
-    </div>
-    <div class="col-sm">
-      <p class="contatore-lbl">0</p>
-    </div>
-  </div>
-
+	  <div class="row">
+		<div class="col-sm">
+		  <input class="char-btn" type="button" value="FOR" onclick="add_val('str', '1')">
+		</div>
+		<div class="col-sm">
+		  <p class="contatore-lbl" id="str_val">0</p>
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col-sm">
+		  <input class="char-btn" type="button" value="DES" onclick="add_val('des', '1')">
+		</div>
+		<div class="col-sm">
+		  <p class="contatore-lbl" id="des_val">0</p>
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col-sm">
+		  <input class="char-btn" type="button" value="INT" onclick="add_val('int', '1')">
+		</div>
+		<div class="col-sm">
+		  <p class="contatore-lbl" id="int_val">0</p>
+		</div>
+	  </div>
   </div> 
+  
+  <!--schermata di gioco-->
+  <div id="canvas"></div>
   
  
 
