@@ -16,7 +16,7 @@ const show_hide = () => {
 
 const random_stats = () => {
 	for (let i=0; i<counter.length; i++){
-		counter[i].innerHTML= Math.floor(Math.random() * 11)
+		counter[i].innerHTML= Math.floor(Math.random() * 10 + 1)
 	}
 }
 
