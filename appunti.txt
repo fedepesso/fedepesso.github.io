@@ -8,7 +8,7 @@ arma-armatura fatta da due pezzi
 
 formula che prende in considerzione l'attacco la difesa e il danno viene ridotto in base alla difesa
 
-danno_subito= danno si base (con sommati i modificatore) * (un valore decimale che si calcola con costante univ/costante univ+valdifesa)
+danno_subito= danno di base (con sommati i modificatore) * (un valore decimale che si calcola con costante univ/costante univ+valdifesa)
 
 
 arma-> range di danno
