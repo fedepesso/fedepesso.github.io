@@ -1,11 +1,11 @@
-export let weapons = {}
+let weapons = {}
 
-export let body_armors = {}
+let body_armors = {}
 
-export let leg_armors = {}
+let leg_armors = {}
 
-export let rings = {}
+let rings = {}
 
-export let monster_spawns = {}
+let monster_spawns = {}
 
-export let drop_tables = {}
+let drop_tables = {}
