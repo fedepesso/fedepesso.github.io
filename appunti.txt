@@ -1,0 +1,39 @@
+vita
+
+stats: forza destrezza intelligenza vita
+
+statistica vita +10 altre +1
+
+arma-armatura fatta da due pezzi
+
+formula che prende in considerzione l'attacco la difesa e il danno viene ridotto in base alla difesa
+
+danno_subito= danno si base (con sommati i modificatore) * (un valore decimale che si calcola con costante univ/costante univ+valdifesa)
+
+
+arma-> range di danno
+bonus in base alla statistica forza o destrezza o intelligenza (magia)
+
+spada da 10 a 50 + modificatore statistica
+
+modificatore statistica = modificatore della stat relativa all'arma * costante universale(<0) * costante dell'arma  
+
+costante dell'arma pugnalino scasso da 10 a 20 ascia enorme da 100 a 150
+
+3 tipi di danno 
+fisico-elementale-arcano
+
+armature con tre difese
+armi solo un tipo di attacco
+
+critico basato sulle probabilità
+
+funzione(attacker; defender)->
+    stats_attacker
+    stats_defender
+    weapon_defender
+    armor_defender
+    return danno;
+
+
+
