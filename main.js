@@ -23,7 +23,7 @@ let Game = {
 		while (true) {
             Game.render()
             if (Game.ai_turn) {
-                Game.process
+                Game.process()
                 Game.ai_turn = false
             }
         }
@@ -31,7 +31,7 @@ let Game = {
 
 	input: key => {
         //
-    },
+	},
 
     render: () => {
 		//
