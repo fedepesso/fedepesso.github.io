@@ -20,13 +20,13 @@ let Game = {
 		document.body.appendChild(Game.display.getContainer());
 		document.body.appendChild(Game.gui.getContainer());
 		window.addEventListener("keydown", Game.input);
-		while (true) {
+		/*while (true) {
             Game.render()
             if (Game.ai_turn) {
                 Game.process()
                 Game.ai_turn = false
             }
-        }
+        }*/
 	},
 
 	input: key => {
@@ -34,7 +34,8 @@ let Game = {
 	},
 
     render: () => {
-		//
+		render_dungeon(this);
+		render_menu(this);
     },
 
     process: () => {

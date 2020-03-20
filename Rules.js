@@ -1,7 +1,7 @@
 const difesa_universale = 10;
 const attacco_universale = 3; 
 
-const Damage_system = function(Attivo, Passivo){
+export const Damage_system = function(Attivo, Passivo){
     let danno=0;
     let stats_needed = Attivo.attacker.stat_bonus[0];
     let type_of_damage=Attivo.attacker.damage_type;

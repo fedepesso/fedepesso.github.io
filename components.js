@@ -1,4 +1,4 @@
-class Entity {
+export class Entity {
     constructor() {
         this.name = undefined;
         this.position = [0, 0];
@@ -9,7 +9,7 @@ class Entity {
 }
 
 
-class Stats {
+export class Stats {
     constructor() {
         this.life = [100, 100];
         this.strength = 10;
@@ -20,17 +20,18 @@ class Stats {
 }
 
 
-class Attacker {
+export class Attacker {
     constructor() {
         this.damage = [0, 0];
         this.crit = [0, 0];
         this.stat_bonus = [undefined, 0];
         this.damage_type = undefined;
+        this.range = 1;
     }
 }
 
 
-class Defender {
+export class Defender {
     constructor() {
         this.physical = 0;
         this.elemental = 0;
@@ -39,9 +40,32 @@ class Defender {
 }
 
 
-class Inventory {
+export class Wearable {
     constructor() {
-        this.item_list = []
+        this.rarity = 0;
+        // weapon, body_armor, leg_armor, ring_armor
+        this.category = undefined;
+        // hammer, axe, ecc ecc
+        this.type = undefined;
     }
 }
+
+
+export class Inventory {
+    constructor() {
+        this.items_list = [];
+        this.weapon = undefined;
+        this.body_armor = undefined;
+        this.leg_armor = undefined;
+        this.ring_armor = undefined;
+    }
+}
+
+
+export class Monster {
+    constructor() {
+        drop_tables = []
+    }
+}
+
 
