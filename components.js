@@ -16,7 +16,7 @@ class Stats {
         this.dexterity = 10;
         this.intelligence = 10;
         this.experience = [0, 0];
-        this.level = 0;
+        this.level = 1;
         this.expendable_points = 0;
     }
 }
@@ -55,7 +55,6 @@ class Wearable {
 
 class Inventory {
     constructor() {
-        this.items_list = [];
         this.weapon = undefined;
         this.body_armor = undefined;
         this.leg_armor = undefined;

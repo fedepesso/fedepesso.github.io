@@ -21,3 +21,17 @@ const Damage_system = function(Attivo, Passivo){
 
     return danno;
 }
+
+const move_to = function(game, index){
+    ROT.RNG.setSeed(index+game.depth);
+    game.dungeon_object = new ROT.Map.Digger(game.size[0], game.size[1]);
+    game.dungeon_object.create((x, y, value) => game.dungeon.push(value))
+    game.entities = [];
+    let starting_room = game.dungeon_object.getRooms()[0];
+    game.player.position[0] = Math.floor(Math.random() * (starting_room.getRight() - starting_room.getLeft()) + starting_room.getLeft());
+    game.player.position[1] = Math.floor(Math.random() * (starting_room.getTop() - starting_room.getBottom()) + starting_room.getBottom());
+}
+
+const get_val = function(arr, x, y, x_size) {
+    return arr[(x_size * (y + 1)) + x];
+}
