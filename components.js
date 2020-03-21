@@ -66,7 +66,7 @@ class Inventory {
 
 class Monster {
     constructor() {
-        drop_tables = []
+        drop_tables = [];
     }
 }
 
