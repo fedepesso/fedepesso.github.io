@@ -1,7 +1,7 @@
 let Game = {
 	player_name: "test_char",
 	seed: Math.floor(Math.random() * 10),
-	font_size: 25,
+	font_size: 20,
 	size: [90, 90],
 	display: undefined,
 	display_size: [0, 0],
@@ -16,10 +16,10 @@ let Game = {
 	depth: 1,
 
 	init: () => {
-		Game.display_size = [parseInt(window.innerWidth / Game.font_size), parseInt(window.innerHeight / Game.font_size - 1)]
-		Game.gui_size = [parseInt(window.innerWidth / Game.font_size * 0.5), parseInt(window.innerHeight / Game.font_size - 1)]
-		Game.display = new ROT.Display({width:  Game.display_size[0], height: Game.display_size[1], fontSize: Game.font_size});
-		Game.gui = new ROT.Display({width: Game.gui_size[0], height: Game.gui_size[1], fontSize: Game.font_size});
+		Game.display_size = [parseInt(window.innerWidth / Game.font_size * 0.5), parseInt(window.innerHeight / Game.font_size - 1)]
+		Game.gui_size = [parseInt(window.innerWidth / Game.font_size * 0.4), parseInt(window.innerHeight / Game.font_size - 1)]
+		Game.display = new ROT.Display({width:  Game.display_size[0], height: Game.display_size[1], fontSize: Game.font_size, forceSquareRatio:true});
+		Game.gui = new ROT.Display({width: Game.gui_size[0], height: Game.gui_size[1], fontSize: Game.font_size, forceSquareRatio:true});
 		document.body.appendChild(Game.display.getContainer());
 		document.body.appendChild(Game.gui.getContainer());
 		Game.player = create_player();
@@ -29,6 +29,21 @@ let Game = {
 	},
 
 	input: key => {
+		let code = key.keyCode;
+		switch(code) {
+			case 37:
+				move_player(Game, Game.player, -1, 0)
+				break;
+			case 38:
+				move_player(Game, Game.player, 0, -1)
+				break;
+			case 39:
+				move_player(Game, Game.player, 1, 0)
+				break;
+			case 40:
+				move_player(Game, Game.player, 0, 1)
+				break;
+		}
         Game.render();
 	},
 
