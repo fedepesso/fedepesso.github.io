@@ -16,6 +16,8 @@ class Stats {
         this.dexterity = 10;
         this.intelligence = 10;
         this.experience = [0, 0];
+        this.level = 0;
+        this.expendable_points = 0;
     }
 }
 
