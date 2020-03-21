@@ -2,7 +2,7 @@ let Game = {
 	player_name: "test_char",
 	seed: Math.floor(Math.random() * 10),
 	font_size: 20,
-	size: [90, 90],
+	size: [50, 50],
 	display: undefined,
 	display_size: [0, 0],
 	gui: undefined,
