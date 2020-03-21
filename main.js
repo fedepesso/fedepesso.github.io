@@ -1,12 +1,11 @@
-let settings = {
+
+
+
+let Game = {
 	player_name: "test_char",
 	seed: Math.floor(Math.random()),
 	font_size: 25,
 	size: [0, 0]
-}
-
-
-let Game = {
 	display: undefined,
 	display_size: [0, 0],
 	gui: undefined,
