@@ -30,7 +30,12 @@ const move_to = function(game, index){
     game.dungeon_explored = [...Array(game.size[0])].map(x=>Array(game.size[1]).fill(1));
     game.dungeon_object = new ROT.Map.Digger(game.size[0], game.size[1]);
     game.dungeon_object.create((x, y, value) => game.dungeon[x][y] = value)
-    game.dungeon_fov_object = new ROT.FOV.PreciseShadowcasting((x, y) => game.dungeon[x][y] == 0);
+    game.dungeon_fov_object = new ROT.FOV.PreciseShadowcasting((x, y) => {
+        if ((game.dungeon[x] == undefined) || (game.dungeon[x][y] == undefined)) {
+            return false;
+        }
+        return game.dungeon[x][y] == 0;
+    });
     game.entities = [];
     let starting_room = game.dungeon_object.getRooms()[0];
     game.player.position[0] = Math.floor(Math.random() * (starting_room.getRight() - starting_room.getLeft() + 1)) + starting_room.getLeft();
