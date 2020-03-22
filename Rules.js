@@ -38,18 +38,13 @@ const move_to = function(game, index){
 }
 
 const move_player = function(game, player, delta_x, delta_y) {
-    if(delta_y!==0){
-        if (controllo_muro(game, player.position[0], player.position[1]+delta_y) && (controllo_mostri(game, player.position[0], player.position[1]+delta_y))) {
+    if (controllo_muro(game, player.position[0]+delta_x, player.position[1]+delta_y)) {
+        collision = controllo_mostri(game, player.position[0] + delta_x, player.position[1] + delta_y)
+        if (collision == null) {
+            player.position[0] += delta_x
             player.position[1] += delta_y;
-        }else if(!controllo_mostri(game, player.position[0], player.position[1]+delta_y)){
-            combattimento(game, player, game.entities[mostro_attaccato]);
-        }
-    }else if(delta_x!==0){
-        if (controllo_muro(game, player.position[0]+delta_x, player.position[1]) && (controllo_mostri(game, player.position[0]+delta_x, player.position[1]))) {
-            player.position[0] += delta_x;
-            player.position[1] += delta_y;
-        }else if(!controllo_mostri(game, player.position[0]+delta_x, player.position[1])){
-            combattimento(game, player, game.entities[mostro_attaccato]);
+        } else {
+            combattimento(game, player, collision)
         }
     }
 }
@@ -62,14 +57,13 @@ const controllo_muro = function(game, x, y){
 }
 const controllo_mostri = function(game, x, y){
     for (let i=0; i<game.entities.length; i++){
-        if ((game.entities[i].position[0] === x) && (game.entities[i].position[1] === y)){
-            mostro_attaccato = i;
-            return false;
+        if ((game.entities[i].position[0] === x) && (game.entities[i].position[1] === y) && (game.entities[i].solid)){
+            return game.entities[i]
         }
     }
-    return true;
+    return null;
 }
 
-const combattimento = function(game, player, mostro){
+const combattimento = function(game, player, mostro) {
     //
 }
