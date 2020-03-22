@@ -9,7 +9,7 @@ function render_dungeon(game) {
     }
     for (let x = x_rel; x < x_rel + game.display_size[0] - 2; x++) {
         for (let y = y_rel; y < y_rel + game.display_size[1] * 75 / 100 - 2; y++) {
-            if (get_val(game.dungeon, x, y, game.size[0]) == 0) {
+            if (game.dungeon[x][y] == 0) {
                 game.display.draw(x - x_rel + 1, y - y_rel + 1, '.')
             } else {
                 game.display.draw(x - x_rel + 1, y - y_rel + 1, '#')
