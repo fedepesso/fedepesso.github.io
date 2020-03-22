@@ -2,8 +2,8 @@ function render_dungeon(game) {
     x_rel = scroll_map(game.player.position[0], game.display_size[0] - 2, game.size[0])
     y_rel = scroll_map(game.player.position[1], game.display_size[1] * 75 / 100 - 2, game.size[1])
 
-    local_fov= [...Array(game.size[0])].map(x=>Array(game.size[1]).fill(1));
-    game.dungeon_fov_object.compute(game.player.position[0],game.player.position[1],6,(x,y,r,visibility)=>local_fov[x][y]=0);
+    game.local_fov= [...Array(game.size[0])].map(x=>Array(game.size[1]).fill(1));
+    game.dungeon_fov_object.compute(game.player.position[0],game.player.position[1],6,(x,y,r,visibility)=>game.local_fov[x][y]=0);
 
     for (let x = 0; x < game.display_size[0]; x ++) {
         [0, game.display_size[1] - 1].forEach(y => game.display.draw(x, y, '▄'))
@@ -13,11 +13,26 @@ function render_dungeon(game) {
     }
     for (let x = x_rel; x < x_rel + game.display_size[0] - 2; x++) {
         for (let y = y_rel; y < y_rel + game.display_size[1] * 75 / 100 - 2; y++) {
-            if (game.dungeon[x][y] == 0) {
-                game.display.draw(x - x_rel + 1, y - y_rel + 1, '.')
-            } else {
-                game.display.draw(x - x_rel + 1, y - y_rel + 1, '#')
+            if (game.local_fov[x][y] == 0) {
+                game.dungeon_explored[x][y]=0
+                if (game.dungeon[x][y] == 0) {
+                game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#fffc5c")
+                } 
+                else {
+                game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#6b6907")
+                }
             }
+            else {
+                if (game.dungeon_explored[x][y]==0) {
+                    if (game.dungeon[x][y] == 0) {
+                game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#201b63")
+                    }       
+                    else {
+                game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#0c0747")
+                    }
+                }
+            }
+            
         }
     }
     for (let i=0; i<game.entities.length; i++){
@@ -51,3 +66,6 @@ function scroll_map(p, s, m) {
         return Math.floor(p-s/2);
     }
 }
+
+
+                

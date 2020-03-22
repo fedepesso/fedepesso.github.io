@@ -12,6 +12,7 @@ let Game = {
 	player: undefined,
 	dungeon: [[]],
 	dungeon_explored: [[]],
+	local_fov: [[]],
 	dungeon_fov_object: undefined,
 	dungeon_object: undefined,
 	entities: undefined,
@@ -50,13 +51,13 @@ let Game = {
 	},
 
     render: () => {
-		render_dungeon(Game);
-		render_menu(Game);
+		render_dungeon(Game)
+		render_menu(Game)
     },
 
     process: () => {
         //
-    }
+    },
 }
 
 function create_player() {
