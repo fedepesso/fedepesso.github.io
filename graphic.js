@@ -25,10 +25,10 @@ function render_dungeon(game) {
             else {
                 if (game.dungeon_explored[x][y]==0) {
                     if (game.dungeon[x][y] == 0) {
-                game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#201b63")
+                game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#69a5b5")
                     }       
                     else {
-                game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#0c0747")
+                game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#223187")
                     }
                 }
             }
