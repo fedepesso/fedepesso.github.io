@@ -36,8 +36,22 @@ const move_to = function(game, index){
 }
 
 const move_player = function(game, player, delta_x, delta_y) {
-    if (true) {
-        player.position[0] += delta_x;
-        player.position[1] += delta_y;
+    if(delta_y!==0){
+        if (controllo_muro(game, player.position[0], player.position[1]+delta_y)) {
+            player.position[0] += delta_x;
+            player.position[1] += delta_y;
+        }
+    }else if(delta_x!==0){
+        if (controllo_muro(game, player.position[0]+delta_x, player.position[1])) {
+            player.position[0] += delta_x;
+            player.position[1] += delta_y;
+        }
+    }    
+}
+
+const controllo_muro = function(game, x, y){
+    if (game.dungeon[x][y]==0){
+        return true;
     }
+    return false;
 }
