@@ -21,7 +21,7 @@ function render_dungeon(game) {
             game.display.draw(game.entities[i].position[0]-x_rel + 1, game.entities[i].position[1]-y_rel + 1, game.entities[i].char)
         }
     }
-    game.display.draw(game.player.position[0]-x_rel, game.player.position[1]-y_rel, game.player.char)
+    game.display.draw(game.player.position[0]-x_rel+1, game.player.position[1]-y_rel+1, game.player.char)
 }
 
 function render_menu(game) {
