@@ -20,7 +20,6 @@ let Oggetti = {
 }
 
 
-
 const obtain_Object = function(type, name){
     return Oggetti[type][name];
 }

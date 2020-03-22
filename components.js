@@ -67,8 +67,10 @@ class Inventory {
 
 
 class Monster {
-    constructor(info = [null]) {
-        drop_tables = info[0];
+    constructor(info = [null, null, null]) {
+        this.drop_tables = info[0];
+        this.min_depth = info[1];
+        this.chance = info[2];
     }
 }
 

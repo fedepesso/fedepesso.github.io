@@ -3,7 +3,7 @@ function render_dungeon(game) {
     y_rel = scroll_map(game.player.position[1], game.display_size[1] * 75 / 100 - 2, game.size[1])
 
     game.local_fov= [...Array(game.size[0])].map(x=>Array(game.size[1]).fill(1));
-    game.dungeon_fov_object.compute(game.player.position[0],game.player.position[1],6,(x,y,r,visibility)=>game.local_fov[x][y]=0);
+    game.dungeon_fov_object.compute(game.player.position[0],game.player.position[1],6,(x,y,r,visibility) => game.local_fov[x][y]=0);
 
     for (let x = 0; x < game.display_size[0]; x ++) {
         [0, game.display_size[1] - 1].forEach(y => game.display.draw(x, y, '▄'))
@@ -16,19 +16,19 @@ function render_dungeon(game) {
             if (game.local_fov[x][y] == 0) {
                 game.dungeon_explored[x][y]=0
                 if (game.dungeon[x][y] == 0) {
-                game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#fffc5c")
+                    game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#fffc5c")
                 } 
                 else {
-                game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#6b6907")
+                    game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#6b6907")
                 }
             }
             else {
                 if (game.dungeon_explored[x][y]==0) {
                     if (game.dungeon[x][y] == 0) {
-                game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#69a5b5")
+                        game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#69a5b5")
                     }       
                     else {
-                game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#223187")
+                        game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#223187")
                     }
                 }
             }
