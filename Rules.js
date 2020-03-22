@@ -1,5 +1,7 @@
 const difesa_universale = 10;
 const attacco_universale = 3; 
+const mostro_attaccato = null;
+
 
 const Damage_system = function(Attivo, Passivo){
     let danno=0;
@@ -36,8 +38,32 @@ const move_to = function(game, index){
 }
 
 const move_player = function(game, player, delta_x, delta_y) {
-    if (true) {
-        player.position[0] += delta_x;
-        player.position[1] += delta_y;
+    if (controllo_muro(game, player.position[0]+delta_x, player.position[1]+delta_y)) {
+        collision = controllo_mostri(game, player.position[0] + delta_x, player.position[1] + delta_y)
+        if (collision == null) {
+            player.position[0] += delta_x
+            player.position[1] += delta_y;
+        } else {
+            combattimento(game, player, collision)
+        }
     }
+}
+
+const controllo_muro = function(game, x, y){
+    if (game.dungeon[x][y]==0){
+        return true;
+    }
+    return false;
+}
+const controllo_mostri = function(game, x, y){
+    for (let i=0; i<game.entities.length; i++){
+        if ((game.entities[i].position[0] === x) && (game.entities[i].position[1] === y) && (game.entities[i].solid)){
+            return game.entities[i]
+        }
+    }
+    return null;
+}
+
+const combattimento = function(game, player, mostro) {
+    //
 }
