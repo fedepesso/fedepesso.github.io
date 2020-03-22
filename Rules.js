@@ -1,5 +1,7 @@
 const difesa_universale = 10;
 const attacco_universale = 3; 
+const mostro_attaccato = null;
+
 
 const Damage_system = function(Attivo, Passivo){
     let danno=0;
@@ -38,15 +40,18 @@ const move_to = function(game, index){
 const move_player = function(game, player, delta_x, delta_y) {
     if(delta_y!==0){
         if (controllo_muro(game, player.position[0], player.position[1]+delta_y) && (controllo_mostri(game, player.position[0], player.position[1]+delta_y))) {
-            player.position[0] += delta_x;
             player.position[1] += delta_y;
+        }else if(!controllo_mostri(game, player.position[0], player.position[1]+delta_y)){
+            combattimento(game, player, game.entities[mostro_attaccato]);
         }
     }else if(delta_x!==0){
         if (controllo_muro(game, player.position[0]+delta_x, player.position[1]) && (controllo_mostri(game, player.position[0]+delta_x, player.position[1]))) {
             player.position[0] += delta_x;
             player.position[1] += delta_y;
+        }else if(!controllo_mostri(game, player.position[0]+delta_x, player.position[1])){
+            combattimento(game, player, game.entities[mostro_attaccato]);
         }
-    }    
+    }
 }
 
 const controllo_muro = function(game, x, y){
@@ -58,8 +63,13 @@ const controllo_muro = function(game, x, y){
 const controllo_mostri = function(game, x, y){
     for (let i=0; i<game.entities.length; i++){
         if ((game.entities[i].position[0] === x) && (game.entities[i].position[1] === y)){
+            mostro_attaccato = i;
             return false;
         }
     }
     return true;
+}
+
+const combattimento = function(game, player, mostro){
+    //
 }
