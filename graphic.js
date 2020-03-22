@@ -1,12 +1,16 @@
 function render_dungeon(game) {
     x_rel = scroll_map(game.player.position[0], game.display_size[0] - 2, game.size[0])
     y_rel = scroll_map(game.player.position[1], game.display_size[1] * 75 / 100 - 2, game.size[1])
+
+    local_fov= [...Array(game.size[0])].map(x=>Array(game.size[1]).fill(1));
+    game.dungeon_fov_object.compute(game.player.position[0],game.player.position[1],6,(x,y,r,visibility)=>local_fov[x][y]=0);
+
     for (let x = 0; x < game.display_size[0]; x ++) {
         [0, game.display_size[1] - 1].forEach(y => game.display.draw(x, y, '▄'))
     }
     for (let y = 0; y < game.display_size[1]; y ++) {
         [0, game.display_size[0] - 1].forEach(x => game.display.draw(x, y, '▄'))
-    }
+    }   
     for (let x = x_rel; x < x_rel + game.display_size[0] - 2; x++) {
         for (let y = y_rel; y < y_rel + game.display_size[1] * 75 / 100 - 2; y++) {
             if (game.dungeon[x][y] == 0) {
@@ -21,7 +25,7 @@ function render_dungeon(game) {
             game.display.draw(game.entities[i].position[0]-x_rel + 1, game.entities[i].position[1]-y_rel + 1, game.entities[i].char)
         }
     }
-    game.display.draw(game.player.position[0]-x_rel, game.player.position[1]-y_rel, game.player.char)
+    game.display.draw(game.player.position[0]-x_rel, game.player.position[1]-y_rel, game.player.char) 
 }
 
 function render_menu(game) {
