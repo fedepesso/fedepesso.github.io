@@ -1,26 +1,43 @@
 let Oggetti = {
 
     weapons : {
-        "spadone" : ["Spadone", [20, 30], [30, 2], ["strength", 20], "physical", 1],
+        "spadone" : {
+            costruttore_entity:["Spadone", "S", "blue", true], 
+            costruttore_attacker:[[20, 30], [30, 2], ["strength", 20], "physical", 1], 
+            costruttore_wearable:["Comune", "weapon", "Spada"],
+        }
     },
 
-    body_armors : {
-        "armatura a scalie" : ["Armatura a Scalie", 10, 10, 10],
-    },
+    body_armors : {},
 
-    leg_armors : {
-        "gambali da gallina" : ["Gambali da Gallina", -2, -2, -2],
-    },
+    leg_armors : {},
 
     rings : {},
 
     monster_spawns : {},
 
-    drop_tables : {}
+    monster: {}
 }
-
 
 
 const obtain_Object = function(type, name){
     return Oggetti[type][name];
+}
+
+const costruttoreUniversale = function (type, nome){
+    let taker = obtain_Object(type, nome);
+    entitaOriginale = new Entity(taker[costruttore_entity]);
+    if (type=="weapons"){
+        entitaOriginale.attacker = new Attacker(costruttore_attacker);
+        entitaOriginale.wearable = new Wearable(costruttore_wearable);
+    }else if (type=="body_armors" || type=="leg_armors" || type == "rings"){
+        entitaOriginale.defender = new Defender(costruttore_defender);
+        entitaOriginale.wearable = new Wearable(costruttore_wearable);
+    }else if (type == "monster"){
+        entitaOriginale.stats = new Stats(costruttore_stats);
+        entitaOriginale.monster = new Monster(costruttore_monster);
+        entitaOriginale.attacker = new Attacker(costruttore_attacker);
+        entitaOriginale.defender = new Defender(costruttore_defender);
+    }
+
 }
