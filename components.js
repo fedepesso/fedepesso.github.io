@@ -10,26 +10,25 @@ class Entity {
 
 
 class Stats {
-    constructor() {
-        this.life = [100, 100];
-        this.strength = 10;
-        this.dexterity = 10;
-        this.intelligence = 10;
-        this.experience = [0, 0];
-        this.level = 1;
-        this.expendable_points = 0;
+    constructor(info = [[null, null], null, null, [null, null], null, null]) {
+        this.life = [info[0][0], info[0][1]];
+        this.strength = info[1];
+        this.dexterity = info[2];
+        this.intelligence = info[3];
+        this.experience = [info[4][0], info[4][1]];
+        this.level = info[5];
+        this.expendable_points = info[6];
     }
 }
 
 
 class Attacker {
-    constructor(info=[null, [null, null], [null, null], [null, null], null, null]){
-        this.name = info[0];
-        this.damage = [info[1][0], info[1][1]];
-        this.crit = [info[2][0], info[2][1]];
-        this.stat_bonus = [info[3][0], info[3][1]];
-        this.damage_type = info[4];
-        this.range = info[5];
+    constructor(info=[[null, null], [null, null], [null, null], null, null]){
+        this.damage = [info[0][0], info[0][1]];
+        this.crit = [info[1][0], info[1][1]];
+        this.stat_bonus = [info[2][0], info[2][1]];
+        this.damage_type = info[3];
+        this.range = info[4];
     }
 }
 
