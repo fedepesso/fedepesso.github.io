@@ -1,75 +1,74 @@
 class Entity {
-    constructor(info = [null, null, null, null]) {
-        this.name = info[0];
+    constructor(name, char, color, solid) {
+        this.name = name;
         this.position = [0, 0];
-        this.char = info[1];
-        this.color = info[2];
-        this.solid = info[3];
+        this.char = char;
+        this.color = color;
+        this.solid = solid;
     }
 }
 
 
 class Stats {
-    constructor(info = [[null, null], null, null, null, [null, null], null, null]) {
-        this.life = [info[0][0], info[0][1]];
-        this.strength = info[1];
-        this.dexterity = info[2];
-        this.intelligence = info[3];
-        this.experience = [info[4][0], info[4][1]];
-        this.level = info[5];
-        this.expendable_points = info[6];
+    constructor(life, forza, destrezza, intelletto, esperienza, livello, punti) {
+        this.life = life;
+        this.strength = forza;
+        this.dexterity = destrezza;
+        this.intelligence = intelletto;
+        this.experience = esperienza;
+        this.level = livello;
+        this.expendable_points = punti;
     }
 }
 
 
 class Attacker {
-    constructor(info=[[null, null], [null, null], [null, null], null, null]){
-        this.damage = [info[0][0], info[0][1]];
-        this.crit = [info[1][0], info[1][1]];
-        this.stat_bonus = [info[2][0], info[2][1]];
-        this.damage_type = info[3];
-        this.range = info[4];
+    constructor(danno, critico, stat, tipo, range){
+        this.damage = danno;
+        this.crit = critico;
+        this.stat_bonus = stat;
+        this.damage_type = tipo;
+        this.range = range;
     }
 }
 
 
 class Defender {
-    constructor(info=[null, null, null, null]) {
-        this.name = info[0];
-        this.physical = info[1];
-        this.elemental = info[2];
-        this.arcane = info[3];
+    constructor(fisico, elementale, arcano) {
+        this.physical = fisico;
+        this.elemental = elementale;
+        this.arcane = arcano;
     }
 }
 
 
 
 class Wearable {
-    constructor(info=[null, null, null]) {
-        this.rarity = info[0];
+    constructor(rarità, categoria, tipo) {
+        this.rarity = rarità;
         // weapon, body_armor, leg_armor, ring_armor
-        this.category = info[1];
+        this.category = categoria;
         // hammer, axe, ecc ecc
-        this.type = info[2];
+        this.type = tipo;
     }
 }
 
 
 class Inventory {
-    constructor(info=[null, null, null, null]) {
-        this.weapon = info[0];
-        this.body_armor = info[1];
-        this.leg_armor = info[2];
-        this.ring_armor = info[3];
+    constructor(weapon, body_armor, leg_armor, ring_armor) {
+        this.weapon = weapon;
+        this.body_armor = body_armor;
+        this.leg_armor = leg_armor;
+        this.ring_armor = ring_armor;
     }
 }
 
 
 class Monster {
-    constructor(info = [null, null, null]) {
-        this.drop_tables = info[0];
-        this.min_depth = info[1];
-        this.chance = info[2];
+    constructor(drop_tables, min_depth, chance) {
+        this.drop_tables = drop_tables;
+        this.min_depth = min_depth;
+        this.chance = chance;
     }
 }
 
