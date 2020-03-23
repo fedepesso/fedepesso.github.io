@@ -34,6 +34,7 @@ let Game = {
 
 	input: key => {
 		let code = key.keyCode;
+		console.log(code)
 		switch(code) {
 			case 37:
 				move_player(Game, Game.player, -1, 0)
@@ -47,6 +48,11 @@ let Game = {
 			case 40:
 				move_player(Game, Game.player, 0, 1)
 				break;
+			case 226:
+				let stair = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
+				if (stair != undefined) {
+					move_to(Game, Game.depth + stair.stair.delta_depth)
+				}
 			case 60:
 				let stair = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
 				if (stair != undefined) {
