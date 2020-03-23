@@ -17,6 +17,7 @@ let Game = {
 	dungeon_object: undefined,
 	entities: undefined,
 	depth: 1,
+	take_turn: false,
 
 	init: () => {
 		Game.display_size = [parseInt(window.innerWidth / Game.font_size * 0.5), parseInt(window.innerHeight / Game.font_size - 1)]
@@ -51,6 +52,10 @@ let Game = {
 				if (stair != undefined) {
 					move_to(Game, Game.depth + stair.stair.delta_depth)
 				}
+		}
+		if (Game.take_turn) {
+			Game.take_turn = false;
+			Game.process();
 		}
         Game.render();
 	},

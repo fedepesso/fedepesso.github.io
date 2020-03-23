@@ -53,6 +53,7 @@ const move_player = function(game, player, delta_x, delta_y) {
         } else {
             combattimento(game, player, collision)
         }
+        game.player.take_turn = true;
     }
 }
 
@@ -140,6 +141,7 @@ const spawn_entities = function(game, depth) {
     monsters = FilterMonsters(depth)
     Object.keys(monsters).forEach(v => {
         for (let i = 0; i < monsters[v][2]; i++) {
+            let x = 0;
             while (x < 20) {
                 room = choice(rooms);
                 let x = randint(room.getLeft(), room.getRight());
