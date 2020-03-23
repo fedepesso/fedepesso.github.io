@@ -10,7 +10,7 @@ class Entity {
 
 
 class Stats {
-    constructor(info = [[null, null], null, null, [null, null], null, null]) {
+    constructor(info = [[null, null], null, null, null, [null, null], null, null]) {
         this.life = [info[0][0], info[0][1]];
         this.strength = info[1];
         this.dexterity = info[2];
