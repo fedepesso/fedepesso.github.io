@@ -80,7 +80,7 @@ const combattimento = function(game, player, mostro) {
 const spawn_entities = function(game, depth) {
     rooms = game.dungeon_object.getRooms()
 
-    if (dept != 1) {
+    if (depth != 1) {
         upstair = new Entity('Upstair', '<', '#a4a5a5', false)
         upstair.stair = new Stair(-1)
         while (true) {
@@ -90,10 +90,11 @@ const spawn_entities = function(game, depth) {
             if (controllo_mostri(game, x, y) == null) {
                 upstair.x = x;
                 upstair.y = y;
+                break;
             }
         }
     }
-    if (dept != 10) {
+    if (depth != 10) {
         downstair = new Entity('Downstair', '>', '#a4a5a5', false)
         downstair.stair = new Stair(1)
         while (true) {
@@ -103,6 +104,7 @@ const spawn_entities = function(game, depth) {
             if (controllo_mostri(game, x, y) == null) {
                 downstair.x = x;
                 downstair.y = y;
+                break;
             }
         }
     }
