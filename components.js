@@ -43,7 +43,6 @@ class Defender {
 }
 
 
-
 class Wearable {
     constructor(info=[null, null, null]) {
         this.rarity = info[0];

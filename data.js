@@ -41,3 +41,14 @@ const costruttoreUniversale = function (type, nome){
     }
 
 }
+
+const FilterMonsters = function(depth) {
+    let new_list = {};
+    Oggetti.monster_spawns.keys().forEach(v => {
+        let data = Oggetti.monster_spawns[v]
+        if (depth >= data[0]) {
+            new_list[v] = data;
+        }
+    })
+    return new_list;
+}

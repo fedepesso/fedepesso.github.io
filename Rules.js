@@ -32,14 +32,15 @@ const move_to = function(game, index){
     game.dungeon_object.create((x, y, value) => game.dungeon[x][y] = value)
     game.dungeon_fov_object = new ROT.FOV.PreciseShadowcasting((x, y) => {
         if ((game.dungeon[x] == undefined) || (game.dungeon[x][y] == undefined)) {
-            return false;
+            return true;
         }
-        return game.dungeon[x][y] == 0;
+        return (game.dungeon[x][y] == 0);
     });
     game.entities = [];
     let starting_room = game.dungeon_object.getRooms()[0];
     game.player.position[0] = Math.floor(Math.random() * (starting_room.getRight() - starting_room.getLeft() + 1)) + starting_room.getLeft();
     game.player.position[1] = Math.floor(Math.random() * (starting_room.getTop() - starting_room.getBottom() + 1)) + starting_room.getBottom();
+    spawn_entities(game, index)
 }
 
 const move_player = function(game, player, delta_x, delta_y) {
@@ -71,4 +72,36 @@ const controllo_mostri = function(game, x, y){
 
 const combattimento = function(game, player, mostro) {
     //
+}
+
+const spawn_entities = function(game, depth) {
+    rooms = game.dungeon_object.getRooms()
+
+    if (dept != 1) {
+        // fai la scala per salire
+    }
+    if (dept != 10) {
+        // fai la scala per scendere
+    }
+
+    monsters = FilterMonsters(depth)
+    monsters.keys().forEach(v => {
+        for (let i = 0; i < monsters[v][2]; i++) {
+            while (x < 20) {
+                room = choice(rooms);
+                let x = randint(room.getLeft(), room.getRight());
+                let y = randint(room.getTop(), room.getBottom());
+                if (controllo_mostri(game, x, y) == null) {
+                    if (randint(0, 100) <= monsters[v][1]) {
+                        monster_entity = costruttoreUniversale('monster', v);
+                        game.entities.push(monster_entity);
+                        monster_entity.x = x;
+                        monster_entity.y = y;
+                        break;
+                    }
+                    x += 1;
+                }
+            }
+        }
+    })
 }
