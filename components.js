@@ -72,3 +72,10 @@ class Monster {
 }
 
 
+class Stair {
+    constructor(delta_depth) {
+        delta_depth = delta_depth
+    }
+}
+
+

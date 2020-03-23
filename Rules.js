@@ -62,6 +62,9 @@ const controllo_muro = function(game, x, y){
     return false;
 }
 const controllo_mostri = function(game, x, y){
+    if (game.player.x == x && game.player.y == y) {
+        return game.player
+    }
     for (let i=0; i<game.entities.length; i++){
         if ((game.entities[i].position[0] === x) && (game.entities[i].position[1] === y) && (game.entities[i].solid)){
             return game.entities[i]
@@ -78,10 +81,30 @@ const spawn_entities = function(game, depth) {
     rooms = game.dungeon_object.getRooms()
 
     if (dept != 1) {
-        // fai la scala per salire
+        upstair = new Entity('Upstair', '<', '#a4a5a5', false)
+        upstair.stair = new Stair(-1)
+        while (true) {
+            room = choice(rooms);
+            let x = randint(room.getLeft(), room.getRight());
+            let y = randint(room.getTop(), room.getBottom());
+            if (controllo_mostri(game, x, y) == null) {
+                upstair.x = x;
+                upstair.y = y;
+            }
+        }
     }
     if (dept != 10) {
-        // fai la scala per scendere
+        downstair = new Entity('Downstair', '>', '#a4a5a5', false)
+        downstair.stair = new Stair(1)
+        while (true) {
+            room = choice(rooms);
+            let x = randint(room.getLeft(), room.getRight());
+            let y = randint(room.getTop(), room.getBottom());
+            if (controllo_mostri(game, x, y) == null) {
+                downstair.x = x;
+                downstair.y = y;
+            }
+        }
     }
 
     monsters = FilterMonsters(depth)
