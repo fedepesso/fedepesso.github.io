@@ -14,16 +14,16 @@ function render_dungeon(game) {
     for (let x = x_rel; x < x_rel + game.display_size[0] - 2; x++) {
         for (let y = y_rel; y < y_rel + game.display_size[1] * 75 / 100 - 2; y++) {
             if (game.local_fov[x][y] == 0) {
-                game.dungeon_explored[x][y]=0
                 if (game.dungeon[x][y] == 0) {
                     game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#fffc5c")
                 } 
                 else {
                     game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#6b6907")
                 }
+                game.dungeon_explored[x][y]=0
             }
             else {
-                if (game.dungeon_explored[x][y]==0) {
+                if (game.dungeon_explored[x][y] == 0) {
                     if (game.dungeon[x][y] == 0) {
                         game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#69a5b5")
                     }       
@@ -42,6 +42,7 @@ function render_dungeon(game) {
     }
     game.display.draw(game.player.position[0]-x_rel+1, game.player.position[1]-y_rel+1, game.player.char)
 }
+
 
 function render_menu(game) {
     for (let x = 0; x < game.gui_size[0]; x ++) {
