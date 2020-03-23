@@ -72,3 +72,16 @@ const controllo_mostri = function(game, x, y){
 const combattimento = function(game, player, mostro) {
     //
 }
+
+function randint(a, b) {
+ min=a
+ max= Math.floor(b+1);
+ return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function choice (arr) {
+    l=arr.length-1
+    index=randint(0,l)
+    return arr[index];
+}
+
