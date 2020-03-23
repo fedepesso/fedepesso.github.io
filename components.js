@@ -64,17 +64,16 @@ class Inventory {
 
 
 class Monster {
-    constructor(drop_tables, min_depth, chance) {
+    constructor(drop_tables, xp_reward) {
         this.drop_tables = drop_tables;
-        this.min_depth = min_depth;
-        this.chance = chance;
+        this.xp_reward = xp_reward;
     }
 }
 
 
 class Stair {
     constructor(delta_depth) {
-        delta_depth = delta_depth
+        this.delta_depth = delta_depth
     }
 }
 

@@ -1,4 +1,14 @@
 let Oggetti = {
+
+    player: {
+        "player": {
+            "costruttore_entity": [Game.player_name, '@', '#000', true],
+            "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
+            "costruttore_attacker": [[0, 0], [0, 0], ['strength', 0], 'physical', 1],
+            "costruttore_defender": [0, 0, 0],
+            "costruttore_inventory": [undefined, undefined, undefined, undefined]
+        }
+    },
     
     weapons : {
         "hammer" : {
@@ -133,14 +143,19 @@ const costruttoreUniversale = function (type, nome){
         entitaOriginale.stats = new Stats(...taker["costruttore_stats"]);
         entitaOriginale.monster = new Monster(...taker["costruttore_monster"]);
         entitaOriginale.attacker = new Attacker(...taker["costruttore_attacker"]);
-        entitaOriginale.defender = new Defender(...taker["costruttore_defendertaker"]);
+        entitaOriginale.defender = new Defender(...taker["costruttore_defender"]);
+    }else if (type == "player"){
+        entitaOriginale.stats = new Stats(...taker["costruttore_stats"]);
+        entitaOriginale.attacker = new Attacker(...taker["costruttore_attacker"]);
+        entitaOriginale.defender = new Defender(...taker["costruttore_defender"]);
+        entitaOriginale.inventory = new Inventory(...taker["costruttore_inventory"])
     }
     return entitaOriginale;
 }
 
 const FilterMonsters = function(depth) {
     let new_list = {};
-    Oggetti.monster_spawns.keys().forEach(v => {
+    Object.keys(Oggetti.monster_spawns).forEach(v => {
         let data = Oggetti.monster_spawns[v]
         if (depth >= data[0]) {
             new_list[v] = data;

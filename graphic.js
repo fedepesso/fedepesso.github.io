@@ -1,4 +1,5 @@
 function render_dungeon(game) {
+    game.display.clear()
     x_rel = scroll_map(game.player.position[0], game.display_size[0] - 2, game.size[0])
     y_rel = scroll_map(game.player.position[1], game.display_size[1] * 75 / 100 - 2, game.size[1])
 
@@ -37,7 +38,9 @@ function render_dungeon(game) {
     }
     for (let i=0; i<game.entities.length; i++){
         if ((x_rel <= game.entities[i].position[0] < x_rel + game.display_size[0] - 2) && (y_rel <= game.entities[i].position[1] < y_rel + game.display_size[1] * 75 / 100 - 2)){
-            game.display.draw(game.entities[i].position[0]-x_rel + 1, game.entities[i].position[1]-y_rel + 1, game.entities[i].char)
+            if (game.local_fov[game.entities[i].position[0]][game.entities[i].position[1]] == 0) {
+                game.display.draw(game.entities[i].position[0]-x_rel + 1, game.entities[i].position[1]-y_rel + 1, game.entities[i].char, game.entities[i].color)
+            }
         }
     }
     game.display.draw(game.player.position[0]-x_rel+1, game.player.position[1]-y_rel+1, game.player.char)
@@ -45,6 +48,7 @@ function render_dungeon(game) {
 
 
 function render_menu(game) {
+    game.gui.clear()
     for (let x = 0; x < game.gui_size[0]; x ++) {
         [0, game.gui_size[1] - 1].forEach(y => game.gui.draw(x, y, '▄'))
     }
