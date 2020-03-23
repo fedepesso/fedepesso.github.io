@@ -25,6 +25,7 @@ const Damage_system = function(Attivo, Passivo){
 }
 
 const move_to = function(game, index){
+    game.depth = index;
     ROT.RNG.setSeed(index+game.seed);
     game.dungeon = [...Array(game.size[0])].map(x=>Array(game.size[1]).fill(1));
     game.dungeon_explored = [...Array(game.size[0])].map(x=>Array(game.size[1]).fill(1));
@@ -61,12 +62,12 @@ const controllo_muro = function(game, x, y){
     }
     return false;
 }
-const controllo_mostri = function(game, x, y){
+const controllo_mostri = function(game, x, y, non_solid=false){
     if (game.player.x == x && game.player.y == y) {
         return game.player
     }
     for (let i=0; i<game.entities.length; i++){
-        if ((game.entities[i].position[0] === x) && (game.entities[i].position[1] === y) && (game.entities[i].solid)){
+        if ((game.entities[i].position[0] === x) && (game.entities[i].position[1] === y) && (game.entities[i].solid || non_solid)){
             return game.entities[i]
         }
     }
@@ -74,7 +75,20 @@ const controllo_mostri = function(game, x, y){
 }
 
 const combattimento = function(game, player, mostro) {
-    //
+    danno = Damage_system(player, mostro);
+    if (mostro.stats.hp[0] <= danno) {
+        game.entities.filter(val => val != mostro);
+        // genera il drop e spawnalo nella cella del monster
+        player.stats.experience[0] += mostro.monster
+        if (player.stats.experience[0] >= player.stats.experience[1]) {
+            player.stats.experience[0] = player.stats.experience[1] - player.stats.experience[0]
+            player.stats.level += 1
+            player.stats.expendable_points += 1
+            player.stats.experience[1] = 1000 + ((player.stats.level - 1) * 200)
+        }
+    } else {
+        mostro.stats.hp[0] -= danno;
+    }
 }
 
 function randint(a, b) {
@@ -92,7 +106,6 @@ function choice (arr) {
 
 const spawn_entities = function(game, depth) {
     rooms = game.dungeon_object.getRooms()
-
     if (depth != 1) {
         upstair = new Entity('Upstair', '<', '#a4a5a5', false)
         upstair.stair = new Stair(-1)
@@ -101,8 +114,9 @@ const spawn_entities = function(game, depth) {
             let x = randint(room.getLeft(), room.getRight());
             let y = randint(room.getTop(), room.getBottom());
             if (controllo_mostri(game, x, y) == null) {
-                upstair.x = x;
-                upstair.y = y;
+                game.entities.push(upstair);
+                upstair.position[0] = x;
+                upstair.position[1] = y;
                 break;
             }
         }
@@ -115,15 +129,16 @@ const spawn_entities = function(game, depth) {
             let x = randint(room.getLeft(), room.getRight());
             let y = randint(room.getTop(), room.getBottom());
             if (controllo_mostri(game, x, y) == null) {
-                downstair.x = x;
-                downstair.y = y;
+                game.entities.push(downstair);
+                downstair.position[0] = x;
+                downstair.position[1] = y;
                 break;
             }
         }
     }
 
     monsters = FilterMonsters(depth)
-    monsters.keys().forEach(v => {
+    Object.keys(monsters).forEach(v => {
         for (let i = 0; i < monsters[v][2]; i++) {
             while (x < 20) {
                 room = choice(rooms);
@@ -133,8 +148,8 @@ const spawn_entities = function(game, depth) {
                     if (randint(0, 100) <= monsters[v][1]) {
                         monster_entity = costruttoreUniversale('monster', v);
                         game.entities.push(monster_entity);
-                        monster_entity.x = x;
-                        monster_entity.y = y;
+                        monster_entity.position[0] = x;
+                        monster_entity.position[1] = y;
                         break;
                     }
                     x += 1;
