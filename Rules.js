@@ -77,7 +77,7 @@ const controllo_mostri = function(game, x, y, non_solid=false){
 
 const combattimento = function(game, player, mostro) {
     danno = Damage_system(player, mostro);
-    if (mostro.stats.hp[0] <= danno) {
+    if (mostro.stats.life[0] <= danno) {
         game.entities.filter(val => val != mostro);
         // genera il drop e spawnalo nella cella del monster
         player.stats.experience[0] += mostro.monster
@@ -88,7 +88,7 @@ const combattimento = function(game, player, mostro) {
             player.stats.experience[1] = 1000 + ((player.stats.level - 1) * 200)
         }
     } else {
-        mostro.stats.hp[0] -= danno;
+        mostro.stats.life[0] -= danno;
     }
 }
 

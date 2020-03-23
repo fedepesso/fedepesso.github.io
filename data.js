@@ -12,62 +12,62 @@ let Oggetti = {
     
     weapons : {
         "hammer" : {
-            "costruttore_entity":["Hammer", "(", "8be036", true], 
+            "costruttore_entity":["Hammer", "(", "8be036", false], 
             "costruttore_attacker":[[20, 30], [20, 3], ["strength", 2], "elemental", 1], 
             "costruttore_wearable":["Comune", "weapon", "hammer"],
         },
         "axe" : {
-            "costruttore_entity":["Axe", "(", "eda221", true], 
+            "costruttore_entity":["Axe", "(", "eda221", false], 
             "costruttore_attacker":[[25, 40], [40, 3], ["strength", 4], "physical", 1], 
             "costruttore_wearable":["Raro", "weapon", "axe"],
         },
         "rapier" : {
-            "costruttore_entity":["Rapier", "(", "8f7d5e", true], 
+            "costruttore_entity":["Rapier", "(", "8f7d5e", false], 
             "costruttore_attacker":[[15, 25], [20, 2], ["dexterity", 3], "physical", 1], 
             "costruttore_wearable":["Comune", "weapon", "rapier"],
         },
         "dagger" : {
-            "costruttore_entity":["Dagger", "(", "d1c6b4", true], 
+            "costruttore_entity":["Dagger", "(", "d1c6b4", false], 
             "costruttore_attacker":[[20, 30], [40, 2], ["dexterity", 5], "elemental", 1], 
             "costruttore_wearable":["Raro", "weapon", "dagger"],
         },
         "enchanted sword" : {
-            "costruttore_entity":["Enchanted sword", "(", "f9b6fc", true], 
+            "costruttore_entity":["Enchanted sword", "(", "f9b6fc", false], 
             "costruttore_attacker":[[40, 50], [10, 4], ["intelligence", 10], "arcane", 1], 
             "costruttore_wearable":["Leggendario", "weapon", "enchanted sword"],
         },
         "ethereal axe" : {
-            "costruttore_entity":["Ethereal axe", "(", "ffbe0d", true], 
+            "costruttore_entity":["Ethereal axe", "(", "ffbe0d", false], 
             "costruttore_attacker":[[35, 50], [10, 4], ["intelligence", 15], "arcane", 1], 
             "costruttore_wearable":["Leggendario", "weapon", "ethereal axe"],
         },
         "spear" : {
-            "costruttore_entity":["Spear", "(", "f50a35", true], 
+            "costruttore_entity":["Spear", "(", "f50a35", false], 
             "costruttore_attacker":[[20, 30], [30, 2], ["strength", 5], "physical", 2], 
             "costruttore_wearable":["Comune", "weapon", "spear"],
         },
         "tomahawk" : {
-            "costruttore_entity":["Tomahawk", "(", "821126", true], 
+            "costruttore_entity":["Tomahawk", "(", "821126", false], 
             "costruttore_attacker":[[25, 30], [30, 2], ["strength", 6], "elemental", 3], 
             "costruttore_wearable":["Raro", "weapon", "tomahawk"],
         },
         "bow" : {
-            "costruttore_entity":["Bow", "(", "6e1682", true], 
+            "costruttore_entity":["Bow", "(", "6e1682", false], 
             "costruttore_attacker":[[30, 35], [50, 2], ["dexterity", 4], "elemental", 5], 
             "costruttore_wearable":["Comune", "weapon", "bow"],
         },
         "shuriken" : {
-            "costruttore_entity":["Shuriken", "(", "32941c", true], 
+            "costruttore_entity":["Shuriken", "(", "32941c", false], 
             "costruttore_attacker":[[25, 35], [30, 3], ["dexterity", 3], "physical", 4], 
             "costruttore_wearable":["Raro", "weapon", "shuriken"],
         },
         "magic wand" : {
-            "costruttore_entity":["Magic wand", "(", "9bbf93", true], 
+            "costruttore_entity":["Magic wand", "(", "9bbf93", false], 
             "costruttore_attacker":[[40, 50], [60, 2], ["intelligence", 10], "arcane", 1], 
             "costruttore_wearable":["Leggendario", "weapon", "magic wand"],
         },
         "magic staff" : {
-            "costruttore_entity":["Magic staff", "(", "3c727d", true], 
+            "costruttore_entity":["Magic staff", "(", "3c727d", false], 
             "costruttore_attacker":[[40, 60], [40, 3], ["intelligence", 15], "arcane", 1], 
             "costruttore_wearable":["Leggendario", "weapon", "magic staff"],
         }
@@ -75,7 +75,7 @@ let Oggetti = {
 
     body_armors : {
     	"corazza a scaje" : {
-            "costruttore_entity":["Corazza a scaje", "[", "5e5621", true], 
+            "costruttore_entity":["Corazza a scaje", "[", "5e5621", false], 
             "costruttore_defender":[40,30,10], 
             "costruttore_wearable":["Comune", "armor", "corazza a scaje"],
         }
@@ -83,7 +83,7 @@ let Oggetti = {
     	
     leg_armors : {
     	"calzari alati" : {
-            "costruttore_entity":["Calzari alati", "[", "#f011d6", true], 
+            "costruttore_entity":["Calzari alati", "[", "#f011d6", false], 
             "costruttore_defender":[10,30,20], 
             "costruttore_wearable":["Raro", "armor", "calzari alati"],
         }
@@ -91,7 +91,7 @@ let Oggetti = {
     	
     rings : {
     	"unico anello" : {
-            "costruttore_entity":["Unico anello", "*", "#747519", true], 
+            "costruttore_entity":["Unico anello", "*", "#747519", false], 
             "costruttore_defender":[5,40,40], 
             "costruttore_wearable":["Raro", "armor", "unico anello"],
         }
