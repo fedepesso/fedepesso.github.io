@@ -3,14 +3,19 @@ let Oggetti = {
     "player" : {
         "player": {
             "costruttore_entity": ["giobr1", '@', '#000', false],
-            "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
+            "costruttore_stats": [[100, 100], 10, 10, 10, [0, 1000], 1, 0],
             "costruttore_attacker": [[0, 0], [0, 0], ['strength', 0], 'physical', 1],
-            "costruttore_defender": [0, 0, 0],
+            "costruttore_defender": [5, 5, 5],
             "costruttore_inventory": [undefined, undefined, undefined, undefined]
         }
     },
     
     "weapon" : {
+        "spada di prova" : {
+            "costruttore_entity":["Spada di Prova", "°", "8be03g", false], 
+            "costruttore_attacker":[[10, 20], [10, 4], ["strength", 2], "elemental", 1], 
+            "costruttore_wearable":["Comune", "weapon", "spada di prova"],
+        },
         "hammer" : {
             "costruttore_entity":["Hammer", "(", "8be036", false], 
             "costruttore_attacker":[[20, 30], [20, 3], ["strength", 2], "elemental", 1], 
@@ -78,6 +83,11 @@ let Oggetti = {
             "costruttore_entity":["Corazza a scaje", "[", "5e5621", false], 
             "costruttore_defender":[40,30,10], 
             "costruttore_wearable":["Comune", "body_armor", "corazza a scaje"],
+        },
+        "corazza di pelle" : {
+            "costruttore_entity":["Corazza di pelle", "[", "000000", false], 
+            "costruttore_defender":[2, 2, 2], 
+            "costruttore_wearable":["Comune", "body_armor", "corazza di pelle"],
         }
     },
     	
@@ -86,6 +96,11 @@ let Oggetti = {
             "costruttore_entity":["Calzari alati", "[", "#f011d6", false], 
             "costruttore_defender":[10,30,20], 
             "costruttore_wearable":["Raro", "leg_armor", "calzari alati"],
+        },
+        "calzari di pelle" : {
+            "costruttore_entity":["Calzari di pelle", "]", "000000", false], 
+            "costruttore_defender":[2, 2, 2], 
+            "costruttore_wearable":["Raro", "leg_armor", "Calzari di pelle"],
         }
     },
     	
@@ -94,6 +109,11 @@ let Oggetti = {
             "costruttore_entity":["Unico anello", "*", "#747519", false], 
             "costruttore_defender":[5,40,40], 
             "costruttore_wearable":["Raro", "ring_armor", "unico anello"],
+        },
+        "anello di erba cipollina" : {
+            "costruttore_entity":["Anello di erba cipollina", "*", "#000000", false], 
+            "costruttore_defender":[1, 1, 1], 
+            "costruttore_wearable":["Raro", "ring_armor", "anello di erba cipollina"],
         }
     },
     	
@@ -153,7 +173,7 @@ const obtain_Object = function(type, name){
 const costruttoreUniversale = function (type, nome){
     let taker = obtain_Object(type, nome);
     entitaOriginale = new Entity(...taker["costruttore_entity"]);
-    if (type=="weapons"){
+    if (type=="weapon"){
         entitaOriginale.attacker = new Attacker(...taker["costruttore_attacker"]);
         entitaOriginale.wearable = new Wearable(...taker["costruttore_wearable"]);
     }else if (type=="body_armors" || type=="leg_armors" || type == "rings"){
@@ -202,7 +222,7 @@ const DropCalculator = function (game, monster){
 
 
 const equipThing = function (game, entity){
-    if(entity.wearable === undefined){
+    if(entity.wearable !== undefined){
         game.player.inventory[entity.wearable.category] = entity;
     }
 }

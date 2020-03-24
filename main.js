@@ -20,13 +20,14 @@ let Game = {
 	take_turn: false,
 
 	init: () => {
+		Game.player = create_player();
+		armor_weapon_giver(Game);
 		Game.display_size = [parseInt(window.innerWidth / Game.font_size * 0.5), parseInt(window.innerHeight / Game.font_size - 1)]
 		Game.gui_size = [parseInt(window.innerWidth / Game.font_size * 0.4), parseInt(window.innerHeight / Game.font_size - 1)]
 		Game.display = new ROT.Display({width:  Game.display_size[0], height: Game.display_size[1], fontSize: Game.font_size, forceSquareRatio:true});
 		Game.gui = new ROT.Display({width: Game.gui_size[0], height: Game.gui_size[1], fontSize: Game.font_size, forceSquareRatio:true});
 		document.body.appendChild(Game.display.getContainer());
 		document.body.appendChild(Game.gui.getContainer());
-		Game.player = create_player();
 		move_to(Game, Game.depth);
 		Game.render()
 		window.addEventListener("keydown", Game.input);
@@ -85,10 +86,10 @@ let Game = {
 					})
 					if (path.length === 1) {
 						let danno = Damage_system(monster, Game.player)
-						if (Game.player.life[0] - danno <= 0) {
+						if (Game.player.stats.life[0] - danno <= 0) {
 							// sconfitta
 						} else {
-							Game.player.life[0] -= danno
+							Game.player.stats.life[0] -= danno
 						}
 					} else if (controllo_mostri(Game, path[1][0], path[1][1]) === null) {
 						monster.position = path[1]
@@ -101,5 +102,6 @@ let Game = {
 
 function create_player() {
 	let player = costruttoreUniversale('player', 'player')
+	
 	return player;
 }

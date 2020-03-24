@@ -100,10 +100,11 @@ function render_menu(game) {
             'Weapon: None', '', '', ''
         ]
     } else {
+        let arma = game.player.inventory.weapon
         weapon_text = [
-            'Weapon: ' + game.player.inventory.weapon.name, '   - damage: [' + game.player.inventory.weapon.damage[0] + '-' + game.player.inventory.weapon.damage[0] + '] ' + game.player.inventory.weapon.damage_type,
-            '   - critics chance: ' + game.player.inventory.weapon.crit[0] + ' critics mod: ' + game.player.inventory.weapon.crit[1], 
-            '   - bonus stat: ' + game.player.inventory.weapon.stat_bonus[0]
+            'Weapon: ' + arma.name, '   - damage: [' + arma.attacker.damage[0] + '-' + arma.attacker.damage[1] + '] ' + arma.attacker.damage_type,
+            '   - critics : [' + arma.attacker.crit[0] + "-" + arma.attacker.crit[1] + ']          ' +  
+            '   - bonus stat: ' + arma.attacker.stat_bonus[0]
         ]
     }
     weapon_text.forEach((e, i) => game.gui.drawText(0, i+19, e))

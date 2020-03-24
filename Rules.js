@@ -7,9 +7,7 @@ const Damage_system = function(Attivo, Passivo){
     let danno=0;
     let stats_needed = Attivo.attacker.stat_bonus[0];
     let type_of_damage=Attivo.attacker.damage_type;
-
     let valore_difensivo = difesa_universale/(difesa_universale*Passivo.defender.getResistance(Passivo, type_of_damage));
-
     let danno_arma = Math.floor(Math.random() * Attivo.attacker.damage[1] + Attivo.attacker.damage[0]);
     let bonus_danno = (Attivo.stats[stats_needed]/2) * Attivo.attacker.stat_bonus[1] * attacco_universale;
     let somma_danni = danno_arma + bonus_danno;
@@ -18,9 +16,7 @@ const Damage_system = function(Attivo, Passivo){
     if(tiro_critico>Attivo.attacker.crit[0]){
         somma_danni *=Attivo.attacker.crit[1];
     }
-
     danno = Math.floor(somma_danni*valore_difensivo);
-
     return danno;
 }
 
@@ -47,7 +43,7 @@ const move_to = function(game, index){
 const move_player = function(game, player, delta_x, delta_y) {
     if (controllo_muro(game, player.position[0]+delta_x, player.position[1]+delta_y)) {
         collision = controllo_mostri(game, player.position[0] + delta_x, player.position[1] + delta_y)
-        if (collision == null) {
+        if (collision === null) {
             player.position[0] += delta_x
             player.position[1] += delta_y;
         } else {
@@ -160,5 +156,20 @@ const spawn_entities = function(game, depth) {
             }
         }
     })
+}
+
+
+
+
+
+const armor_weapon_giver = function (game){
+    let hammer = costruttoreUniversale("weapon", "spada di prova");
+    let ring = costruttoreUniversale("rings", "anello di erba cipollina");
+    let armor1 = costruttoreUniversale("body_armors", "corazza di pelle");
+    let armor2 = costruttoreUniversale("leg_armors", "calzari di pelle");
+    equipThing(game, hammer)
+    equipThing(game, ring)
+    equipThing(game, armor1)
+    equipThing(game, armor2)
 }
 
