@@ -48,13 +48,20 @@ let Game = {
 			case 40:
 				move_player(Game, Game.player, 0, 1)
 				break;
-			case 60:
 			case 226:
 				let stair = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
 				if (stair != undefined) {
 					move_to(Game, Game.depth + stair.stair.delta_depth)
 				}
+				break;
+			case 80:
+				let obj = controllo_mostri(Game, Game.player.position[0], Game.player.position[1])
+				if (obj!==null){
+					equipThing(Game, obj)
+				}
+			
 		}
+		console.log(code)
 		if (Game.take_turn) {
 			Game.take_turn = false;
 			Game.process();

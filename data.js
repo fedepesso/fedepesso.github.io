@@ -284,6 +284,10 @@ const DropCalculator = function (game, monster){
 
 const equipThing = function (game, entity){
     if(entity.wearable !== undefined){
+        if(game.player.inventory[entity.wearable.category] !== undefined){
+            game.player.inventory[entity.wearable.category].position = game.player.position;
+            game.entities.push(game.player.inventory[entity.wearable.category]);
+        }
         game.player.inventory[entity.wearable.category] = entity;
     }
 }
