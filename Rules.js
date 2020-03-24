@@ -45,7 +45,7 @@ const move_player = function(game, player, delta_x, delta_y) {
         if (collision === null) {
             player.position[0] += delta_x
             player.position[1] += delta_y;
-        } else {
+        } else if (collision.monster !== undefined) {
             combattimento(game, player, collision)
         }
         game.take_turn = true;
@@ -83,7 +83,6 @@ const combattimento = function(game, player, mostro) {
             game.entities.splice(index, 1);
         }
 
-        // genera il drop e spawnalo nella cella del monster
         DropCalculator(game, mostro);
         player.stats.experience[0] += mostro.monster.xp_reward
         if (player.stats.experience[0] >= player.stats.experience[1]) {
@@ -165,10 +164,6 @@ const spawn_entities = function(game, depth) {
         }
     })
 }
-
-
-
-
 
 const armor_weapon_giver = function (game){
     let hammer = costruttoreUniversale("weapon", "spada di prova");

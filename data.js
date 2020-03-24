@@ -289,5 +289,11 @@ const equipThing = function (game, entity){
             game.entities.push(game.player.inventory[entity.wearable.category]);
         }
         game.player.inventory[entity.wearable.category] = entity;
+        if (game.entities !== undefined) {
+            const index = game.entities.indexOf(entity);
+            if (index > -1) {
+                game.entities.splice(index, 1);
+            }
+        }
     }
 }
