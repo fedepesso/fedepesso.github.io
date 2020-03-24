@@ -107,13 +107,20 @@ let Oggetti = {
     	"unico anello" : {
             "costruttore_entity":["Unico anello", "*", "#747519", false], 
             "costruttore_defender":[5,40,40], 
-            "costruttore_wearable":["Raro", "ring_armor", "unico anello"],
+            "costruttore_wearable":["Leggendario", "ring_armor", "unico anello"],
         },
-        "anello di erba cipollina" : {
+    "anello di erba cipollina" : {
             "costruttore_entity":["Anello di erba cipollina", "*", "#000000", false], 
             "costruttore_defender":[1, 1, 1], 
             "costruttore_wearable":["Raro", "ring_armor", "anello di erba cipollina"],
+        },
+
+    "anello di totano" : {
+            "costruttore_entity":["Anello di totano", "*", "#dbda7b", false], 
+            "costruttore_defender":[0, 1, 0], 
+            "costruttore_wearable":["Comune", "ring_armor", "anello di totano"],
         }
+
     },
     	
     "monster_spawns" : {
@@ -131,8 +138,8 @@ let Oggetti = {
             "costruttore_defender":[15,10,5], 
             "costruttore_monster":[50], 
         },
-        "orco" : {
-            "costruttore_entity":["orco", "O", "#473e57", true], 
+        "ogre" : {
+            "costruttore_entity":["ogre", "O", "#473e57", true], 
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
             "costruttore_attacker":[[30, 40], [30, 2], ["strength", 5], "physical", 1],
             "costruttore_defender":[20,15,10], 
@@ -151,6 +158,62 @@ let Oggetti = {
             "costruttore_attacker":[[30, 50], [33, 4], ["strength", 10], "arcane", 1],
             "costruttore_defender":[100, 100, 100], 
             "costruttore_monster":[1000000], 
+        },
+        "gorgon" : {
+            "costruttore_entity":["gorgon", "G", "#1f28db", true], 
+            "costruttore_stats": [[1000, 1000], 90, 100, 150, 3, 4, 50],
+            "costruttore_attacker":[[60, 70], [40, 3], ["intelligence", 10], "arcane", 1],
+            "costruttore_defender":[90, 120, 150], 
+            "costruttore_monster":[1500000], 
+        },
+        "witch" : {
+            "costruttore_entity":["witch", "w", "#4f2045", true], 
+            "costruttore_stats": [[200, 200], 10, 10, 10, 0, 1, 0],
+            "costruttore_attacker":[[15, 30], [60, 2], ["dexterity", 2], "elemental", 1],
+            "costruttore_defender":[90, 120, 150], 
+            "costruttore_monster":[1500000], 
+        },
+        "chaotic knight" : {
+            "costruttore_entity":["chaotic knight", "K", "#7d737b", true], 
+            "costruttore_stats": [[500, 500], 10, 10, 10, 0, 1, 0],
+            "costruttore_attacker":[[30, 50], [20, 3], ["strength", 5], "arcane", 1],
+            "costruttore_defender":[90, 120, 150], 
+            "costruttore_monster":[1500000], 
+        },
+        "unicorn" : {
+            "costruttore_entity":["unicorn", "U", "#a8168b", true], 
+            "costruttore_stats": [[700, 700],  10, 10, 10, 0, 1, 0],
+            "costruttore_attacker":[[45, 50], [30, 3], ["intelligence", 8], "elemental", 1],
+            "costruttore_defender":[90, 120, 150], 
+            "costruttore_monster":[1500000], 
+        },
+        "sand worm" : {
+            "costruttore_entity":["sand worm", "W", "#e1e88e", true], 
+            "costruttore_stats": [[900, 900], 10, 10, 10, 0, 1, 0],
+            "costruttore_attacker":[[70, 75], [40, 2], ["dexterity", 7], "elemental", 1],
+            "costruttore_defender":[90, 120, 150], 
+            "costruttore_monster":[1500000], 
+        },
+        "sphinx" : {
+            "costruttore_entity":["sphinx", "s", "#c47733", true], 
+            "costruttore_stats": [[650, 650], 10, 10, 10, 0, 1, 0],
+            "costruttore_attacker":[[30, 40], [60, 3], ["intelligence", 6], "arcane", 1],
+            "costruttore_defender":[90, 120, 150], 
+            "costruttore_monster":[1500000], 
+        },
+        "titan" : {
+            "costruttore_entity":["titan", "T", "#665341", true], 
+            "costruttore_stats": [[2000, 2000], 10, 10, 10, 0, 1, 0],
+            "costruttore_attacker":[[90, 100], [20, 5], ["strength", 10], "physical", 1],
+            "costruttore_defender":[90, 120, 150], 
+            "costruttore_monster":[1500000], 
+        },
+        "ice giant" : {
+            "costruttore_entity":["ice giant", "I", "#87dbde", true], 
+            "costruttore_stats": [[400, 400], 10, 10, 10, 0, 1, 0],
+            "costruttore_attacker":[[40, 50], [50, 3], ["strength", 6], "physical", 1],
+            "costruttore_defender":[90, 120, 150], 
+            "costruttore_monster":[1500000], 
         }
     },
 
