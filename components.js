@@ -64,8 +64,7 @@ class Inventory {
 
 
 class Monster {
-    constructor(drop_tables, xp_reward) {
-        this.drop_tables = drop_tables;
+    constructor(xp_reward) {
         this.xp_reward = xp_reward;
     }
 }

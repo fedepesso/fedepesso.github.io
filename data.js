@@ -98,9 +98,10 @@ let Oggetti = {
     },
     	
     "monster_spawns" : {
-    	"goblin" : [1,40,20],
-    	"orco" : [2,30,10],
-    	"hellhound" : [3,60,15]
+    	"goblin" : [1, 40, 20],
+    	"orco" : [2, 30, 10],
+        "hellhound" : [3, 60, 15],
+        "hydra" : [10, 1, 1]
     },
 
     "monster" : {
@@ -109,21 +110,28 @@ let Oggetti = {
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
             "costruttore_attacker":[[10, 20], [20, 2], ["strength", 2], "physical", 1],
             "costruttore_defender":[15,10,5], 
-            "costruttore_monster":[null,50], 
+            "costruttore_monster":[50], 
         },
         "orco" : {
             "costruttore_entity":["orco", "O", "#473e57", true], 
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
             "costruttore_attacker":[[30, 40], [30, 2], ["strength", 5], "physical", 1],
             "costruttore_defender":[20,15,10], 
-            "costruttore_monster":[null,200], 
+            "costruttore_monster":[200], 
         },
         "hellhound" : {
             "costruttore_entity":["hellhound", "h", "#d9430d", true], 
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
             "costruttore_attacker":[[20, 30], [50, 2], ["dexterity", 3], "elemental", 1],
             "costruttore_defender":[10,20,10], 
-            "costruttore_monster":[null,150], 
+            "costruttore_monster":[150], 
+        },
+        "hydra" : {
+            "costruttore_entity":["hydra", "H", "#ca61ff", true], 
+            "costruttore_stats": [[1500, 1500], 110, 100, 120, 0, 1, 0],
+            "costruttore_attacker":[[30, 50], [33, 4], ["strength", 10], "arcane", 1],
+            "costruttore_defender":[100, 100, 100], 
+            "costruttore_monster":[1000000], 
         }
     },
 
