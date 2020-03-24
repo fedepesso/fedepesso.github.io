@@ -65,6 +65,10 @@ const controllo_mostri = function(game, x, y, non_solid=false){
     for (let i=0; i<game.entities.length; i++){
         if ((game.entities[i].position[0] === x) && (game.entities[i].position[1] === y) && (game.entities[i].solid || non_solid)){
             return game.entities[i]
+        }else if((game.entities[i].position[0] === x) && (game.entities[i].position[1] === y) && !game.entities[i].solid){
+            game.player.position[0] = x
+            game.player.position[1] = y;
+            return game.entities[i]
         }
     }
     return null;
