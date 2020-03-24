@@ -34,6 +34,7 @@ let Game = {
 
 	input: key => {
 		let code = key.keyCode;
+		console.log(code)
 		switch(code) {
 			case 37:
 				move_player(Game, Game.player, -1, 0)
