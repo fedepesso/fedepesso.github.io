@@ -67,19 +67,19 @@ function render_menu(game) {
     menu_texts.forEach((e, i) => game.gui.drawText(0, i+1, e))
     
     let armor_list = [];
-    if (game.player.inventory.body_armor == undefined) {
+    if (game.player.inventory.body_armor === undefined) {
         armor_list.push('Body: None')
     } else {
         armor_list.push('Body: ' + game.player.inventory.body_armor.name)
     }
 
-    if (game.player.inventory.leg_armor == undefined) {
+    if (game.player.inventory.leg_armor === undefined) {
         armor_list.push('Leg: None')
     } else {
         armor_list.push('Leg: ' + game.player.inventory.leg_armor.name)
     }
 
-    if (game.player.inventory.ring_armor == undefined) {
+    if (game.player.inventory.ring_armor === undefined) {
         armor_list.push('Ring: None')
     } else {
         armor_list.push('Ring: ' + game.player.inventory.ring_armor.name)
@@ -88,14 +88,14 @@ function render_menu(game) {
     armor_list.forEach((e, i) => game.gui.drawText(0, i+12, e))
 
     let armor_stats = [
-        'Physical defence: ' + game.player.defender.physical,
-        'Elemental defence: ' + game.player.defender.elemental,
-        'Arcane defence: ' + game.player.defender.arcane
+        'Physical defence: ' + game.player.defender.getResistance(game.player, "physical"),
+        'Elemental defence: ' + game.player.defender.getResistance(game.player, "elemental"),
+        'Arcane defence: ' + game.player.defender.getResistance(game.player, "arcane")
     ]
     armor_stats.forEach((e, i) => game.gui.drawText(0, i+15, e))
 
     let weapon_text = []
-    if (game.player.inventory.weapon == undefined) {
+    if (game.player.inventory.weapon === undefined) {
         weapon_text = [
             'Weapon: None', '', '', ''
         ]

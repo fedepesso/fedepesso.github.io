@@ -39,6 +39,19 @@ class Defender {
         this.elemental = elementale;
         this.arcane = arcano;
     }
+
+    getResistance (entity, type_of){
+        if (entity.inventory === undefined){
+            return this.type_of; 
+        }else{
+            let somma = 0;
+            somma+=this.type_of;
+            somma+=entity.inventory.body_armor[type_of];
+            somma+=entity.inventory.leg_armor[type_of];
+            somma+=entity.inventory.ring_armor[type_of];
+            return somma;
+        };
+    }
 }
 
 
@@ -64,8 +77,7 @@ class Inventory {
 
 
 class Monster {
-    constructor(drop_tables, xp_reward) {
-        this.drop_tables = drop_tables;
+    constructor(xp_reward) {
         this.xp_reward = xp_reward;
     }
 }
@@ -77,4 +89,12 @@ class Stair {
     }
 }
 
+
+class Potion{
+    constructor(statAffected, bonus){
+        this.position = [0,0]
+        this.stat = statAffected
+        this.bonus = bonus;
+    }
+}
 
