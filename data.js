@@ -1,6 +1,6 @@
 let Oggetti = {
 
-    player: {
+    "player" : {
         "player": {
             "costruttore_entity": ["giobr1", '@', '#000', true],
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
@@ -10,7 +10,7 @@ let Oggetti = {
         }
     },
     
-    weapons : {
+    "weapons" : {
         "hammer" : {
             "costruttore_entity":["Hammer", "(", "8be036", false], 
             "costruttore_attacker":[[20, 30], [20, 3], ["strength", 2], "elemental", 1], 
@@ -73,7 +73,7 @@ let Oggetti = {
         }
     },
 
-    body_armors : {
+    "body_armors" : {
     	"corazza a scaje" : {
             "costruttore_entity":["Corazza a scaje", "[", "5e5621", false], 
             "costruttore_defender":[40,30,10], 
@@ -81,7 +81,7 @@ let Oggetti = {
         }
     },
     	
-    leg_armors : {
+    "leg_armors" : {
     	"calzari alati" : {
             "costruttore_entity":["Calzari alati", "[", "#f011d6", false], 
             "costruttore_defender":[10,30,20], 
@@ -89,7 +89,7 @@ let Oggetti = {
         }
     },
     	
-    rings : {
+    "rings" : {
     	"unico anello" : {
             "costruttore_entity":["Unico anello", "*", "#747519", false], 
             "costruttore_defender":[5,40,40], 
@@ -97,35 +97,41 @@ let Oggetti = {
         }
     },
     	
-    monster_spawns : {
+    "monster_spawns" : {
     	"goblin" : [1,40,20],
     	"orco" : [2,30,10],
     	"hellhound" : [3,60,15]
     },
 
-    monster: {
+    "monster" : {
     	"goblin" : {
-            "costruttore_entity":["Goblin", "g", "#217519", true],
+            "costruttore_entity":["goblin", "g", "#217519", true],
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
             "costruttore_attacker":[[10, 20], [20, 2], ["strength", 2], "physical", 1],
             "costruttore_defender":[15,10,5], 
             "costruttore_monster":[null,50], 
         },
         "orco" : {
-            "costruttore_entity":["Orco", "O", "#473e57", true], 
+            "costruttore_entity":["orco", "O", "#473e57", true], 
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
             "costruttore_attacker":[[30, 40], [30, 2], ["strength", 5], "physical", 1],
             "costruttore_defender":[20,15,10], 
             "costruttore_monster":[null,200], 
         },
         "hellhound" : {
-            "costruttore_entity":["Hellhound", "h", "#d9430d", true], 
+            "costruttore_entity":["hellhound", "h", "#d9430d", true], 
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
             "costruttore_attacker":[[20, 30], [50, 2], ["dexterity", 3], "elemental", 1],
             "costruttore_defender":[10,20,10], 
             "costruttore_monster":[null,150], 
         }
+    },
+
+    "drop_tables" : {
+        "goblin" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
     }
+
+
 }
 
 
@@ -165,4 +171,18 @@ const FilterMonsters = function(depth) {
         }
     })
     return new_list;
+}
+
+
+const DropCalculator = function (game, monster){
+    const table = Oggetti.drop_tables[monster.name];
+    for (let i = 0; i<table.length; i++){
+        for(let j = 0; j<table[i][3]; j++){
+            if ((Math.floor(Math.random() * 100)) <= table[i][2]){
+                let equip = costruttoreUniversale(table[i][1], table[i][0]);
+                equip.position = monster.position;
+                game.entities.push(equip);
+            }
+        }
+    }
 }
