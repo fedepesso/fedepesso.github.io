@@ -49,7 +49,6 @@ class Defender {
             if (entity.inventory.body_armor !== undefined) {somma+=entity.inventory.body_armor.defender[type_of];}
             if (entity.inventory.leg_armor !== undefined) {somma+=entity.inventory.leg_armor.defender[type_of];}
             if (entity.inventory.ring_armor !== undefined) {somma+=entity.inventory.ring_armor.defender[type_of];}
-            console.log(somma)
             return somma;
         };
     }

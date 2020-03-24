@@ -11,7 +11,6 @@ const Damage_system = function(Attivo, Passivo){
     let danno_arma = Math.floor(Math.random() * Attivo.attacker.damage[1] + Attivo.attacker.damage[0]);
     let bonus_danno = (Attivo.stats[stats_needed]/2) * Attivo.attacker.stat_bonus[1] * attacco_universale;
     let somma_danni = danno_arma + bonus_danno;
-
     let tiro_critico = Math.floor(Math.random() * 100);
     if(tiro_critico>Attivo.attacker.crit[0]){
         somma_danni *=Attivo.attacker.crit[1];
@@ -72,9 +71,14 @@ const controllo_mostri = function(game, x, y, non_solid=false){
 }
 
 const combattimento = function(game, player, mostro) {
+    player.attacker = player.inventory.weapon.attacker;
     danno = Damage_system(player, mostro);
     if (mostro.stats.life[0] <= danno) {
-        game.entities.filter(val => val != mostro);
+        const index = game.entities.indexOf(mostro);
+        if (index > -1) {
+            game.entities.splice(index, 1);
+        }
+
         // genera il drop e spawnalo nella cella del monster
         DropCalculator(game, mostro);
         player.stats.experience[0] += mostro.monster.xp_reward
@@ -83,14 +87,14 @@ const combattimento = function(game, player, mostro) {
             player.stats.level += 1
             player.stats.expendable_points += 1
             player.stats.experience[1] = 1000 + ((player.stats.level - 1) * 200)
-        }
+        };
     } else {
         mostro.stats.life[0] -= danno;
-    }
+    };
 }
 
 function randint(a, b) {
- min=a
+ min=a;
  max= Math.floor(b+1);
  return Math.floor(Math.random() * (max - min)) + min;
 }
