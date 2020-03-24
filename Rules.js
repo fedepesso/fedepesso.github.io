@@ -77,7 +77,6 @@ const controllo_mostri = function(game, x, y, non_solid=false){
 
 const combattimento = function(game, player, mostro) {
     danno = Damage_system(player, mostro);
-    danno = 10; 
     if (mostro.stats.life[0] <= danno) {
         game.entities.filter(val => val != mostro);
         // genera il drop e spawnalo nella cella del monster

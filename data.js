@@ -137,9 +137,12 @@ let Oggetti = {
 
     "drop_tables" : {
         "goblin" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
+    },
+
+    "potion" : {
+        "costruttore_entity" : ["health potion", "P", "#ff5790", false],
+        "costruttore_potion" : ["life", 50],
     }
-
-
 }
 
 
@@ -165,7 +168,9 @@ const costruttoreUniversale = function (type, nome){
         entitaOriginale.stats = new Stats(...taker["costruttore_stats"]);
         entitaOriginale.attacker = new Attacker(...taker["costruttore_attacker"]);
         entitaOriginale.defender = new Defender(...taker["costruttore_defender"]);
-        entitaOriginale.inventory = new Inventory(...taker["costruttore_inventory"])
+        entitaOriginale.inventory = new Inventory(...taker["costruttore_inventory"]);
+    }else if (type == "potion"){
+        entitaOriginale.potion = new Potion(...taker["costruttore_potion"]);
     }
     return entitaOriginale;
 }

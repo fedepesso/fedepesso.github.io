@@ -77,3 +77,11 @@ class Stair {
 }
 
 
+class Potion{
+    constructor(statAffected, bonus){
+        this.position = [0,0]
+        this.stat = statAffected
+        this.bonus = bonus;
+    }
+}
+
