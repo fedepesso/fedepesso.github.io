@@ -39,6 +39,19 @@ class Defender {
         this.elemental = elementale;
         this.arcane = arcano;
     }
+
+    getResistance (entity, type_of){
+        if (entity.inventory === undefined){
+            return this.type_of; 
+        }else{
+            let somma = 0;
+            somma+=this.type_of;
+            somma+=entity.inventory.body_armor[type_of];
+            somma+=entity.inventory.leg_armor[type_of];
+            somma+=entity.inventory.ring_armor[type_of];
+            return somma;
+        };
+    }
 }
 
 

@@ -30,6 +30,7 @@ let Game = {
 		move_to(Game, Game.depth);
 		Game.render()
 		window.addEventListener("keydown", Game.input);
+		
 	},
 
 	input: key => {

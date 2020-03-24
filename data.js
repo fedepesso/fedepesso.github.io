@@ -10,7 +10,7 @@ let Oggetti = {
         }
     },
     
-    "weapons" : {
+    "weapon" : {
         "hammer" : {
             "costruttore_entity":["Hammer", "(", "8be036", false], 
             "costruttore_attacker":[[20, 30], [20, 3], ["strength", 2], "elemental", 1], 
@@ -197,5 +197,12 @@ const DropCalculator = function (game, monster){
                 game.entities.push(equip);
             }
         }
+    }
+}
+
+
+const equipThing = function (game, entity){
+    if(entity.wearable === undefined){
+        game.player.inventory[entity.wearable.category] = entity;
     }
 }

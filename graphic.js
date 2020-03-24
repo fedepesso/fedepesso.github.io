@@ -88,9 +88,9 @@ function render_menu(game) {
     armor_list.forEach((e, i) => game.gui.drawText(0, i+12, e))
 
     let armor_stats = [
-        'Physical defence: ' + game.player.defender.physical,
-        'Elemental defence: ' + game.player.defender.elemental,
-        'Arcane defence: ' + game.player.defender.arcane
+        'Physical defence: ' + game.player.defender.getResistance(game.player, "physical"),
+        'Elemental defence: ' + game.player.defender.getResistance(game.player, "elemental"),
+        'Arcane defence: ' + game.player.defender.getResistance(game.player, "arcane")
     ]
     armor_stats.forEach((e, i) => game.gui.drawText(0, i+15, e))
 

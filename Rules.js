@@ -8,7 +8,7 @@ const Damage_system = function(Attivo, Passivo){
     let stats_needed = Attivo.attacker.stat_bonus[0];
     let type_of_damage=Attivo.attacker.damage_type;
 
-    let valore_difensivo = difesa_universale/(difesa_universale*Passivo.defender[type_of_damage]);
+    let valore_difensivo = difesa_universale/(difesa_universale*Passivo.defender.getResistance(Passivo, type_of_damage));
 
     let danno_arma = Math.floor(Math.random() * Attivo.attacker.damage[1] + Attivo.attacker.damage[0]);
     let bonus_danno = (Attivo.stats[stats_needed]/2) * Attivo.attacker.stat_bonus[1] * attacco_universale;
