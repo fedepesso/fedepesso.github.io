@@ -59,7 +59,7 @@ function render_menu(game) {
         game.display.draw(x, parseInt(game.display_size[1] * 0.75), '▄')
     }
     let menu_texts = [
-        'Name: ' + game.player.name, ' Depth: ' + game.depth, 'Life: ' + game.player.stats.life[0] + '/' + game.player.stats.life[1], 
+        'Name: ' + game.player.name, ' Depth: ' + game.depth, 'Hp: ' + game.player.stats.life[0] + '/' + game.player.stats.life[1], 
         'Level: ' + game.player.stats.level + ' - (' + game.player.stats.experience[0] + '/' + game.player.stats.experience[1] + ')', '',
         'Avaible points: ' + game.player.stats.expendable_points, 'a) Strength: ' + game.player.stats.strength,
         'b) Dexterity: ' + game.player.stats.dexterity, 'c) Intelligence: ' + game.player.stats.intelligence, 'd) Life: ' + (game.player.stats.life[1] - 90) / 10, ''

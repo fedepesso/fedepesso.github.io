@@ -2,7 +2,7 @@ let Oggetti = {
 
     player: {
         "player": {
-            "costruttore_entity": [Game.player_name, '@', '#000', true],
+            "costruttore_entity": ["giobr1", '@', '#000', true],
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
             "costruttore_attacker": [[0, 0], [0, 0], ['strength', 0], 'physical', 1],
             "costruttore_defender": [0, 0, 0],
