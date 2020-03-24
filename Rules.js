@@ -53,7 +53,7 @@ const move_player = function(game, player, delta_x, delta_y) {
         } else {
             combattimento(game, player, collision)
         }
-        game.player.take_turn = true;
+        game.take_turn = true;
     }
 }
 

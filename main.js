@@ -34,7 +34,6 @@ let Game = {
 
 	input: key => {
 		let code = key.keyCode;
-		console.log(code)
 		switch(code) {
 			case 37:
 				move_player(Game, Game.player, -1, 0)
@@ -68,7 +67,14 @@ let Game = {
     },
 
     process: () => {
-        //
+        for (let i = 0; i < Game.entities.length; i++) {
+			if (Game.entities[i].monster != undefined) {
+				let monster = Game.entities[i]
+				if (Game.local_fov[monster.position[0]][monster.position[1]] == 0) {
+					//
+				}
+			}
+		}
     },
 }
 
