@@ -2,7 +2,7 @@ let Oggetti = {
 
     player: {
         "player": {
-            "costruttore_entity": ["giobr1", '@', '#000', true],
+            "costruttore_entity": ["giobr1", '@', '#000', false],
             "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
             "costruttore_attacker": [[0, 0], [0, 0], ['strength', 0], 'physical', 1],
             "costruttore_defender": [0, 0, 0],
@@ -77,7 +77,7 @@ let Oggetti = {
     	"corazza a scaje" : {
             "costruttore_entity":["Corazza a scaje", "[", "5e5621", false], 
             "costruttore_defender":[40,30,10], 
-            "costruttore_wearable":["Comune", "armor", "corazza a scaje"],
+            "costruttore_wearable":["Comune", "body_armor", "corazza a scaje"],
         }
     },
     	
@@ -85,7 +85,7 @@ let Oggetti = {
     	"calzari alati" : {
             "costruttore_entity":["Calzari alati", "[", "#f011d6", false], 
             "costruttore_defender":[10,30,20], 
-            "costruttore_wearable":["Raro", "armor", "calzari alati"],
+            "costruttore_wearable":["Raro", "leg_armor", "calzari alati"],
         }
     },
     	
@@ -93,7 +93,7 @@ let Oggetti = {
     	"unico anello" : {
             "costruttore_entity":["Unico anello", "*", "#747519", false], 
             "costruttore_defender":[5,40,40], 
-            "costruttore_wearable":["Raro", "armor", "unico anello"],
+            "costruttore_wearable":["Raro", "ring_armor", "unico anello"],
         }
     },
     	

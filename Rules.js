@@ -64,7 +64,7 @@ const controllo_muro = function(game, x, y){
     return false;
 }
 const controllo_mostri = function(game, x, y, non_solid=false){
-    if (game.player.x == x && game.player.y == y) {
+    if (game.player.x == x && game.player.y == y && game.player.solid) {
         return game.player
     }
     for (let i=0; i<game.entities.length; i++){

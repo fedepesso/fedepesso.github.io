@@ -68,10 +68,30 @@ let Game = {
 
     process: () => {
         for (let i = 0; i < Game.entities.length; i++) {
-			if (Game.entities[i].monster != undefined) {
+			if (Game.entities[i].monster !== undefined) {
 				let monster = Game.entities[i]
 				if (Game.local_fov[monster.position[0]][monster.position[1]] == 0) {
-					//
+					let dungeon_path_object = new ROT.Path.AStar(Game.player.position[0], Game.player.position[1], (x, y) => {
+						if (Game.dungeon[x][y] === 1) {
+							return false
+						} 
+						return true
+					});
+					
+					let path = []
+					dungeon_path_object.compute(monster.position[0], monster.position[1], (x, y) => {
+						path.push([x, y])
+					})
+					if (path.length === 1) {
+						let danno = Damage_system(monster, Game.player)
+						if (Game.player.life[0] - danno <= 0) {
+							// sconfitta
+						} else {
+							Game.player.life[0] -= danno
+						}
+					} else if (controllo_mostri(Game, path[1][0], path[1][1]) === null) {
+						monster.position = path[1]
+					}
 				}
 			}
 		}
