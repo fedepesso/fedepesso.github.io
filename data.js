@@ -125,7 +125,7 @@ let Oggetti = {
     	
     "monster_spawns" : {
     	"goblin" : [1, 40, 20],
-    	"orco" : [2, 30, 10],
+    	"ogre" : [2, 30, 10],
         "hellhound" : [3, 60, 15],
         "hydra" : [10, 1, 1]
     },
