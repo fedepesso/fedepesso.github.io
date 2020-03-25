@@ -22,8 +22,7 @@ function render_dungeon(game) {
                     game.display.draw(x - x_rel + 1, y - y_rel + 1, '#',"#6b6907")
                 }
                 game.dungeon_explored[x][y]=0
-            }
-            else {
+            }else{
                 if (game.dungeon_explored[x][y] == 0) {
                     if (game.dungeon[x][y] == 0) {
                         game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#69a5b5")
@@ -38,14 +37,14 @@ function render_dungeon(game) {
     }
     for (let i=0; i<game.entities.length; i++){
         if ((x_rel <= game.entities[i].position[0] < x_rel + game.display_size[0] - 2) && (y_rel <= game.entities[i].position[1] < y_rel + game.display_size[1] * 75 / 100 - 2)){
-            if (game.local_fov[game.entities[i].position[0]][game.entities[i].position[1]] == 0 && game.entities[i].monster !== undefined) {
+            if ((game.local_fov[game.entities[i].position[0]][game.entities[i].position[1]] == 0) && (game.entities[i].wearable !== undefined || game.entities[i].magical_effect !== undefined || game.entities[i].stair !== undefined)) {
                 game.display.draw(game.entities[i].position[0]-x_rel + 1, game.entities[i].position[1]-y_rel + 1, game.entities[i].char, game.entities[i].color)
             }
         }
     }
     for (let i=0; i<game.entities.length; i++){
         if ((x_rel <= game.entities[i].position[0] < x_rel + game.display_size[0] - 2) && (y_rel <= game.entities[i].position[1] < y_rel + game.display_size[1] * 75 / 100 - 2)){
-            if (game.local_fov[game.entities[i].position[0]][game.entities[i].position[1]] == 0 && (game.entities[i].wearable !== undefined || game.entities[i].magical_effect !== undefined )) {
+            if ((game.local_fov[game.entities[i].position[0]][game.entities[i].position[1]] == 0 && game.entities[i].monster !== undefined)) {
                 game.display.draw(game.entities[i].position[0]-x_rel + 1, game.entities[i].position[1]-y_rel + 1, game.entities[i].char, game.entities[i].color)
             }
         }
@@ -118,7 +117,6 @@ function render_menu(game) {
 
     let items = Object.keys(game.player.inventory.items).map((v, i, arr) => ' -' + v + ': ' + game.player.inventory.items[v])
     items.unshift('Items: ')
-    console.log(items)
     items.forEach((e, i) => game.gui.drawText(0, i+24, e))
 }
 

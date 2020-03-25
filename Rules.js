@@ -58,6 +58,7 @@ const controllo_muro = function(game, x, y){
     }
     return false;
 }
+
 const controllo_mostri = function(game, x, y, non_solid=false){
     if (game.player.x == x && game.player.y == y && game.player.solid) {
         return game.player
@@ -82,7 +83,6 @@ const combattimento = function(game, player, mostro) {
         if (index > -1) {
             game.entities.splice(index, 1);
         }
-
         DropCalculator(game, mostro);
         player.stats.experience[0] += mostro.monster.xp_reward
         if (player.stats.experience[0] >= player.stats.experience[1]) {
@@ -92,7 +92,7 @@ const combattimento = function(game, player, mostro) {
             player.stats.experience[1] = 1000 + ((player.stats.level - 1) * 200)
         };
     } else {
-        mostro.stats.life[0] -= danno;
+        //
     };
 }
 
@@ -152,7 +152,7 @@ const spawn_entities = function(game, depth) {
                 let y = randint(room.getTop(), room.getBottom());
                 if (controllo_mostri(game, x, y) == null) {
                     if (randint(0, 100) <= monsters[v][1]) {
-                        monster_entity = costruttoreUniversale('monster', v);
+                        monster_entity = costruttoreUniversale('monster', v, i);
                         game.entities.push(monster_entity);
                         monster_entity.position[0] = x;
                         monster_entity.position[1] = y;

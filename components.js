@@ -4,7 +4,7 @@ class Entity {
         this.position = [0, 0];
         this.char = char;
         this.color = color;
-        this.solid = solid;
+        this.solid = solid; 
     }
 }
 
@@ -73,7 +73,8 @@ class Inventory {
         this.leg_armor = leg_armor;
         this.ring_armor = ring_armor;
         this.items = {
-            "heal_potion": 0
+            "heal_potion": 0,
+            "experience_potion" : 0
         }
     }
 }
@@ -100,3 +101,5 @@ class MagicalEffect{
         this.tag = tag; // la voce di inventory.items a cui verrà memorizzato nel counter
     }
 }
+
+
