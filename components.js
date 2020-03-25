@@ -72,6 +72,9 @@ class Inventory {
         this.body_armor = body_armor;
         this.leg_armor = leg_armor;
         this.ring_armor = ring_armor;
+        this.items = {
+            "heal_potion": 0
+        }
     }
 }
 
@@ -90,11 +93,10 @@ class Stair {
 }
 
 
-class Potion{
-    constructor(statAffected, bonus){
-        this.position = [0,0]
+class MagicalEffect{
+    constructor(statAffected, bonus, tag){
         this.stat = statAffected
         this.bonus = bonus;
+        this.tag = tag; // la voce di inventory.items a cui verrà memorizzato nel counter
     }
 }
-

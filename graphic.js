@@ -38,7 +38,14 @@ function render_dungeon(game) {
     }
     for (let i=0; i<game.entities.length; i++){
         if ((x_rel <= game.entities[i].position[0] < x_rel + game.display_size[0] - 2) && (y_rel <= game.entities[i].position[1] < y_rel + game.display_size[1] * 75 / 100 - 2)){
-            if (game.local_fov[game.entities[i].position[0]][game.entities[i].position[1]] == 0) {
+            if (game.local_fov[game.entities[i].position[0]][game.entities[i].position[1]] == 0 && game.entities[i].monster !== undefined) {
+                game.display.draw(game.entities[i].position[0]-x_rel + 1, game.entities[i].position[1]-y_rel + 1, game.entities[i].char, game.entities[i].color)
+            }
+        }
+    }
+    for (let i=0; i<game.entities.length; i++){
+        if ((x_rel <= game.entities[i].position[0] < x_rel + game.display_size[0] - 2) && (y_rel <= game.entities[i].position[1] < y_rel + game.display_size[1] * 75 / 100 - 2)){
+            if (game.local_fov[game.entities[i].position[0]][game.entities[i].position[1]] == 0 && (game.entities[i].wearable !== undefined || game.entities[i].magical_effect !== undefined )) {
                 game.display.draw(game.entities[i].position[0]-x_rel + 1, game.entities[i].position[1]-y_rel + 1, game.entities[i].char, game.entities[i].color)
             }
         }
@@ -103,11 +110,16 @@ function render_menu(game) {
         let arma = game.player.inventory.weapon
         weapon_text = [
             'Weapon: ' + arma.name, '   - damage: [' + arma.attacker.damage[0] + '-' + arma.attacker.damage[1] + '] ' + arma.attacker.damage_type,
-            '   - critics : [' + arma.attacker.crit[0] + "-" + arma.attacker.crit[1] + ']          ' +  
-            '   - bonus stat: ' + arma.attacker.stat_bonus[0]
+            '   - critics : [' + arma.attacker.crit[0] + "-" + arma.attacker.crit[1] + ']',
+            '   - bonus stat: ' + arma.attacker.stat_bonus[0], '',
         ]
     }
     weapon_text.forEach((e, i) => game.gui.drawText(0, i+19, e))
+
+    let items = Object.keys(game.player.inventory.items).map((v, i, arr) => ' -' + v + ': ' + game.player.inventory.items[v])
+    items.unshift('Items: ')
+    console.log(items)
+    items.forEach((e, i) => game.gui.drawText(0, i+24, e))
 }
 
 function scroll_map(p, s, m) {

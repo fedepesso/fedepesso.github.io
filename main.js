@@ -36,32 +36,35 @@ let Game = {
 	input: key => {
 		let code = key.keyCode;
 		switch(code) {
-			case 37:
+			case 37: //freccia a sinistra
 				move_player(Game, Game.player, -1, 0)
 				break;
-			case 38:
+			case 38: //freccia su
 				move_player(Game, Game.player, 0, -1)
 				break;
-			case 39:
+			case 39: //freccia a destra
 				move_player(Game, Game.player, 1, 0)
 				break;
-			case 40:
+			case 40: //freccia giù
 				move_player(Game, Game.player, 0, 1)
 				break;
-			case 226:
+			case 60: // < per disagiati che usano firefox 
+			case 226: //<
 				let stair = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
 				if (stair != undefined) {
 					move_to(Game, Game.depth + stair.stair.delta_depth)
 				}
 				break;
-			case 80:
-				let obj = controllo_mostri(Game, Game.player.position[0], Game.player.position[1])
+			case 80: //P
+				let obj = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
 				if (obj!==null){
-					equipThing(Game, obj)
+					if (obj.wearable !== undefined) { equipThing(Game, obj) }
+					else if (obj.magical_effect !== undefined) {}
 				}
+				break;
 			
 		}
-		console.log(code)
+		
 		if (Game.take_turn) {
 			Game.take_turn = false;
 			Game.process();
@@ -108,6 +111,5 @@ let Game = {
 
 function create_player() {
 	let player = costruttoreUniversale('player', 'player')
-	
 	return player;
 }

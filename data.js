@@ -222,8 +222,10 @@ let Oggetti = {
     },
 
     "potion" : {
-        "costruttore_entity" : ["health potion", "P", "#ff5790", false],
-        "costruttore_potion" : ["life", 50],
+        "heal_potion" : {
+            "costruttore_entity" : ["heal_potion", "P", "#ff5790", false],
+            "costruttore_potion" : ["life", 50]
+        }
     }
 }
 
@@ -234,6 +236,7 @@ const obtain_Object = function(type, name){
 
 const costruttoreUniversale = function (type, nome){
     let taker = obtain_Object(type, nome);
+    console.log(taker["costruttore_entity"])
     entitaOriginale = new Entity(...taker["costruttore_entity"]);
     if (type=="weapon"){
         entitaOriginale.attacker = new Attacker(...taker["costruttore_attacker"]);
@@ -251,7 +254,7 @@ const costruttoreUniversale = function (type, nome){
         entitaOriginale.defender = new Defender(...taker["costruttore_defender"]);
         entitaOriginale.inventory = new Inventory(...taker["costruttore_inventory"]);
     }else if (type == "potion"){
-        entitaOriginale.potion = new Potion(...taker["costruttore_potion"]);
+        entitaOriginale.potion = new MagicalEffect(...taker["costruttore_potion"]);
     }
     return entitaOriginale;
 }
@@ -289,5 +292,13 @@ const equipThing = function (game, entity){
             game.entities.push(game.player.inventory[entity.wearable.category]);
         }
         game.player.inventory[entity.wearable.category] = entity;
+        if (game.entities !== undefined) {
+            const index = game.entities.indexOf(entity);
+            if (index > -1) {
+                game.entities.splice(index, 1);
+            }
+        }
+    }else if (entity.potion !== undefined){
+        game.player.inventory.items[entity.name] += 1;
     }
 }
