@@ -127,7 +127,15 @@ let Oggetti = {
     	"goblin" : [1, 40, 20],
     	"ogre" : [2, 30, 10],
         "hellhound" : [3, 60, 15],
-        "hydra" : [10, 1, 1]
+        "hydra" : [10, 100, 1],
+        "gorgon" : [5, 70, 1],
+        "witch" : [6, 40, 7],
+        "chaotic knight" : [8, 60, 5],
+        "unicorn" : [9, 100, 3],
+        "sand worm" : [8, 80, 2],
+        "sphinx" : [10, 70, 6],
+        "titan" : [7, 80, 4],
+        "ice giant" : [4, 40, 10]
     },
 
     "monster" : {
@@ -219,11 +227,47 @@ let Oggetti = {
 
     "drop_tables" : {
         "goblin" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
+    
+        "ogre" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
+
+        "hellhound" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
+
+        "gorgon" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
+
+        "witch" : [["anello di totano", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
+
+        "chaotic knight" : [["unico anello", "rings",  20, 1], ["calzari di pelle", "leg_armors", 70, 2]]
+
+        "unicorn" : [["heal_potion", "potion",  50, 2], ["calzari alati", "leg_armors", 10, 1]]
+
+        "sand worm" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
+
+        "sphinx" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
+
+        "titan" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
+
+        "ice giant" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]]
     },
 
     "potion" : {
         "heal_potion" : {
-            "costruttore_entity" : ["heal_potion", "P", "#ff5790", false],
+            "costruttore_entity" : ["heal_potion", "+", "#ff5790", false],
+            "costruttore_potion" : ["life", 50]
+        }
+        "heal_potion" : {
+            "costruttore_entity" : ["heal_potion", "+", "#ff5790", false],
+            "costruttore_potion" : ["life", 50]
+        }
+        "heal_potion" : {
+            "costruttore_entity" : ["heal_potion", "+", "#ff5790", false],
+            "costruttore_potion" : ["life", 50]
+        }
+        "heal_potion" : {
+            "costruttore_entity" : ["heal_potion", "+", "#ff5790", false],
+            "costruttore_potion" : ["life", 50]
+        }
+        "heal_potion" : {
+            "costruttore_entity" : ["heal_potion", "+", "#ff5790", false],
             "costruttore_potion" : ["life", 50]
         }
     }
