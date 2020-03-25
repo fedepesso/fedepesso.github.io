@@ -64,7 +64,7 @@ let Game = {
 				break;
 			
 		}
-		console.log(Game.player.position)
+		
 		if (Game.take_turn) {
 			Game.take_turn = false;
 			Game.process();

@@ -174,5 +174,7 @@ const armor_weapon_giver = function (game){
     equipThing(game, ring)
     equipThing(game, armor1)
     equipThing(game, armor2)
+    let pozione_iniziale = costruttoreUniversale("potion", "heal_potion")
+    equipThing(game, pozione_iniziale)
 }
 
