@@ -167,13 +167,13 @@ const spawn_entities = function(game, depth){
 
 const armor_weapon_giver = function (game){
     let hammer = costruttoreUniversale("weapon", "spada di prova", 1);
-    let ring = costruttoreUniversale("rings", "anello di erba cipollina", 2);
+    let ring = costruttoreUniversale("rings", "anello d'erba", 2);
     let armor1 = costruttoreUniversale("body_armors", "corazza di pelle", 3);
     let armor2 = costruttoreUniversale("leg_armors", "calzari di pelle", 4);
+    let pozione_iniziale = costruttoreUniversale("potion", "heal_potion", 5)
     equipThing(game, hammer)
     equipThing(game, ring)
     equipThing(game, armor1)
     equipThing(game, armor2)
-    let pozione_iniziale = costruttoreUniversale("potion", "heal_potion", 5)
     equipThing(game, pozione_iniziale)
 }

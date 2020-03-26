@@ -65,10 +65,17 @@ function render_menu(game) {
         game.display.draw(x, parseInt(game.display_size[1] * 0.75), '▄')
     }
     let menu_texts = [
-        'Name: ' + game.player.name, ' Depth: ' + game.depth, 'Hp: ' + game.player.stats.life[0] + '/' + game.player.stats.life[1], 
-        'Level: ' + game.player.stats.level + ' - (' + game.player.stats.experience[0] + '/' + game.player.stats.experience[1] + ')', '',
-        'Avaible points: ' + game.player.stats.expendable_points, 'a) Strength: ' + game.player.stats.strength,
-        'b) Dexterity: ' + game.player.stats.dexterity, 'c) Intelligence: ' + game.player.stats.intelligence, 'd) Life: ' + (game.player.stats.life[1] - 90) / 10, ''
+        'Name: ' + game.player.name, 
+        'Depth: ' + game.depth, 
+        'Hp: ' + game.player.stats.life[0] + '/' + game.player.stats.life[1], 
+        'Level: ' + game.player.stats.level + ' - (' + game.player.stats.experience[0] + '/' + game.player.stats.experience[1] + ')', 
+        '',
+        'Avaible points: ' + game.player.stats.expendable_points, 
+        'a) Strength: ' + game.player.stats.strength + "        U",
+        'b) Dexterity: ' + game.player.stats.dexterity + "       I", 
+        'c) Intelligence: ' + game.player.stats.intelligence + "    O", 
+        'd) Life: ' + (game.player.stats.life[1] - 90) / 10 + "             P", 
+        ''
     ]
     menu_texts.forEach((e, i) => game.gui.drawText(0, i+1, e))
     
@@ -117,7 +124,13 @@ function render_menu(game) {
 
     let items = Object.keys(game.player.inventory.items).map((v, i, arr) => ' -' + v + ': ' + game.player.inventory.items[v])
     items.unshift('Items: ')
-    items.forEach((e, i) => game.gui.drawText(0, i+24, e))
+    const buttons = ["",
+    "          G", 
+    "      H", 
+    "     J", 
+    "  K", 
+    "    L"]
+    items.forEach((e, i) => game.gui.drawText(0, i+24, e + buttons[i]))
 }
 
 function scroll_map(p, s, m) {

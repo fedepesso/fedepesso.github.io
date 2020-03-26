@@ -63,9 +63,23 @@ let Game = {
 					else if (obj.magical_effect !== undefined) {}
 				}
 				break;
-			
+			case 71: //G
+				usePotion(Game, "heal_potion")
+				break;
+			case 72: //H
+				usePotion(Game, "strength_potion")
+				break;
+			case 74: //J
+				usePotion(Game, "dexterity_potion")
+				break;
+			case 75: //K
+				usePotion(Game, "intelligence_potion")
+				break;
+			case 76: //L
+				usePotion(Game, "experience_potion")
+				break;
 		}
-		
+		console.log(code)
 		if (Game.take_turn) {
 			Game.take_turn = false;
 			Game.process();

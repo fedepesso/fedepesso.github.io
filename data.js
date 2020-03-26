@@ -133,10 +133,10 @@ function giveMeObject(type, name) {
                 "costruttore_wearable":["Leggendario", "ring_armor", "unico anello"],
             },
             
-            "anello di erba cipollina" : {
-                "costruttore_entity":["Anello di erba cipollina", "*", "#15AB24", false], 
+            "anello d'erba" : {
+                "costruttore_entity":["Anello d'erba", "*", "#15AB24", false], 
                 "costruttore_defender":[1, 1, 1], 
-                "costruttore_wearable":["Raro", "ring_armor", "anello di erba cipollina"],
+                "costruttore_wearable":["Raro", "ring_armor", "anello d'erba"],
             },
     
             "anello di totano" : {
@@ -397,3 +397,22 @@ const controller = function (game, x, y){
 
 
 const Lista_Entity = [];
+
+
+const usePotion = function (game, name){
+    if(game.player.inventory.items[name]>0){
+        let pozioneP = costruttoreUniversale("potion", name);
+        game.player.inventory.items[name] -= 1;
+        if(name === "heal_potion" && (game.player.stats.life[0] !== game.player.stats.life[1])){
+            game.player.stats.life[0]+=pozioneP.potion.bonus
+            if(game.player.stats.life[0]>game.player.stats.life[1]){
+                game.player.stats.life[0]-=(game.player.stats.life[0]-game.player.stats.life[1]);
+            }
+        }else{
+            game.player.stats[pozioneP.stat] += pozioneP.potion.bonus;
+        }
+    }else{
+        //error in the console
+    }
+    
+}
