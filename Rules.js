@@ -86,13 +86,13 @@ const combattimento = function(game, player, mostro) {
         DropCalculator(game, mostro);
         player.stats.experience[0] += mostro.monster.xp_reward
         if (player.stats.experience[0] >= player.stats.experience[1]) {
-            player.stats.experience[0] = player.stats.experience[1] - player.stats.experience[0]
+            player.stats.experience[0] = 0
             player.stats.level += 1
             player.stats.expendable_points += 1
             player.stats.experience[1] = 1000 + ((player.stats.level - 1) * 200)
         };
     } else {
-        //
+        mostro.stats.life[0]-=danno
     };
 }
 
@@ -110,6 +110,7 @@ function choice (arr) {
 
 
 const spawn_entities = function(game, depth) {
+    console.log("controllo")
     rooms = game.dungeon_object.getRooms()
     if (depth != 1) {
         upstair = new Entity('Upstair', '<', '#a4a5a5', false)
@@ -152,7 +153,7 @@ const spawn_entities = function(game, depth) {
                 let y = randint(room.getTop(), room.getBottom());
                 if (controllo_mostri(game, x, y) == null) {
                     if (randint(0, 100) <= monsters[v][1]) {
-                        monster_entity = costruttoreUniversale('monster', v, i);
+                        monster_entity = costruttoreUniversale('monster', v, i+6);
                         game.entities.push(monster_entity);
                         monster_entity.position[0] = x;
                         monster_entity.position[1] = y;
@@ -166,15 +167,14 @@ const spawn_entities = function(game, depth) {
 }
 
 const armor_weapon_giver = function (game){
-    let hammer = costruttoreUniversale("weapon", "spada di prova");
-    let ring = costruttoreUniversale("rings", "anello di erba cipollina");
-    let armor1 = costruttoreUniversale("body_armors", "corazza di pelle");
-    let armor2 = costruttoreUniversale("leg_armors", "calzari di pelle");
+    let hammer = costruttoreUniversale("weapon", "spada di prova", 1);
+    let ring = costruttoreUniversale("rings", "anello di erba cipollina", 2);
+    let armor1 = costruttoreUniversale("body_armors", "corazza di pelle", 3);
+    let armor2 = costruttoreUniversale("leg_armors", "calzari di pelle", 4);
     equipThing(game, hammer)
     equipThing(game, ring)
     equipThing(game, armor1)
     equipThing(game, armor2)
-    let pozione_iniziale = costruttoreUniversale("potion", "heal_potion")
+    let pozione_iniziale = costruttoreUniversale("potion", "heal_potion", 5)
     equipThing(game, pozione_iniziale)
 }
-

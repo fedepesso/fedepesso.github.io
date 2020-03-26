@@ -73,7 +73,10 @@ class Inventory {
         this.leg_armor = leg_armor;
         this.ring_armor = ring_armor;
         this.items = {
-            "heal_potion": 0,
+            "heal_potion" : 0,
+            "strength_potion" : 0,
+            "dexterity_potion" : 0,
+            "intelligence_potion" : 0,
             "experience_potion" : 0
         }
     }
