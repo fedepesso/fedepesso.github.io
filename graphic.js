@@ -71,10 +71,10 @@ function render_menu(game) {
         'Level: ' + game.player.stats.level + ' - (' + game.player.stats.experience[0] + '/' + game.player.stats.experience[1] + ')', 
         '',
         'Avaible points: ' + game.player.stats.expendable_points, 
-        'a) Strength: ' + game.player.stats.strength + "        U",
-        'b) Dexterity: ' + game.player.stats.dexterity + "       I", 
-        'c) Intelligence: ' + game.player.stats.intelligence + "    O", 
-        'd) Life: ' + (game.player.stats.life[1] - 90) / 10 + "             P", 
+        'Q) Strength: ' + game.player.stats.strength,
+        'W) Dexterity: ' + game.player.stats.dexterity, 
+        'E) Intelligence: ' + game.player.stats.intelligence, 
+        'R) Life: ' + (game.player.stats.life[1] - 90) / 10, 
         ''
     ]
     menu_texts.forEach((e, i) => game.gui.drawText(0, i+1, e))
@@ -121,16 +121,15 @@ function render_menu(game) {
         ]
     }
     weapon_text.forEach((e, i) => game.gui.drawText(0, i+19, e))
-
-    let items = Object.keys(game.player.inventory.items).map((v, i, arr) => ' -' + v + ': ' + game.player.inventory.items[v])
+    const buttons = [
+    "T) ", 
+    "Y) ", 
+    "U) ", 
+    "I) ", 
+    "O) "]
+    let items = Object.keys(game.player.inventory.items).map((v, i, arr) => buttons[i] + v + ': ' + game.player.inventory.items[v])
     items.unshift('Items: ')
-    const buttons = ["",
-    "          G", 
-    "      H", 
-    "     J", 
-    "  K", 
-    "    L"]
-    items.forEach((e, i) => game.gui.drawText(0, i+24, e + buttons[i]))
+    items.forEach((e, i) => game.gui.drawText(0, i+24, e))
 }
 
 function scroll_map(p, s, m) {

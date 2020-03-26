@@ -468,3 +468,20 @@ const usePotion = function (game, name){
     }
     
 }
+
+
+const useAvaiblePoint = function (game, number){
+    if(game.player.stats.expendable_points>0){
+        game.player.stats.expendable_points -= 1;
+        if(number === 81){
+            game.player.stats.strength += 1;
+        }else if(number === 87){
+            game.player.stats.dexterity += 1;
+        }else if(number === 69){
+            game.player.stats.intelligence += 1;
+        }else if(number === 82){
+            game.player.stats.life[0] += 10;
+            game.player.stats.life[1] += 10;
+        }
+    }
+}

@@ -63,20 +63,26 @@ let Game = {
 					else if (obj.magical_effect !== undefined) {}
 				}
 				break;
-			case 71: //G
+			case 84: //T
 				usePotion(Game, "heal_potion")
 				break;
-			case 72: //H
+			case 89: //Y
 				usePotion(Game, "strength_potion")
 				break;
-			case 74: //J
+			case 85: //U
 				usePotion(Game, "dexterity_potion")
 				break;
-			case 75: //K
+			case 73: //I
 				usePotion(Game, "intelligence_potion")
 				break;
-			case 76: //L
+			case 79: //O
 				usePotion(Game, "experience_potion")
+				break;
+			case 87://Q
+			case 81://W
+			case 69://E
+			case 82://R
+				useAvaiblePoint(Game, code);
 				break;
 		}
 		console.log(code)
