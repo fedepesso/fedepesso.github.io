@@ -102,28 +102,80 @@ function giveMeObject(type, name) {
     
         "body_armors" : {
             "corazza a scaje" : {
-                "costruttore_entity":["Corazza a scaje", "[", "5e5621", false], 
+                "costruttore_entity":["Corazza a scaje", "[", "#5e5621", false], 
                 "costruttore_defender":[40,30,10], 
                 "costruttore_wearable":["Comune", "body_armor", "corazza a scaje"],
             },
+            "corazza di cuoio" : {
+                "costruttore_entity":["Corazza di cuoio", "[", "#f7b705", false], 
+                "costruttore_defender":[20,30,5], 
+                "costruttore_wearable":["Comune", "body_armor", "corazza di cuoio"],
+            },
+            "corazza di maglia" : {
+                "costruttore_entity":["Corazza a scaje", "[", "#c9c5b7", false], 
+                "costruttore_defender":[40,40,15], 
+                "costruttore_wearable":["Comune", "body_armor", "corazza di maglia"],
+            },
             "corazza di pelle" : {
-                "costruttore_entity":["Corazza di pelle", "[", "000000", false], 
+                "costruttore_entity":["Corazza di pelle", "[", "#634a04", false], 
                 "costruttore_defender":[2, 2, 2], 
                 "costruttore_wearable":["Comune", "body_armor", "corazza di pelle"],
+            },
+            "armatura a bande" : {
+                "costruttore_entity":["Armatura a bande", "[", "#19bf7a", false], 
+                "costruttore_defender":[60,40,20], 
+                "costruttore_wearable":["Raro", "body_armor", "armatura a bande"],
+            },
+            "armatura di piastre" : {
+                "costruttore_entity":["Armatura di piastre", "[", "#158c88", false], 
+                "costruttore_defender":[60,30,40], 
+                "costruttore_wearable":["Raro", "body_armor", "armatura di piastre"],
+            },
+            "bardatura da giostra" : {
+                "costruttore_entity":["Bardatura da giostra", "[", "#eb1b0c", false], 
+                "costruttore_defender":[50,50,70], 
+                "costruttore_wearable":["Leggendario", "body_armor", "bardatura da giostra"],
             }
+            
         },
             
         "leg_armors" : {
-            "calzari alati" : {
-                "costruttore_entity":["Calzari alati", "[", "#f011d6", false], 
-                "costruttore_defender":[10,30,20], 
-                "costruttore_wearable":["Raro", "leg_armor", "calzari alati"],
-            },
             "calzari di pelle" : {
                 "costruttore_entity":["Calzari di pelle", "]", "#15AB24", false], 
                 "costruttore_defender":[2, 2, 2], 
-                "costruttore_wearable":["Raro", "leg_armor", "Calzari di pelle"],
-            }
+                "costruttore_wearable":["Comune", "leg_armor", "Calzari di pelle"],
+            },
+            "sabatons" : {
+                "costruttore_entity":["Sabatons", "]", "#997573", false], 
+                "costruttore_defender":[10,10,5], 
+                "costruttore_wearable":["Comune", "leg_armor", "sabatons"],
+            },
+            "calzari alati" : {
+                "costruttore_entity":["Calzari alati", "]", "#f011d6", false], 
+                "costruttore_defender":[10,30,20], 
+                "costruttore_wearable":["Raro", "leg_armor", "calzari alati"],
+            },
+            "schinieri di ferro" : {
+                "costruttore_entity":["Schinieri di ferro", "]", "#a19b9a", false], 
+                "costruttore_defender":[30,30,10], 
+                "costruttore_wearable":["Raro", "leg_armor", "schinieri di ferro"],
+            },
+            "cosciali in scaje" : {
+                "costruttore_entity":["Cosciali in scaje", "]", "#787144", false], 
+                "costruttore_defender":[20,30,20], 
+                "costruttore_wearable":["Raro", "leg_armor", "Cosciali in scaje"],
+            },
+            "gambali speronati" : {
+                "costruttore_entity":["Gambali speronati", "]", "#46318c", false], 
+                "costruttore_defender":[40,20,30], 
+                "costruttore_wearable":["Raro", "leg_armor", "gambali speronati"],
+            },
+            "pantofole pucciose" : {
+                "costruttore_entity":["Pantofole pucciose", "]", "#e31ec9", false], 
+                "costruttore_defender":[10,50,70], 
+                "costruttore_wearable":["Leggendario", "leg_armor", "pantofole pucciose"],
+            },
+            
         },
             
         "rings" : {
