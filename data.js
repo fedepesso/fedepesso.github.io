@@ -143,23 +143,14 @@ function giveMeObject(type, name) {
                 "costruttore_entity":["Anello di totano", "*", "#dbda7b", false], 
                 "costruttore_defender":[0, 1, 0], 
                 "costruttore_wearable":["Comune", "ring_armor", "anello di totano"],
+            },
+
+            "anello orvoloson" : {
+                "costruttore_entity":["Anello Orvoloson", "*", "#3b3d40", false], 
+                "costruttore_defender":[10, 10, 100], 
+                "costruttore_wearable":["Leggendario", "ring_armor", "anello orvoloson"],
             }
     
-        },
-            
-        "monster_spawns" : {
-            "goblin" : [1, 40, 20],
-            "ogre" : [2, 30, 10],
-            "hellhound" : [3, 60, 15],
-            "hydra" : [10, 100, 1],
-            "gorgon" : [5, 70, 1],
-            "witch" : [6, 40, 7],
-            "chaotic knight" : [8, 60, 5],
-            "unicorn" : [9, 100, 3],
-            "sand worm" : [8, 80, 2],
-            "sphinx" : [10, 70, 6],
-            "titan" : [7, 80, 4],
-            "ice giant" : [4, 40, 10]
         },
     
         "monster" : {
@@ -179,7 +170,7 @@ function giveMeObject(type, name) {
             },
             "hellhound" : {
                 "costruttore_entity":["hellhound", "h", "#d9430d", true], 
-                "costruttore_stats": [[75, 75], 10, 10, 10, 0, 1, 0],
+                "costruttore_stats": [[75, 75], 10, 30, 5, 0, 1, 0],
                 "costruttore_attacker":[[30, 50], [33, 2], ["dexterity", 3], "elemental", 1],
                 "costruttore_defender":[10,20,25], 
                 "costruttore_monster":[250], 
@@ -187,74 +178,74 @@ function giveMeObject(type, name) {
             "hydra" : {
                 "costruttore_entity":["hydra", "H", "#ca61ff", true], 
                 "costruttore_stats": [[1500, 1500], 110, 100, 120, 0, 1, 0],
-                "costruttore_attacker":[[30, 50], [33, 4], ["strength", 10], "arcane", 1],
+                "costruttore_attacker":[[300, 500], [33, 4], ["strength", 10], "arcane", 1],
                 "costruttore_defender":[100, 100, 100], 
                 "costruttore_monster":[1000000], 
             },
             "gorgon" : {
                 "costruttore_entity":["gorgon", "G", "#1f28db", true], 
-                "costruttore_stats": [[1000, 1000], 90, 100, 150, 3, 4, 50],
+                "costruttore_stats": [[100, 100], 10, 20, 22, 3, 4, 50],
                 "costruttore_attacker":[[60, 70], [40, 3], ["intelligence", 10], "arcane", 1],
-                "costruttore_defender":[90, 120, 150], 
-                "costruttore_monster":[1500000], 
+                "costruttore_defender":[10, 20, 15], 
+                "costruttore_monster":[1000], 
             },
             "witch" : {
                 "costruttore_entity":["witch", "w", "#4f2045", true], 
-                "costruttore_stats": [[200, 200], 10, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[15, 30], [60, 2], ["dexterity", 2], "elemental", 1],
-                "costruttore_defender":[90, 120, 150], 
-                "costruttore_monster":[1500000], 
+                "costruttore_stats": [[100, 100], 15, 25, 23, 0, 1, 0],
+                "costruttore_attacker":[[40, 50], [60, 2], ["dexterity", 2], "elemental", 1],
+                "costruttore_defender":[20, 15, 15], 
+                "costruttore_monster":[1000], 
             },
             "chaotic knight" : {
                 "costruttore_entity":["chaotic knight", "K", "#7d737b", true], 
-                "costruttore_stats": [[500, 500], 10, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[30, 50], [20, 3], ["strength", 5], "arcane", 1],
-                "costruttore_defender":[90, 120, 150], 
-                "costruttore_monster":[1500000], 
+                "costruttore_stats": [[150, 150], 40, 20, 20, 0, 1, 0],
+                "costruttore_attacker":[[40, 70], [20, 3], ["strength", 5], "arcane", 1],
+                "costruttore_defender":[30, 20, 10], 
+                "costruttore_monster":[2000], 
             },
             "unicorn" : {
                 "costruttore_entity":["unicorn", "U", "#a8168b", true], 
-                "costruttore_stats": [[700, 700],  10, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[45, 50], [30, 3], ["intelligence", 8], "elemental", 1],
-                "costruttore_defender":[90, 120, 150], 
-                "costruttore_monster":[1500000], 
+                "costruttore_stats": [[200, 200],  15, 30, 15, 0, 1, 0],
+                "costruttore_attacker":[[45, 60], [30, 3], ["dexterity", 8], "arcane", 1],
+                "costruttore_defender":[30, 30, 40], 
+                "costruttore_monster":[-100], 
             },
             "sand worm" : {
                 "costruttore_entity":["sand worm", "W", "#e1e88e", true], 
-                "costruttore_stats": [[900, 900], 10, 10, 10, 0, 1, 0],
+                "costruttore_stats": [[200, 200], 30, 50, 30, 0, 1, 0],
                 "costruttore_attacker":[[70, 75], [40, 2], ["dexterity", 7], "elemental", 1],
-                "costruttore_defender":[90, 120, 150], 
-                "costruttore_monster":[1500000], 
+                "costruttore_defender":[60, 50, 40], 
+                "costruttore_monster":[1500], 
             },
             "sphinx" : {
                 "costruttore_entity":["sphinx", "s", "#c47733", true], 
-                "costruttore_stats": [[650, 650], 10, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[30, 40], [60, 3], ["intelligence", 6], "arcane", 1],
-                "costruttore_defender":[90, 120, 150], 
-                "costruttore_monster":[1500000], 
+                "costruttore_stats": [[300, 30], 30, 20, 50, 0, 1, 0],
+                "costruttore_attacker":[[50, 65], [60, 3], ["intelligence", 6], "arcane", 1],
+                "costruttore_defender":[40, 40, 30], 
+                "costruttore_monster":[2500], 
             },
             "titan" : {
                 "costruttore_entity":["titan", "T", "#665341", true], 
-                "costruttore_stats": [[2000, 2000], 10, 10, 10, 0, 1, 0],
+                "costruttore_stats": [[2000, 2000], 100, 10, 10, 0, 1, 0],
                 "costruttore_attacker":[[90, 100], [20, 5], ["strength", 10], "physical", 1],
-                "costruttore_defender":[90, 120, 150], 
-                "costruttore_monster":[1500000], 
+                "costruttore_defender":[200, 120, 50], 
+                "costruttore_monster":[10000], 
             },
             "ice giant" : {
                 "costruttore_entity":["ice giant", "I", "#87dbde", true], 
                 "costruttore_stats": [[400, 400], 10, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[40, 50], [50, 3], ["strength", 6], "physical", 1],
-                "costruttore_defender":[90, 120, 150], 
-                "costruttore_monster":[1500000], 
+                "costruttore_attacker":[[20, 30], [40, 3], ["strength", 6], "physical", 1],
+                "costruttore_defender":[30, 40, 10], 
+                "costruttore_monster":[300], 
             }
         },
     
         "drop_tables" : {
-            "goblin" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1], ["spada di grifondoro", "weapon",  10, 1]],
+            "goblin" : [["anello di totano", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1], ["spada di grifondoro", "weapon",  10, 1]],
         
-            "ogre" : [["anello di totano", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "ogre" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
     
-            "hellhound" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "hellhound" : [["anello orvoloson", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
     
             "gorgon" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
     
@@ -332,7 +323,6 @@ const costruttoreUniversale = function (type, nome, id){
     }else if (type == "potion"){
         entitaOriginale.potion = new MagicalEffect(...taker["costruttore_potion"]);
     }
-    console.log("andata")
     return entitaOriginale;
 }
 

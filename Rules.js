@@ -109,8 +109,7 @@ function choice (arr) {
 }
 
 
-const spawn_entities = function(game, depth) {
-    console.log("controllo")
+const spawn_entities = function(game, depth){
     rooms = game.dungeon_object.getRooms()
     if (depth != 1) {
         upstair = new Entity('Upstair', '<', '#a4a5a5', false)
