@@ -152,7 +152,7 @@ const spawn_entities = function(game, depth){
                 let y = randint(room.getTop(), room.getBottom());
                 if (controllo_mostri(game, x, y) == null) {
                     if (randint(0, 100) <= monsters[v][1]) {
-                        monster_entity = costruttoreUniversale('monster', v, i+6);
+                        monster_entity = costruttoreUniversale('monster', v);
                         game.entities.push(monster_entity);
                         monster_entity.position[0] = x;
                         monster_entity.position[1] = y;
@@ -166,11 +166,11 @@ const spawn_entities = function(game, depth){
 }
 
 const armor_weapon_giver = function (game){
-    let hammer = costruttoreUniversale("weapon", "spada di prova", 1);
-    let ring = costruttoreUniversale("rings", "anello d'erba", 2);
-    let armor1 = costruttoreUniversale("body_armors", "corazza di pelle", 3);
-    let armor2 = costruttoreUniversale("leg_armors", "calzari di pelle", 4);
-    let pozione_iniziale = costruttoreUniversale("potion", "heal_potion", 5)
+    let hammer = costruttoreUniversale("weapon", "spada di prova");
+    let ring = costruttoreUniversale("rings", "anello d'erba");
+    let armor1 = costruttoreUniversale("body_armors", "corazza di pelle");
+    let armor2 = costruttoreUniversale("leg_armors", "calzari di pelle");
+    let pozione_iniziale = costruttoreUniversale("potion", "heal_potion")
     equipThing(game, hammer)
     equipThing(game, ring)
     equipThing(game, armor1)

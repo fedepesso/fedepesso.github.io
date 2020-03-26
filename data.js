@@ -302,7 +302,7 @@ const obtain_Object = function(type, name){
     return taker;
 }
 
-const costruttoreUniversale = function (type, nome, id){
+const costruttoreUniversale = function (type, nome){
     let taker = obtain_Object(type,nome)
     entitaOriginale = new Entity(...taker["costruttore_entity"]);
     if (type=="weapon"){
@@ -343,7 +343,7 @@ const DropCalculator = function (game, monster){
     for (let i = 0; i<table.length; i++){
         for(let j = 0; j<table[i][3]; j++){
             if ((Math.floor(Math.random() * 100)) <= table[i][2]){
-                let equip = costruttoreUniversale(table[i][1], table[i][0], Lista_Entity.length);
+                let equip = costruttoreUniversale(table[i][1], table[i][0]);
                 equip.position = monster.position;
                 game.entities.push(equip);
             }

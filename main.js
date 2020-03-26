@@ -125,6 +125,6 @@ let Game = {
 }
 
 function create_player() {
-	let player = costruttoreUniversale('player', 'player', 0)
+	let player = costruttoreUniversale('player', 'player')
 	return player;
 }
