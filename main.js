@@ -21,6 +21,7 @@ let Game = {
 
 	init: () => {
 		Game.player = create_player();
+		
 		armor_weapon_giver(Game);
 		Game.display_size = [parseInt(window.innerWidth / Game.font_size * 0.5), parseInt(window.innerHeight / Game.font_size - 1)]
 		Game.gui_size = [parseInt(window.innerWidth / Game.font_size * 0.4), parseInt(window.innerHeight / Game.font_size - 1)]

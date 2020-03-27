@@ -1,3 +1,23 @@
+var tileSet = document.createElement("img");
+tileSet.src = "gionbrown_tile.jpeg";
+
+var options = {
+    layout: "tile",
+    bg: "transparent",
+    tileWidth: 64,
+    tileHeight: 64,
+    tileSet: tileSet,
+    tileMap: {
+        "@": [0, 0],
+    },
+    width: 3,
+    height: 3
+}
+
+tileSet.onload = function(game) {
+    game.display.draw(game.player.position[0], game.player.position[1], "@");
+}
+
 function render_dungeon(game) {
     game.display.clear()
     x_rel = scroll_map(game.player.position[0], game.display_size[0] - 2, game.size[0])
@@ -49,7 +69,7 @@ function render_dungeon(game) {
             }
         }
     }
-    game.display.draw(game.player.position[0]-x_rel+1, game.player.position[1]-y_rel+1, game.player.char)
+    tileset.onload(game)
 }
 
 
