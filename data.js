@@ -499,3 +499,12 @@ const useAvaiblePoint = function (game, number){
         }
     }
 }
+
+
+const recuperaHP = function (game) {
+    if (game.player.stats.life[0]<game.player.stats.life[1]){
+        game.player.stats.life[0] += 1;
+    }else{
+        //error recupero vita
+    }
+}

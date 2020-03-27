@@ -84,8 +84,11 @@ let Game = {
 			case 82://R
 				useAvaiblePoint(Game, code);
 				break;
+			case 32: //barra
+				recuperaHP(Game);
+				break;
 		}
-		
+		console.log(code)
 		if (Game.take_turn) {
 			Game.take_turn = false;
 			Game.process();
