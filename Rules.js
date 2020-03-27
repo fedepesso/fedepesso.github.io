@@ -170,7 +170,7 @@ const armor_weapon_giver = function (game){
     let ring = costruttoreUniversale("rings", "anello d'erba");
     let armor1 = costruttoreUniversale("body_armors", "corazza di pelle");
     let armor2 = costruttoreUniversale("leg_armors", "calzari di pelle");
-    let pozione_iniziale = costruttoreUniversale("potion", "heal_potion")
+    let pozione_iniziale = costruttoreUniversale("potion", "dexterity_potion")
     equipThing(game, hammer)
     equipThing(game, ring)
     equipThing(game, armor1)

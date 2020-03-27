@@ -6,7 +6,7 @@ Oggetti = {
         "hydra" : [10, 100, 1],
         "gorgon" : [5, 70, 1],
         "witch" : [6, 40, 7],
-        "chaotic knight" : [8, 60, 5],
+        "chaotic knight" : [5, 60, 5],
         "unicorn" : [9, 100, 3],
         "sand worm" : [8, 80, 2],
         "sphinx" : [10, 70, 6],
@@ -95,8 +95,18 @@ function giveMeObject(type, name) {
             },
             "spada di grifondoro" : {
                 "costruttore_entity":["Spada di Grifondoro", "!", "#e0fc0a", false], 
-                "costruttore_attacker":[[150, 200], [50, 3], ["strength", 2], "arcane", 1], 
+                "costruttore_attacker":[[150, 200], [50, 3], ["strength", 10], "arcane", 1], 
                 "costruttore_wearable":["Leggendario", "weapon", "spada di grifondoro"],
+            },
+            "bastone di shazam" : {
+                "costruttore_entity":["Bastone di Shazam", "^", "#ad0502", false], 
+                "costruttore_attacker":[[50, 70], [50, 2], ["intelligence", 30], "arcane", 1], 
+                "costruttore_wearable":["Leggendario", "weapon", "bastone di shazam"],
+            },
+            "spada di ferro" : {
+                "costruttore_entity":["Spada di ferro", "!", "#b0aa9b", false], 
+                "costruttore_attacker":[[10, 25], [30, 2], ["strength", 5], "arcane", 1], 
+                "costruttore_wearable":["Non comune", "weapon", "spada di ferro"],
             },
         },
     
@@ -229,7 +239,7 @@ function giveMeObject(type, name) {
             },
             "hydra" : {
                 "costruttore_entity":["hydra", "H", "#ca61ff", true], 
-                "costruttore_stats": [[1500, 1500], 110, 100, 120, 0, 1, 0],
+                "costruttore_stats": [[1750, 1750], 110, 100, 120, 0, 1, 0],
                 "costruttore_attacker":[[300, 500], [33, 4], ["strength", 10], "arcane", 1],
                 "costruttore_defender":[100, 100, 100], 
                 "costruttore_monster":[1000000], 
@@ -278,7 +288,7 @@ function giveMeObject(type, name) {
             },
             "titan" : {
                 "costruttore_entity":["titan", "T", "#665341", true], 
-                "costruttore_stats": [[2000, 2000], 100, 10, 10, 0, 1, 0],
+                "costruttore_stats": [[1000, 1000], 100, 10, 10, 0, 1, 0],
                 "costruttore_attacker":[[90, 100], [20, 5], ["strength", 10], "physical", 1],
                 "costruttore_defender":[200, 120, 50], 
                 "costruttore_monster":[10000], 
@@ -293,52 +303,52 @@ function giveMeObject(type, name) {
         },
     
         "drop_tables" : {
-            "goblin" : [["anello di totano", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1], ["spada di grifondoro", "weapon",  10, 1]],
+            "goblin" : [["anello di totano", "rings",  10, 1], ["spada di ferro", "weapon",  10, 1]],
         
-            "ogre" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "ogre" : [["spada di grifondoro", "weapon", 5, 1]],
     
-            "hellhound" : [["anello orvoloson", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "hellhound" : [["anello orvoloson", "rings",  10, 1], ["dexterity_potion", "potion", 20, 2]],
     
-            "gorgon" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "gorgon" : [["schinieri di ferro", "leg_armors", 10, 1], ["strength_potion", "potion", 10, 2]],
     
-            "witch" : [["anello di totano", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "witch" : [["bastone di shazam", "weapon", 7, 1]],
     
-            "chaotic knight" : [["unico anello", "rings",  20, 1], ["calzari di pelle", "leg_armors", 70, 2]],
+            "chaotic knight" : [["corazza a scaje", "body_armors", 33, 1], ["cosciali in scaje", "legs_armors", 33, 1], ["hammer", "weapon", 33, 1]],
     
             "unicorn" : [["heal_potion", "potion",  50, 2], ["calzari alati", "leg_armors", 10, 1]],
     
-            "sand worm" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "sand worm" : [["unico anello", "rings",  10, 1], [ "bardatura da giostra", "body_armors", 10, 1]],
     
-            "sphinx" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "sphinx" : [["magic wand", "weapon",  10, 1], ["armature di piastre", "body_armors", 10, 1]],
     
-            "titan" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "titan" : [["tomahawk", "weapon",  10, 1], ["gambali speronati", "leg_armors", 10, 1]],
     
-            "ice giant" : [["unico anello", "rings",  10, 1], ["calzari alati", "leg_armors", 10, 1]],
+            "ice giant" : [["enchanted sword", "weapon",  10, 1], ["pantofole pucciose", "leg_armors", 10, 1]],
         },
     
         "potion" : {
             "heal_potion" : {
-                "costruttore_entity" : ["heal_potion", "+", "#ff5790", false],
+                "costruttore_entity" : ["heal_potion", "+", "#e92f71", false],
                 "costruttore_potion" : ["life", 50]
             },
     
             "strength_potion" : {
-                "costruttore_entity" : ["strength_potion", "+", "#ff5790", false],
+                "costruttore_entity" : ["strength_potion", "+", "#e92f71", false],
                 "costruttore_potion" : ["strength", 2]
             },
     
             "dexterity_potion" : {
-                "costruttore_entity" : ["dexterity_potion", "+", "#ff5790", false],
+                "costruttore_entity" : ["dexterity_potion", "+", "#e92f71", false],
                 "costruttore_potion" : ["dexterity", 2]
             },
     
             "intelligence_potion" : {
-                "costruttore_entity" : ["intelligence_potion", "+", "#ff5790", false],
+                "costruttore_entity" : ["intelligence_potion", "+", "#e92f71", false],
                 "costruttore_potion" : ["intelligence", 2]
             },
     
             "experience_potion" : {
-                "costruttore_entity" : ["experience_potion", "+", "#ff5790", false],
+                "costruttore_entity" : ["experience_potion", "+", "#e92f71", false],
                 "costruttore_potion" : ["experience", 500]
             }
         }
@@ -391,13 +401,17 @@ const FilterMonsters = function(depth) {
 
 
 const DropCalculator = function (game, monster){
-    const table =giveMeObject("drop_tables", monster.name);
+    const table = giveMeObject("drop_tables", monster.name);
     for (let i = 0; i<table.length; i++){
         for(let j = 0; j<table[i][3]; j++){
             if ((Math.floor(Math.random() * 100)) <= table[i][2]){
-                let equip = costruttoreUniversale(table[i][1], table[i][0]);
-                equip.position = monster.position;
-                game.entities.push(equip);
+                if(table[i][1] === "potion"){
+                    equipThing(game, costruttoreUniversale(table[i][1], table[i][0]));
+                }else{
+                    let equip = costruttoreUniversale(table[i][1], table[i][0]);
+                    equip.position = monster.position;
+                    game.entities.push(equip);
+                }
             }
         }
     }
@@ -461,7 +475,7 @@ const usePotion = function (game, name){
                 game.player.stats.life[0]-=(game.player.stats.life[0]-game.player.stats.life[1]);
             }
         }else{
-            game.player.stats[pozioneP.stat] += pozioneP.potion.bonus;
+            game.player.stats[pozioneP.potion.stat] += pozioneP.potion.bonus;
         }
     }else{
         //error in the console
