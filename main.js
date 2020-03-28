@@ -7,8 +7,7 @@ let Game = {
 	display_size: [0, 0],
 	gui: undefined,
 	gui_size: [0, 0],
-	log: undefined,
-	log_size: [0, 0],
+	log: [],
 	player: undefined,
 	dungeon: [[]],
 	dungeon_explored: [[]],
@@ -82,10 +81,11 @@ let Game = {
 			case 81://W
 			case 69://E
 			case 82://R
-				useAvaiblePoint(Game, code);
+				useAvailablePoint(Game, code);
 				break;
 			case 32: //barra
 				recuperaHP(Game);
+				move_player(0,0);
 				break;
 		}
 		console.log(code)
@@ -99,6 +99,7 @@ let Game = {
     render: () => {
 		render_dungeon(Game)
 		render_menu(Game)
+		render_console(Game)
     },
 
     process: () => {
@@ -118,7 +119,7 @@ let Game = {
 						path.push([x, y])
 					})
 					if (path.length === 1) {
-						let danno = Damage_system(monster, Game.player)
+						let danno = Damage_system(Game, monster, Game.player)
 						if (Game.player.stats.life[0] - danno <= 0) {
 							// sconfitta
 						} else {

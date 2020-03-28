@@ -132,6 +132,25 @@ function render_menu(game) {
     items.forEach((e, i) => game.gui.drawText(0, i+24, e))
 }
 
+function render_console (game) {
+    const l=game.log.length;
+    let y=75*game.display_size[1]/100+1;
+    if(l<3){
+        for(let i=0; i<game.log.length; i++){
+            game.display.drawText(1,y,game.log[i],game.display_size[0]-2);
+            y+=2;
+        }
+    }
+    else{
+        let initial_value=game.log.length-3;
+        for(let i=0; i<3; i++){
+            game.display.drawText(1,y,game.log[initial_value],game.display_size[0]-2);
+            y+=2;
+            initial_value+=1;
+        }
+    }
+}
+
 function scroll_map(p, s, m) {
     if (p<s/2){
         return 0;
