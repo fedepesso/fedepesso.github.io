@@ -16,6 +16,10 @@ const Damage_system = function(game, Attivo, Passivo){
         somma_danni *=Attivo.attacker.crit[1];
     }
     danno = Math.floor(somma_danni*valore_difensivo);
+    if (Math.sqrt((Attivo.position[0] - Passivo.position[0])**2 + (Attivo.position[1] - Passivo.position[1])**2) < 2 && (Attivo.attacker.range > 1)) {
+        game.log.push(Attivo.name +" infligge "+ danno + " a " + Passivo.name + ' (danno dimezzato)');
+        return Math.floor(danno / 2)
+    }
     game.log.push(Attivo.name +" infligge "+ danno + " a " + Passivo.name);
     return danno;
 }
@@ -41,6 +45,7 @@ const move_to = function(game, index){
 }
 
 const move_player = function(game, player, delta_x, delta_y) {
+    game.take_turn = true;
     if (controllo_muro(game, player.position[0]+delta_x, player.position[1]+delta_y)) {
         collision = controllo_mostri(game, player.position[0] + delta_x, player.position[1] + delta_y)
         if (collision === null) {
@@ -49,7 +54,6 @@ const move_player = function(game, player, delta_x, delta_y) {
         } else if (collision.monster !== undefined) {
             combattimento(game, player, collision)
         }
-        game.take_turn = true;
     }
 }
 

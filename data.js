@@ -419,27 +419,17 @@ const DropCalculator = function (game, monster){
 
 const equipThing = function (game, entity, backup=false){
     if (backup && entity.wearable.category !== 'weapon') {
-        console.log('k')
         return undefined
     }
 
     if(entity.wearable !== undefined){
-        if(game.player.inventory[entity.wearable.category] !== undefined && !backup){
-            const pos = [game.player.position[0], game.player.position[1]]
-            if(controller(game, pos[0], pos[1]+1)){
-                pos[1]+=1;
+        if(game.player.inventory[entity.wearable.category] !== undefined){
+            if (!backup){
+                const pos = [game.player.position[0], game.player.position[1]]
                 game.player.inventory[entity.wearable.category].position = pos;
-            }else if(controller(game, pos[0]-1, pos[1])){
-                pos[0]-=1;
-                game.player.inventory[entity.wearable.category].position = pos;
-            }else if(controller(game, pos[0]+1, pos[1])){
-                pos[0]+=1;
-                game.player.inventory[entity.wearable.category].position = pos;
-            }else if(controller(game, pos[0], pos[1]-1)){
-                pos[1]-=1;
-                game.player.inventory[entity.wearable.category].position = pos;
+                game.entities.push(game.player.inventory[entity.wearable.category]);
             }
-            game.entities.push(game.player.inventory[entity.wearable.category]);
+            
         }else{
             //inserire un messaggio di errore nella console
         }

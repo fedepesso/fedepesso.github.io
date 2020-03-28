@@ -90,9 +90,8 @@ let Game = {
 				useAvailablePoint(Game, code);
 				break;
 			case 32: //barra
-				recuperaHP(Game);
 				move_player(Game, Game.player, 0, 0)
-
+				recuperaHP(Game);
 				break;
 			case 83: //S
 				if (Game.player.inventory.backup_weapon !== null) {
@@ -135,7 +134,7 @@ let Game = {
 					dungeon_path_object.compute(monster.position[0], monster.position[1], (x, y) => {
 						path.push([x, y])
 					})
-					if (path.length === 1) {
+					if (path.length === 2) {
 						let danno = Damage_system(Game, monster, Game.player)
 						if (Game.player.stats.life[0] - danno <= 0) {
 							// sconfitta
