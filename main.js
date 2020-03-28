@@ -1,7 +1,7 @@
 let Game = {
 	player_name: "test_char",
 	seed: Math.floor(Math.random() * 10),
-	font_size: 20,
+	font_size: 10,
 	size: [50, 50],
 	display: undefined,
 	display_size: [0, 0],
@@ -21,11 +21,10 @@ let Game = {
 
 	init: () => {
 		Game.player = create_player();
-		
 		armor_weapon_giver(Game);
 		Game.display_size = [parseInt(window.innerWidth / Game.font_size * 0.5), parseInt(window.innerHeight / Game.font_size - 1)]
 		Game.gui_size = [parseInt(window.innerWidth / Game.font_size * 0.4), parseInt(window.innerHeight / Game.font_size - 1)]
-		Game.display = new ROT.Display({width:  Game.display_size[0], height: Game.display_size[1], fontSize: Game.font_size, forceSquareRatio:true});
+		Game.display = new ROT.Display({width: Game.display_size[0], height: Game.display_size[1], fontSize: Game.font_size, forceSquareRatio:true});
 		Game.gui = new ROT.Display({width: Game.gui_size[0], height: Game.gui_size[1], fontSize: Game.font_size, forceSquareRatio:true});
 		document.body.appendChild(Game.display.getContainer());
 		document.body.appendChild(Game.gui.getContainer());
