@@ -202,8 +202,8 @@ const ranged_combat = function(game, player, x_vector_unit, y_vector_unit){
             if (randint(1, 100) <= (30 + (2*player.stats.dexterity))) {
                 combattimento(game, player, collision)
                 if (randint(1, 100) <= (30 + (2*player.stats.dexterity))) {
-                    if (game.dungeon[-2 * x_vector_unit][-2 * y_vector_unit] === 0) {move_player(game, player, -2 * x_vector_unit, -2 * y_vector_unit)}
-                    else if (game.dungeon[-1 * x_vector_unit][-1 * y_vector_unit] === 0) {move_player(game, player, -1 * x_vector_unit, -1 * y_vector_unit)}
+                    if (game.dungeon[player.position[0] + (-2 * x_vector_unit)][Player.position[1] + (-2 * y_vector_unit)] === 0) {move_player(game, player, player.position[0] + (-2 * x_vector_unit), Player.position[1] + (-2 * y_vector_unit))}
+                    else if (game.dungeon[Player.position[c] + (-1 * x_vector_unit)][Player.position[1] + (-1 * y_vector_unit)] === 0) {move_player(game, player, Player.position[0] + (-1 * x_vector_unit), Player.position[1] + (-1 * y_vector_unit))}
                 }
                 return undefined
             }
