@@ -38,18 +38,22 @@ let Game = {
 		
 		switch(code) {
 			case 37: //freccia a sinistra
-				move_player(Game, Game.player, -1, 0)
+				if (key.ctrlKey) { ranged_combat(Game, Game.player, -1, 0) }
+				else  {move_player(Game, Game.player, -1, 0) }
 				break;
 			case 38: //freccia su
-				move_player(Game, Game.player, 0, -1)
+				if (key.ctrlKey) { ranged_combat(Game, Game.player, 0, -1) }
+				else { move_player(Game, Game.player, 0, -1) }
 				break;
 			case 39: //freccia a destra
-				move_player(Game, Game.player, 1, 0)
+				if (key.ctrlKey) { ranged_combat(Game, Game.player, 1, 0) }
+				else { move_player(Game, Game.player, 1, 0) }
 				break;
 			case 40: //freccia giù
-				move_player(Game, Game.player, 0, 1)
+				if (key.ctrlKey) { ranged_combat(Game, Game.player, 0, 1) }
+				else { move_player(Game, Game.player, 0, 1) }
 				break;
-			case 60: // < per disagiati che usano firefox 
+			case 60: // < per eroi rivoluzionari che usano firefox per combattere i poteri forti e le manipolazioni delle lobby
 			case 226: //<
 				let stair = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
 				if (stair != undefined) {
@@ -59,8 +63,10 @@ let Game = {
 			case 80: //P
 				let obj = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
 				if (obj!==null){
-					if (obj.wearable !== undefined) { equipThing(Game, obj) }
-					else if (obj.magical_effect !== undefined) {equipThing(Game, obj)}
+					if (key.shiftKey) {
+						if (obj.wearable !== undefined || obj.magical_effect !== undefined) { equipThing(Game, obj, true) }
+					}
+					else { if (obj.wearable !== undefined || obj.magical_effect !== undefined) { equipThing(Game, obj) }}
 				}
 				break;
 			case 84: //T
@@ -86,9 +92,20 @@ let Game = {
 				break;
 			case 32: //barra
 				recuperaHP(Game);
+				move_player(Game, Game.player, 0, 0)
 				break;
+			case 83: //S
+				if (Game.player.inventory.backup_weapon !== null) {
+					let backup = {}
+					Object.assign(backup, Game.player.inventory.weapon)
+					let switch_weapon = {}
+					Object.assign(switch_weapon, Game.player.inventory.backup_weapon)
+					Game.player.inventory.weapon = switch_weapon
+					Game.player.inventory.backup_weapon = backup
+					move_player(Game, Game.player, 0, 0)
+				}
+				break
 		}
-		console.log(code)
 		if (Game.take_turn) {
 			Game.take_turn = false;
 			Game.process();

@@ -166,7 +166,7 @@ const spawn_entities = function(game, depth){
 }
 
 const armor_weapon_giver = function (game){
-    let hammer = costruttoreUniversale("weapon", "spada di prova");
+    let hammer = costruttoreUniversale("weapon", "bow");
     let ring = costruttoreUniversale("rings", "anello d'erba");
     let armor1 = costruttoreUniversale("body_armors", "corazza di pelle");
     let armor2 = costruttoreUniversale("leg_armors", "calzari di pelle");
@@ -176,4 +176,29 @@ const armor_weapon_giver = function (game){
     equipThing(game, armor1)
     equipThing(game, armor2)
     equipThing(game, pozione_iniziale)
+}
+
+
+const ranged_combat = function(game, player, x_vector_unit, y_vector_unit){
+    let delta_x = 0;
+    let delta_y = 0;
+    let weapon = player.inventory.weapon.attacker;
+    if (weapon.range === 1) {return undefined}  // non si può usare un'arma corpo a corpo come arma a distanza
+    for (let i = 0; i < weapon.range; i++) {
+        delta_x += x_vector_unit
+        delta_y += y_vector_unit
+        if (game.dungeon[player.position[0] + delta_x][player.position[1] + delta_y] === 1) {return undefined}  // ha colpito un muro, quindi non ha funzionato
+        let collision = controllo_mostri(game, player.position[0] + delta_x, player.position[1] + delta_y)
+        if (collision !== null) {
+            // possibilità di base del 50% + 2% per livello destrezza superiore al 10
+            if (randint(1, 100) <= (30 + (2*player.stats.dexterity))) {
+                combattimento(game, player, collision)
+                if (randint(1, 100) <= (30 + (2*player.stats.dexterity))) {
+                    if (game.dungeon[-2 * x_vector_unit][-2 * y_vector_unit] === 0) {move_player(game, player, -2 * x_vector_unit, -2 * y_vector_unit)}
+                    else if (game.dungeon[-1 * x_vector_unit][-1 * y_vector_unit] === 0) {move_player(game, player, -1 * x_vector_unit, -1 * y_vector_unit)}
+                }
+                return undefined
+            }
+        }
+    } 
 }

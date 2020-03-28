@@ -17,7 +17,6 @@ Oggetti = {
 
 function giveMeObject(type, name) {
     let Oggetti = {
-
         "player" : {
             "player": {
                 "costruttore_entity": ["giobr1", '@', '#000000', false],
@@ -418,9 +417,14 @@ const DropCalculator = function (game, monster){
 }
 
 
-const equipThing = function (game, entity){
+const equipThing = function (game, entity, backup=false){
+    if (backup && entity.wearable.category !== 'weapon') {
+        console.log('k')
+        return undefined
+    }
+
     if(entity.wearable !== undefined){
-        if(game.player.inventory[entity.wearable.category] !== undefined){
+        if(game.player.inventory[entity.wearable.category] !== undefined && !backup){
             const pos = [game.player.position[0], game.player.position[1]]
             if(controller(game, pos[0], pos[1]+1)){
                 pos[1]+=1;
@@ -439,8 +443,12 @@ const equipThing = function (game, entity){
         }else{
             //inserire un messaggio di errore nella console
         }
+        if (backup) {
+            game.player.inventory['backup_weapon'] = entity;
+        } else {
+            game.player.inventory[entity.wearable.category] = entity;
+        }
         
-        game.player.inventory[entity.wearable.category] = entity;
         
         if (game.entities !== undefined) {
             const index = game.entities.indexOf(entity);

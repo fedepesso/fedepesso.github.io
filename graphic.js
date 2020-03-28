@@ -115,10 +115,13 @@ function render_menu(game) {
     } else {
         let arma = game.player.inventory.weapon
         weapon_text = [
-            'Weapon: ' + arma.name, '   - damage: [' + arma.attacker.damage[0] + '-' + arma.attacker.damage[1] + '] ' + arma.attacker.damage_type,
+            'Weapon: ' + arma.name + ' (' + arma.attacker.range + ') ', '   - damage: [' + arma.attacker.damage[0] + '-' + arma.attacker.damage[1] + '] ' + arma.attacker.damage_type,
             '   - critics : [' + arma.attacker.crit[0] + "-" + arma.attacker.crit[1] + ']',
-            '   - bonus stat: ' + arma.attacker.stat_bonus[0], '',
+            '   - bonus stat: ' + arma.attacker.stat_bonus[0], ''
         ]
+        if (game.player.inventory.backup_weapon !== null) {
+            weapon_text[0] += ' -s-'
+        }
     }
     weapon_text.forEach((e, i) => game.gui.drawText(0, i+19, e))
     const buttons = [

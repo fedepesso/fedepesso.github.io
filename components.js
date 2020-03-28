@@ -69,6 +69,7 @@ class Wearable {
 class Inventory {
     constructor(weapon, body_armor, leg_armor, ring_armor) {
         this.weapon = weapon;
+        this.backup_weapon = null
         this.body_armor = body_armor;
         this.leg_armor = leg_armor;
         this.ring_armor = ring_armor;
