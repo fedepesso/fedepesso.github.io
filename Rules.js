@@ -3,7 +3,7 @@ const attacco_universale = 3;
 const mostro_attaccato = null;
 
 
-const Damage_system = function(Attivo, Passivo){
+const Damage_system = function(game, Attivo, Passivo){
     let danno=0;
     let stats_needed = Attivo.attacker.stat_bonus[0];
     let type_of_damage=Attivo.attacker.damage_type;
@@ -16,6 +16,7 @@ const Damage_system = function(Attivo, Passivo){
         somma_danni *=Attivo.attacker.crit[1];
     }
     danno = Math.floor(somma_danni*valore_difensivo);
+    game.log.push(Attivo.name +" infligge "+ danno + " a " + Passivo.name);
     return danno;
 }
 
@@ -77,7 +78,7 @@ const controllo_mostri = function(game, x, y, non_solid=false){
 
 const combattimento = function(game, player, mostro) {
     player.attacker = player.inventory.weapon.attacker;
-    danno = Damage_system(player, mostro);
+    danno = Damage_system(game, player, mostro);
     if (mostro.stats.life[0] <= danno) {
         const index = game.entities.indexOf(mostro);
         if (index > -1) {
@@ -93,6 +94,9 @@ const combattimento = function(game, player, mostro) {
         };
     } else {
         mostro.stats.life[0]-=danno
+        if(mostro.name=="hydra"){
+            game.log.push("YOU CLEARED THE DUNGEON")
+        }
     };
 }
 

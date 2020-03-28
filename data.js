@@ -477,6 +477,7 @@ const usePotion = function (game, name){
     if(game.player.inventory.items[name]>0){
         let pozioneP = costruttoreUniversale("potion", name);
         game.player.inventory.items[name] -= 1;
+        game.log.push("You drank a "+ name);
         if(name === "heal_potion" && (game.player.stats.life[0] !== game.player.stats.life[1])){
             game.player.stats.life[0]+=pozioneP.potion.bonus
             if(game.player.stats.life[0]>game.player.stats.life[1]){
@@ -486,25 +487,31 @@ const usePotion = function (game, name){
             game.player.stats[pozioneP.potion.stat] += pozioneP.potion.bonus;
         }
     }else{
-        //error in the console
+        game.log.push("You can't drink the " + name + " because you don't have one");
     }
     
 }
 
 
-const useAvaiblePoint = function (game, number){
+const useAvailablePoint = function (game, number){
     if(game.player.stats.expendable_points>0){
         game.player.stats.expendable_points -= 1;
         if(number === 81){
             game.player.stats.strength += 1;
+            game.log.push("You used a point to upgrade your strength");
         }else if(number === 87){
             game.player.stats.dexterity += 1;
+            game.log.push("You used a point to upgrade your dexterity");
         }else if(number === 69){
             game.player.stats.intelligence += 1;
+            game.log.push("You used a point to upgrade your intelligence");
         }else if(number === 82){
-            game.player.stats.life[0] += 10;
             game.player.stats.life[1] += 10;
+            game.log.push("You used a point to upgrade your life");
         }
+    }
+    else{
+        game.log.push("There are no available points")
     }
 }
 
