@@ -19,7 +19,7 @@ function giveMeObject(type, name) {
     let Oggetti = {
         "player" : {
             "player": {
-                "costruttore_entity": ["giobr1", '@', '#000000', false],
+                "costruttore_entity": ["ayeye brazo", '@', '#000000', false],
                 "costruttore_stats": [[100, 100], 10, 10, 10, [0, 1000], 1, 0],
                 "costruttore_defender": [5, 5, 5],
                 "costruttore_inventory": [undefined, undefined, undefined, undefined]
@@ -218,14 +218,14 @@ function giveMeObject(type, name) {
             "goblin" : {
                 "costruttore_entity":["goblin", "g", "#217519", true],
                 "costruttore_stats": [[25, 25], 3, 4, 3, 0, 1, 0],
-                "costruttore_attacker":[[5, 20], [20, 2], ["strength", 2], "physical", 1],
+                "costruttore_attacker":[[5, 10], [20, 2], ["strength", 2], "physical", 1],
                 "costruttore_defender":[5,10,5], 
                 "costruttore_monster":[50], 
             },
             "ogre" : {
                 "costruttore_entity":["ogre", "O", "#473e57", true], 
-                "costruttore_stats": [[55, 55], 10, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[15, 25], [25, 2], ["strength", 5], "physical", 1],
+                "costruttore_stats": [[30, 40], 10, 10, 10, 0, 1, 0],
+                "costruttore_attacker":[[25, 30], [25, 2], ["strength", 5], "physical", 1],
                 "costruttore_defender":[10,15,10], 
                 "costruttore_monster":[150], 
             },
@@ -281,14 +281,14 @@ function giveMeObject(type, name) {
             "sphinx" : {
                 "costruttore_entity":["sphinx", "s", "#c47733", true], 
                 "costruttore_stats": [[30, 30], 30, 20, 50, 0, 1, 0],
-                "costruttore_attacker":[[50, 65], [60, 3], ["intelligence", 6], "arcane", 1],
+                "costruttore_attacker":[[40, 55], [60, 3], ["intelligence", 6], "arcane", 1],
                 "costruttore_defender":[40, 40, 30], 
                 "costruttore_monster":[2500], 
             },
             "titan" : {
                 "costruttore_entity":["titan", "T", "#665341", true], 
                 "costruttore_stats": [[1000, 1000], 100, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[90, 100], [20, 5], ["strength", 10], "physical", 1],
+                "costruttore_attacker":[[70, 90], [20, 5], ["strength", 10], "physical", 1],
                 "costruttore_defender":[200, 120, 50], 
                 "costruttore_monster":[10000], 
             },
@@ -366,22 +366,22 @@ const obtain_Object = function(type, name){
 const costruttoreUniversale = function (type, nome){
     let taker = obtain_Object(type,nome)
     entitaOriginale = new Entity(...taker["costruttore_entity"]);
-    if (type=="weapon"){
+    if (type === "weapon"){
         entitaOriginale.attacker = new Attacker(...taker["costruttore_attacker"]);
         entitaOriginale.wearable = new Wearable(...taker["costruttore_wearable"]);
-    }else if (type=="body_armors" || type=="leg_armors" || type == "rings"){
+    }else if (type === "body_armors" || type === "leg_armors" || type === "rings"){
         entitaOriginale.defender = new Defender(...taker["costruttore_defender"]);
         entitaOriginale.wearable = new Wearable(...taker["costruttore_wearable"]);
-    }else if (type == "monster"){
+    }else if (type === "monster"){
         entitaOriginale.stats = new Stats(...taker["costruttore_stats"]);
         entitaOriginale.monster = new Monster(...taker["costruttore_monster"]);
         entitaOriginale.attacker = new Attacker(...taker["costruttore_attacker"]);
         entitaOriginale.defender = new Defender(...taker["costruttore_defender"]);
-    }else if (type == "player"){
+    }else if (type === "player"){
         entitaOriginale.stats = new Stats(...taker["costruttore_stats"]);
         entitaOriginale.defender = new Defender(...taker["costruttore_defender"]);
         entitaOriginale.inventory = new Inventory(...taker["costruttore_inventory"]);
-    }else if (type == "potion"){
+    }else if (type === "potion"){
         entitaOriginale.potion = new MagicalEffect(...taker["costruttore_potion"]);
     }
     return entitaOriginale;

@@ -32,10 +32,10 @@ const move_to = function(game, index){
     game.dungeon_object = new ROT.Map.Digger(game.size[0], game.size[1]);
     game.dungeon_object.create((x, y, value) => game.dungeon[x][y] = value)
     game.dungeon_fov_object = new ROT.FOV.PreciseShadowcasting((x, y) => {
-        if ((game.dungeon[x] == undefined) || (game.dungeon[x][y] == undefined)) {
+        if ((game.dungeon[x] === undefined) || (game.dungeon[x][y] === undefined)) {
             return true;
         }
-        return (game.dungeon[x][y] == 0);
+        return (!game.dungeon[x][y]);
     });
     game.entities = [];
     let starting_room = game.dungeon_object.getRooms()[0];
@@ -89,6 +89,13 @@ const combattimento = function(game, player, mostro) {
             game.entities.splice(index, 1);
         }
         DropCalculator(game, mostro);
+        if(mostro.name=="hydra"){
+            game.log.push("YOU KILLED THE HYDRA, YOU HAVE CLEARED THE DUNGEON")
+            game.log.push("YOU DID IT, CRAZY SON OF A B*TCH, YOU DID IT")
+
+        }else{
+            game.log.push("You killed " + mostro.name)
+        }
         player.stats.experience[0] += mostro.monster.xp_reward
         if (player.stats.experience[0] >= player.stats.experience[1]) {
             player.stats.experience[0] = 0
@@ -97,14 +104,7 @@ const combattimento = function(game, player, mostro) {
             player.stats.experience[1] = 1000 + ((player.stats.level - 1) * 200)
         };
     } else {
-        mostro.stats.life[0]-=danno
-        if(mostro.name=="hydra"){
-            game.log.push("YOU KILLED THE HYDRA, YOU HAVE CLEARED THE DUNGEON")
-            game.log.push("YOU DID IT, CRAZY SON OF A B*TCH, YOU DID IT")
-
-        }else{
-            game.log.push("You killed " + mostro.name)
-        }
+        mostro.stats.life[0]-=danno      
     };
 }
 
@@ -123,14 +123,14 @@ function choice (arr) {
 
 const spawn_entities = function(game, depth){
     rooms = game.dungeon_object.getRooms()
-    if (depth != 1) {
+    if (depth !== 1) {
         upstair = new Entity('Upstair', '<', '#a4a5a5', false)
         upstair.stair = new Stair(-1)
         while (true) {
             room = choice(rooms);
             let x = randint(room.getLeft(), room.getRight());
             let y = randint(room.getTop(), room.getBottom());
-            if (controllo_mostri(game, x, y) == null) {
+            if (controllo_mostri(game, x, y) === null) {
                 game.entities.push(upstair);
                 upstair.position[0] = x;
                 upstair.position[1] = y;
@@ -145,7 +145,7 @@ const spawn_entities = function(game, depth){
             room = choice(rooms);
             let x = randint(room.getLeft(), room.getRight());
             let y = randint(room.getTop(), room.getBottom());
-            if (controllo_mostri(game, x, y) == null) {
+            if (controllo_mostri(game, x, y) === null) {
                 game.entities.push(downstair);
                 downstair.position[0] = x;
                 downstair.position[1] = y;
@@ -157,8 +157,8 @@ const spawn_entities = function(game, depth){
     monsters = FilterMonsters(depth)
     Object.keys(monsters).forEach(v => {
         for (let i = 0; i < monsters[v][2]; i++) {
-            let x = 0;
-            while (x < 20) {
+            let counter = 0;
+            while (counter < 20) {
                 room = choice(rooms);
                 let x = randint(room.getLeft(), room.getRight());
                 let y = randint(room.getTop(), room.getBottom());
@@ -170,8 +170,8 @@ const spawn_entities = function(game, depth){
                         monster_entity.position[1] = y;
                         break;
                     }
-                    x += 1;
                 }
+                counter += 1;
             }
         }
     })
