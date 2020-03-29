@@ -19,6 +19,9 @@ let Game = {
 	take_turn: false,
 
 	init: () => {
+		//myAudio = new Audio('audio.mp3');
+		//myAudio.loop = true;
+		//myAudio.play();
 		Game.player = create_player();
 		armor_weapon_giver(Game);
 		Game.display_size = [parseInt(window.innerWidth / Game.font_size * 0.5), parseInt(window.innerHeight / Game.font_size - 1)]
