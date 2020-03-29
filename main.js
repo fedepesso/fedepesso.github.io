@@ -1,21 +1,20 @@
 
 let	isAlive = true
 let Game = {
-	player_name: "test_char",
 	seed: Math.floor(Math.random() * 10),
-	font_size: 20,
-	size: [50, 50],
-	display: undefined,
+	font_size: 20, 
+	size: [50, 50], //dimensione in celle del dungeon
+	display: undefined, //riferimento ad oggetto canvas di rot.js
 	display_size: [0, 0],
-	gui: undefined,
+	gui: undefined, //riferimento ad oggetto canvas di rot.js
 	gui_size: [0, 0],
 	log: [],
 	player: undefined,
-	dungeon: [[]],
+	dungeon: [[]], //contiene caselle con 0 o 1 a seconda del contenuto della cella
 	dungeon_explored: [[]],
 	local_fov: [[]],
-	dungeon_fov_object: undefined,
-	dungeon_object: undefined,
+	dungeon_fov_object: undefined, //istanza del generatore visuale
+	dungeon_object: undefined, //istanza del generatore casuale
 	entities: undefined,
 	depth: 1,
 	take_turn: false,
@@ -30,7 +29,7 @@ let Game = {
 		Game.gui_size = [parseInt(window.innerWidth / Game.font_size * 0.4), parseInt(window.innerHeight / Game.font_size - 1)]
 		Game.display = new ROT.Display({width: Game.display_size[0], height: Game.display_size[1], fontSize: Game.font_size, forceSquareRatio:true});
 		Game.gui = new ROT.Display({width: Game.gui_size[0], height: Game.gui_size[1], fontSize: Game.font_size, forceSquareRatio:true});
-		document.body.appendChild(Game.display.getContainer());
+		document.body.appendChild(Game.display.getContainer()); //getContainer è proprietà dell'oggetto canvas
 		document.body.appendChild(Game.gui.getContainer());
 		move_to(Game, Game.depth);
 		Game.log.push("Use arrows to move, letters near stats && potion to use them, pick up thing with P, switch weapon with S, equip the second weapon with Shift+P. Long range weapon use CTRL+arrow")
@@ -130,7 +129,7 @@ let Game = {
         for (let i = 0; i < Game.entities.length; i++) {
 			if (Game.entities[i].monster !== undefined) {
 				let monster = Game.entities[i]
-				if (Game.local_fov[monster.position[0]][monster.position[1]] == 0) {
+				if (Game.local_fov[monster.position[0]][monster.position[1]] === 0) {
 					let dungeon_path_object = new ROT.Path.AStar(Game.player.position[0], Game.player.position[1], (x, y) => {
 						if (Game.dungeon[x][y] === 1) {
 							return false

@@ -14,8 +14,8 @@ function render_dungeon(game) {
     }
     for (let x = x_rel; x < x_rel + game.display_size[0] - 2; x++) {
         for (let y = y_rel; y < y_rel + game.display_size[1] * 75 / 100 - 2; y++) {
-            if (game.local_fov[x][y] == 0) {
-                if (game.dungeon[x][y] == 0) {
+            if (game.local_fov[x][y] === 0) {
+                if (game.dungeon[x][y] === 0) {
                     game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#fffc5c")
                 } 
                 else {
@@ -23,8 +23,8 @@ function render_dungeon(game) {
                 }
                 game.dungeon_explored[x][y]=0
             }else{
-                if (game.dungeon_explored[x][y] == 0) {
-                    if (game.dungeon[x][y] == 0) {
+                if (game.dungeon_explored[x][y] === 0) {
+                    if (game.dungeon[x][y] === 0) {
                         game.display.draw(x - x_rel + 1, y - y_rel + 1, '.',"#69a5b5")
                     }       
                     else {
@@ -70,7 +70,7 @@ function render_menu(game) {
         'Hp: ' + game.player.stats.life[0] + '/' + game.player.stats.life[1], 
         'Level: ' + game.player.stats.level + ' - (' + game.player.stats.experience[0] + '/' + game.player.stats.experience[1] + ')', 
         '',
-        'Avaible points: ' + game.player.stats.expendable_points, 
+        'Available points: ' + game.player.stats.expendable_points, 
         'Q) Strength: ' + game.player.stats.strength,
         'W) Dexterity: ' + game.player.stats.dexterity, 
         'E) Intelligence: ' + game.player.stats.intelligence, 
