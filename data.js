@@ -3,15 +3,15 @@ Oggetti = {
         "goblin" : [1, 40, 20],
         "ogre" : [2, 30, 10],
         "hellhound" : [3, 60, 15],
-        "hydra" : [10, 100, 1],
+        "ice giant" : [4, 40, 10],
+        "witch" : [5, 70, 1],
         "gorgon" : [5, 70, 1],
-        "witch" : [6, 40, 7],
         "chaotic knight" : [5, 60, 5],
-        "unicorn" : [9, 100, 3],
-        "sand worm" : [8, 80, 2],
-        "sphinx" : [10, 70, 6],
         "titan" : [7, 80, 4],
-        "ice giant" : [4, 40, 10]
+        "sand worm" : [8, 80, 2],
+        "unicorn" : [9, 100, 3],
+        "hydra" : [10, 100, 1],
+        "sphinx" : [10, 70, 6],
     }
 }
 
@@ -225,14 +225,14 @@ function giveMeObject(type, name) {
             "ogre" : {
                 "costruttore_entity":["ogre", "O", "#473e57", true], 
                 "costruttore_stats": [[55, 55], 10, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[20, 40], [25, 2], ["strength", 5], "physical", 1],
+                "costruttore_attacker":[[15, 25], [25, 2], ["strength", 5], "physical", 1],
                 "costruttore_defender":[10,15,10], 
                 "costruttore_monster":[150], 
             },
             "hellhound" : {
                 "costruttore_entity":["hellhound", "h", "#d9430d", true], 
                 "costruttore_stats": [[75, 75], 10, 30, 5, 0, 1, 0],
-                "costruttore_attacker":[[30, 50], [33, 2], ["dexterity", 3], "elemental", 1],
+                "costruttore_attacker":[[20, 30], [33, 2], ["dexterity", 3], "elemental", 1],
                 "costruttore_defender":[10,20,25], 
                 "costruttore_monster":[250], 
             },
@@ -246,7 +246,7 @@ function giveMeObject(type, name) {
             "gorgon" : {
                 "costruttore_entity":["gorgon", "G", "#1f28db", true], 
                 "costruttore_stats": [[100, 100], 10, 20, 22, 3, 4, 50],
-                "costruttore_attacker":[[60, 70], [40, 3], ["intelligence", 10], "arcane", 1],
+                "costruttore_attacker":[[30, 40], [40, 3], ["intelligence", 10], "arcane", 1],
                 "costruttore_defender":[10, 20, 15], 
                 "costruttore_monster":[1000], 
             },
@@ -280,7 +280,7 @@ function giveMeObject(type, name) {
             },
             "sphinx" : {
                 "costruttore_entity":["sphinx", "s", "#c47733", true], 
-                "costruttore_stats": [[300, 30], 30, 20, 50, 0, 1, 0],
+                "costruttore_stats": [[30, 30], 30, 20, 50, 0, 1, 0],
                 "costruttore_attacker":[[50, 65], [60, 3], ["intelligence", 6], "arcane", 1],
                 "costruttore_defender":[40, 40, 30], 
                 "costruttore_monster":[2500], 
@@ -302,11 +302,11 @@ function giveMeObject(type, name) {
         },
     
         "drop_tables" : {
-            "goblin" : [["anello di totano", "rings",  10, 1], ["spada di ferro", "weapon",  10, 1]],
+            "goblin" : [["anello di totano", "rings",  10, 1], ["corazza di cuoio", "body_armors", 10, 1], ["spada di ferro", "weapon",  20, 1]],
         
-            "ogre" : [["spada di grifondoro", "weapon", 5, 1]],
+            "ogre" : [["spada di grifondoro", "weapon", 5, 1], ["corazza di cuoio", "body_armors", 33, 1]],
     
-            "hellhound" : [["anello orvoloson", "rings",  10, 1], ["dexterity_potion", "potion", 20, 2]],
+            "hellhound" : [["dexterity_potion", "potion", 20, 2], ["dagger", "weapon", 15, 1], ["anello orvoloson", "rings",  10, 1]],
     
             "gorgon" : [["schinieri di ferro", "leg_armors", 10, 1], ["strength_potion", "potion", 10, 2]],
     
@@ -316,7 +316,7 @@ function giveMeObject(type, name) {
     
             "unicorn" : [["heal_potion", "potion",  50, 2], ["calzari alati", "leg_armors", 10, 1]],
     
-            "sand worm" : [["unico anello", "rings",  10, 1], [ "bardatura da giostra", "body_armors", 10, 1]],
+            "sand worm" : [["unico anello", "rings",  10, 1], ["bardatura da giostra", "body_armors", 10, 1]],
     
             "sphinx" : [["magic wand", "weapon",  10, 1], ["armature di piastre", "body_armors", 10, 1]],
     
