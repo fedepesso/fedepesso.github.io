@@ -17,10 +17,10 @@ const Damage_system = function(game, Attivo, Passivo){
     }
     danno = Math.floor(somma_danni*valore_difensivo);
     if (Math.sqrt((Attivo.position[0] - Passivo.position[0])**2 + (Attivo.position[1] - Passivo.position[1])**2) < 2 && (Attivo.attacker.range > 1)) {
-        game.log.push(Attivo.name +" infligge "+ danno + " a " + Passivo.name + ' (danno dimezzato)');
+        game.log.push(Attivo.name +" inflicted "+ danno + " a " + Passivo.name + ' (halfed damage)');
         return Math.floor(danno / 2)
     }
-    game.log.push(Attivo.name +" infligge "+ danno + " a " + Passivo.name);
+    game.log.push(Attivo.name +" inflicted "+ danno + " to " + Passivo.name);
     return danno;
 }
 
@@ -99,7 +99,11 @@ const combattimento = function(game, player, mostro) {
     } else {
         mostro.stats.life[0]-=danno
         if(mostro.name=="hydra"){
-            game.log.push("YOU CLEARED THE DUNGEON")
+            game.log.push("YOU KILLED THE HYDRA, YOU HAVE CLEARED THE DUNGEON")
+            game.log.push("YOU DID IT, CRAZY SON OF A B*TCH, YOU DID IT")
+
+        }else{
+            game.log.push("You killed " + mostro.name)
         }
     };
 }
@@ -174,7 +178,7 @@ const spawn_entities = function(game, depth){
 }
 
 const armor_weapon_giver = function (game){
-    let hammer = costruttoreUniversale("weapon", "bow");
+    let hammer = costruttoreUniversale("weapon", "spada di prova");
     let ring = costruttoreUniversale("rings", "anello d'erba");
     let armor1 = costruttoreUniversale("body_armors", "corazza di pelle");
     let armor2 = costruttoreUniversale("leg_armors", "calzari di pelle");
@@ -183,6 +187,8 @@ const armor_weapon_giver = function (game){
     equipThing(game, ring)
     equipThing(game, armor1)
     equipThing(game, armor2)
+    equipThing(game, pozione_iniziale)
+    equipThing(game, pozione_iniziale)
     equipThing(game, pozione_iniziale)
 }
 
@@ -204,6 +210,10 @@ const ranged_combat = function(game, player, x_vector_unit, y_vector_unit){
                 if (randint(1, 100) <= (30 + (2*player.stats.dexterity))) {
                     if (game.dungeon[player.position[0] + (-2 * x_vector_unit)][Player.position[1] + (-2 * y_vector_unit)] === 0) {move_player(game, player, player.position[0] + (-2 * x_vector_unit), Player.position[1] + (-2 * y_vector_unit))}
                     else if (game.dungeon[Player.position[c] + (-1 * x_vector_unit)][Player.position[1] + (-1 * y_vector_unit)] === 0) {move_player(game, player, Player.position[0] + (-1 * x_vector_unit), Player.position[1] + (-1 * y_vector_unit))}
+                    else{
+                        move_player(game, player, 0, 0);
+                    }
+                
                 }
                 return undefined
             }

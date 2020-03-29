@@ -1,3 +1,5 @@
+
+let	isAlive = true
 let Game = {
 	player_name: "test_char",
 	seed: Math.floor(Math.random() * 10),
@@ -31,89 +33,92 @@ let Game = {
 		document.body.appendChild(Game.display.getContainer());
 		document.body.appendChild(Game.gui.getContainer());
 		move_to(Game, Game.depth);
+		Game.log.push("Use arrows to move, letters near stats && potion to use them, pick up thing with P, switch weapon with S, equip the second weapon with Shift+P. Long range weapon use CTRL+arrow")
 		Game.render()
 		window.addEventListener("keydown", Game.input);
 	},
 
 	input: key => {
-		let code = key.keyCode;
-		
-		switch(code) {
-			case 37: //freccia a sinistra
-				if (key.ctrlKey) { ranged_combat(Game, Game.player, -1, 0) }
-				else  {move_player(Game, Game.player, -1, 0) }
-				break;
-			case 38: //freccia su
-				if (key.ctrlKey) { ranged_combat(Game, Game.player, 0, -1) }
-				else { move_player(Game, Game.player, 0, -1) }
-				break;
-			case 39: //freccia a destra
-				if (key.ctrlKey) { ranged_combat(Game, Game.player, 1, 0) }
-				else { move_player(Game, Game.player, 1, 0) }
-				break;
-			case 40: //freccia giù
-				if (key.ctrlKey) { ranged_combat(Game, Game.player, 0, 1) }
-				else { move_player(Game, Game.player, 0, 1) }
-				break;
-			case 60: // < per eroi rivoluzionari che usano firefox per combattere i poteri forti e le manipolazioni delle lobby
-			case 226: //<
-				let stair = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
-				if (stair != undefined) {
-					move_to(Game, Game.depth + stair.stair.delta_depth)
-				}
-				break;
-			case 80: //P
-				let obj = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
-				if (obj!==null){
-					if (key.shiftKey) {
-						if (obj.wearable !== undefined || obj.magical_effect !== undefined) { equipThing(Game, obj, true) }
+		if(isAlive){
+			let code = key.keyCode;
+			
+			switch(code) {
+				case 37: //freccia a sinistra
+					if (key.ctrlKey) { ranged_combat(Game, Game.player, -1, 0) }
+					else  {move_player(Game, Game.player, -1, 0) }
+					break;
+				case 38: //freccia su
+					if (key.ctrlKey) { ranged_combat(Game, Game.player, 0, -1) }
+					else { move_player(Game, Game.player, 0, -1) }
+					break;
+				case 39: //freccia a destra
+					if (key.ctrlKey) { ranged_combat(Game, Game.player, 1, 0) }
+					else { move_player(Game, Game.player, 1, 0) }
+					break;
+				case 40: //freccia giù
+					if (key.ctrlKey) { ranged_combat(Game, Game.player, 0, 1) }
+					else { move_player(Game, Game.player, 0, 1) }
+					break;
+				case 60: // < per eroi rivoluzionari che usano firefox per combattere i poteri forti e le manipolazioni delle lobby
+				case 226: //<
+					let stair = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
+					if (stair != undefined) {
+						move_to(Game, Game.depth + stair.stair.delta_depth)
 					}
-					else { if (obj.wearable !== undefined || obj.magical_effect !== undefined) { equipThing(Game, obj) }}
-				}
-				break;
-			case 84: //T
-				usePotion(Game, "heal_potion")
-				break;
-			case 89: //Y
-				usePotion(Game, "strength_potion")
-				break;
-			case 85: //U
-				usePotion(Game, "dexterity_potion")
-				break;
-			case 73: //I
-				usePotion(Game, "intelligence_potion")
-				break;
-			case 79: //O
-				usePotion(Game, "experience_potion")
-				break;
-			case 87://Q
-			case 81://W
-			case 69://E
-			case 82://R
-				useAvailablePoint(Game, code);
-				break;
-			case 32: //barra
-				move_player(Game, Game.player, 0, 0)
-				recuperaHP(Game);
-				break;
-			case 83: //S
-				if (Game.player.inventory.backup_weapon !== null) {
-					let backup = {}
-					Object.assign(backup, Game.player.inventory.weapon)
-					let switch_weapon = {}
-					Object.assign(switch_weapon, Game.player.inventory.backup_weapon)
-					Game.player.inventory.weapon = switch_weapon
-					Game.player.inventory.backup_weapon = backup
+					break;
+				case 80: //P
+					let obj = controllo_mostri(Game, Game.player.position[0], Game.player.position[1], true)
+					if (obj!==null){
+						if (key.shiftKey) {
+							if (obj.wearable !== undefined || obj.magical_effect !== undefined) { equipThing(Game, obj, true) }
+						}
+						else { if (obj.wearable !== undefined || obj.magical_effect !== undefined) { equipThing(Game, obj) }}
+					}
+					break;
+				case 84: //T
+					usePotion(Game, "heal_potion")
+					break;
+				case 89: //Y
+					usePotion(Game, "strength_potion")
+					break;
+				case 85: //U
+					usePotion(Game, "dexterity_potion")
+					break;
+				case 73: //I
+					usePotion(Game, "intelligence_potion")
+					break;
+				case 79: //O
+					usePotion(Game, "experience_potion")
+					break;
+				case 87://Q
+				case 81://W
+				case 69://E
+				case 82://R
+					useAvailablePoint(Game, code);
+					break;
+				case 32: //barra
 					move_player(Game, Game.player, 0, 0)
-				}
-				break
-		}
-		if (Game.take_turn) {
-			Game.take_turn = false;
-			Game.process();
-		}
-        Game.render();
-	},
+					recuperaHP(Game);
+					break;
+				case 83: //S
+					if (Game.player.inventory.backup_weapon !== null) {
+						let backup = {}
+						Object.assign(backup, Game.player.inventory.weapon)
+						let switch_weapon = {}
+						Object.assign(switch_weapon, Game.player.inventory.backup_weapon)
+						Game.player.inventory.weapon = switch_weapon
+						Game.player.inventory.backup_weapon = backup
+						move_player(Game, Game.player, 0, 0)
+					}
+					break
+			}
+			if (Game.take_turn) {
+				Game.take_turn = false;
+				Game.process();
+			}
+			Game.render();
+			}
+		},
 
     render: () => {
 		render_dungeon(Game)
@@ -140,7 +145,9 @@ let Game = {
 					if (path.length === 2) {
 						let danno = Damage_system(Game, monster, Game.player)
 						if (Game.player.stats.life[0] - danno <= 0) {
-							// sconfitta
+							isAlive = false
+							Game.log.push("WASTED")
+
 						} else {
 							Game.player.stats.life[0] -= danno
 						}

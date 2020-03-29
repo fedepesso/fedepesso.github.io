@@ -143,8 +143,7 @@ function render_console (game) {
             game.display.drawText(1,y,game.log[i],game.display_size[0]-2);
             y+=2;
         }
-    }
-    else{
+    }else{
         let initial_value=game.log.length-3;
         for(let i=0; i<3; i++){
             game.display.drawText(1,y,game.log[initial_value],game.display_size[0]-2);
