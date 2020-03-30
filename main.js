@@ -1,5 +1,5 @@
-
-let	isAlive = true
+let isplaying = false;
+let	isAlive = true;
 let Game = {
 	seed: Math.floor(Math.random() * 10),
 	font_size: 20, 
@@ -20,10 +20,6 @@ let Game = {
 	take_turn: false,
 
 	init: () => {
-		myAudio = new Audio('soundtrack.mp3');
-		myAudio.loop = true;
-		myAudio.muted = false;
-		myAudio.play();
 		Game.player = create_player();
 		armor_weapon_giver(Game);
 		Game.display_size = [parseInt(window.innerWidth / Game.font_size * 0.5), parseInt(window.innerHeight / Game.font_size - 1)]
@@ -41,6 +37,13 @@ let Game = {
 	input: key => {
 		if(isAlive){
 			let code = key.keyCode;
+			if (!isplaying){
+				myAudio = new Audio('soundtrack.mp3');
+				myAudio.loop = true;
+				myAudio.muted = false;
+				myAudio.play();
+				isplaying = true;
+			}
 			
 			switch(code) {
 				case 37: //freccia a sinistra
