@@ -408,8 +408,41 @@ const DropCalculator = function (game, monster){
                     equipThing(game, costruttoreUniversale(table[i][1], table[i][0]));
                 }else{
                     let equip = costruttoreUniversale(table[i][1], table[i][0]);
-                    equip.position = monster.position;
-                    game.entities.push(equip);
+                    let coor = monster.position
+                    if(controller(game, ...coor)){
+                        equip.position = coor;
+                        game.entities.push(equip);
+                    }else if(controller(game, coor[0]+1, coor[1])){
+                        coor[0] += 1;
+                        equip.position = coor;
+                        game.entities.push(equip);
+                    }else if(controller(game, coor[0], coor[1]+1)){
+                        coor[1] += 1;
+                        equip.position = coor;
+                        game.entities.push(equip);
+                    }else if(controller(game, coor[0]-1, coor[1])){
+                        coor[0] -= 1;
+                        equip.position = coor;
+                        game.entities.push(equip);
+                    }else if(controller(game, coor[0], coor[1]-1)){
+                        coor[1] -= 1;
+                        equip.position = coor;
+                        game.entities.push(equip);
+                    }else if(controller(game, coor[0]-1, coor[1]-1)){
+                        coor[0] -= 1;
+                        coor[1] -= 1;
+                        equip.position = coor;
+                        game.entities.push(equip);
+                    }else if(controller(game, coor[0]+1, coor[1]+1)){
+                        coor[0] += 1;
+                        coor[1] += 1;
+                        equip.position = coor;
+                        game.entities.push(equip);
+                    }else{
+                        equip.position = coor;
+                        game.entities.push(equip);
+                    }
+                    
                 }
             }
         }

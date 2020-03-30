@@ -156,26 +156,30 @@ const spawn_entities = function(game, depth){
 
     monsters = FilterMonsters(depth)
     Object.keys(monsters).forEach(v => {
-        for (let i = 0; i < monsters[v][2]; i++) {
-            let counter = 0;
-            while (counter < 20) {
-                room = choice(rooms);
-                let x = randint(room.getLeft(), room.getRight());
-                let y = randint(room.getTop(), room.getBottom());
-                if (controllo_mostri(game, x, y) == null) {
-                    if (randint(0, 100) <= monsters[v][1]) {
-                        monster_entity = costruttoreUniversale('monster', v);
-                        game.entities.push(monster_entity);
-                        monster_entity.position[0] = x;
-                        monster_entity.position[1] = y;
-                        break;
+        let control = monsters[v][2] -(depth-monsters[v][0]*2);
+        if(control>0){
+            for (let i = 0; i < control; i++) {
+                let counter = 0;
+                while (counter < 20) {
+                    room = choice(rooms);
+                    let x = randint(room.getLeft(), room.getRight());
+                    let y = randint(room.getTop(), room.getBottom());
+                    if (controllo_mostri(game, x, y) == null) {
+                        if (randint(0, 100) <= monsters[v][1]) {
+                            monster_entity = costruttoreUniversale('monster', v);
+                            game.entities.push(monster_entity);
+                            monster_entity.position[0] = x;
+                            monster_entity.position[1] = y;
+                            break;
+                        }
                     }
+                    counter += 1;
                 }
-                counter += 1;
             }
-        }
-    })
-}
+        }}
+        )
+    }       
+
 
 const armor_weapon_giver = function (game){
     let hammer = costruttoreUniversale("weapon", "spada di prova");
