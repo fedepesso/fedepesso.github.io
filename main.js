@@ -149,7 +149,10 @@ let Game = {
 						let danno = Damage_system(Game, monster, Game.player)
 						if (Game.player.stats.life[0] - danno <= 0) {
 							isAlive = false
+							Game.log = []
+							Game.log.push("")
 							Game.log.push("WASTED")
+							Game.log.push("YOU DIED")
 
 						} else {
 							Game.player.stats.life[0] -= danno
