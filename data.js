@@ -94,12 +94,12 @@ function giveMeObject(type, name) {
             },
             "spada di grifondoro" : {
                 "costruttore_entity":["Spada di Grifondoro", "!", "#e0fc0a", false], 
-                "costruttore_attacker":[[150, 200], [50, 3], ["strength", 10], "arcane", 1], 
+                "costruttore_attacker":[[150, 200], [50, 3], ["strength", 10], "elemental", 1], 
                 "costruttore_wearable":["Leggendario", "weapon", "spada di grifondoro"],
             },
             "bastone di shazam" : {
                 "costruttore_entity":["Bastone di Shazam", "^", "#ad0502", false], 
-                "costruttore_attacker":[[50, 70], [50, 2], ["intelligence", 30], "arcane", 1], 
+                "costruttore_attacker":[[50, 70], [50, 2], ["intelligence", 30], "arcane", 4], 
                 "costruttore_wearable":["Leggendario", "weapon", "bastone di shazam"],
             },
             "spada di ferro" : {
@@ -266,8 +266,8 @@ function giveMeObject(type, name) {
             },
             "titan" : {
                 "costruttore_entity":["titan", "T", "#665341", true], 
-                "costruttore_stats": [[400, 400], 100, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[20, 30], [20, 5], ["strength", 10], "physical", 1],
+                "costruttore_stats": [[220, 220], 100, 10, 10, 0, 1, 0],
+                "costruttore_attacker":[[20, 30], [20, 5], ["strength", 10], "arcane", 1],
                 "costruttore_defender":[200, 120, 50], 
                 "costruttore_monster":[10000], 
             },
@@ -294,7 +294,7 @@ function giveMeObject(type, name) {
             },
             "hydra" : {
                 "costruttore_entity":["hydra", "H", "#ca61ff", true], 
-                "costruttore_stats": [[1450, 1450], 110, 100, 120, 0, 1, 0],
+                "costruttore_stats": [[450, 450], 110, 100, 120, 0, 1, 0],
                 "costruttore_attacker":[[300, 500], [33, 4], ["strength", 10], "arcane", 1],
                 "costruttore_defender":[100, 100, 100], 
                 "costruttore_monster":[1000000], 
@@ -304,9 +304,9 @@ function giveMeObject(type, name) {
         "drop_tables" : {
             "goblin" : [["anello di totano", "rings",  10, 1], ["corazza di cuoio", "body_armors", 10, 1], ["spada di ferro", "weapon",  20, 1], ["heal_potion", "potion",  5, 1]],
         
-            "ogre" : [["axe", "weapon", 5, 1], ["corazza di cuoio", "body_armors", 33, 1], ["heal_potion", "potion",  5, 1]],
+            "ogre" : [["axe", "weapon", 10, 1], ["corazza di cuoio", "body_armors", 33, 1], ["heal_potion", "potion",  5, 1]],
     
-            "hellhound" : [["dexterity_potion", "potion", 20, 2], ["dagger", "weapon", 15, 1], ["anello orvoloson", "rings",  10, 1], ["heal_potion", "potion",  , 1]],
+            "hellhound" : [["dexterity_potion", "potion", 20, 2], ["shuriken", "weapon", 15, 1], ["anello orvoloson", "rings",  10, 1], ["heal_potion", "potion",  , 1]],
 
             "ice giant" : [["enchanted sword", "weapon",  10, 1], ["pantofole pucciose", "leg_armors", 10, 1], ["heal_potion", "potion",  5, 1]],
     
