@@ -194,6 +194,7 @@ const armor_weapon_giver = function (game){
     equipThing(game, pozione_iniziale)
     equipThing(game, pozione_iniziale)
     equipThing(game, pozione_iniziale)
+    game.player.stats.expendable_points += 3
 }
 
 

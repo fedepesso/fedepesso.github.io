@@ -2,12 +2,12 @@ Oggetti = {
     "monster_spawns" : {
         "goblin" : [1, 40, 20],
         "ogre" : [2, 30, 10],
-        "hellhound" : [3, 60, 15],
-        "ice giant" : [4, 40, 10],
-        "witch" : [5, 70, 1],
-        "gorgon" : [5, 70, 1],
-        "chaotic knight" : [5, 60, 5],
-        "titan" : [7, 80, 4],
+        "hellhound" : [3, 60, 10],
+        "ice giant" : [4, 40, 8],
+        "witch" : [5, 100, 2],
+        "gorgon" : [5, 100, 2],
+        "chaotic knight" : [6, 60, 5],
+        "titan" : [7, 80, 3],
         "sand worm" : [8, 80, 2],
         "unicorn" : [9, 100, 3],
         "hydra" : [10, 100, 1],
@@ -224,35 +224,35 @@ function giveMeObject(type, name) {
             },
             "ogre" : {
                 "costruttore_entity":["ogre", "O", "#473e57", true], 
-                "costruttore_stats": [[30, 40], 10, 10, 10, 0, 1, 0],
+                "costruttore_stats": [[40, 40], 10, 10, 10, 0, 1, 0],
                 "costruttore_attacker":[[25, 30], [25, 2], ["strength", 5], "physical", 1],
                 "costruttore_defender":[10,15,10], 
                 "costruttore_monster":[150], 
             },
             "hellhound" : {
                 "costruttore_entity":["hellhound", "h", "#d9430d", true], 
-                "costruttore_stats": [[75, 75], 10, 30, 5, 0, 1, 0],
+                "costruttore_stats": [[60, 60], 10, 30, 5, 0, 1, 0],
                 "costruttore_attacker":[[20, 30], [33, 2], ["dexterity", 3], "elemental", 1],
                 "costruttore_defender":[10,20,25], 
                 "costruttore_monster":[250], 
             },
-            "hydra" : {
-                "costruttore_entity":["hydra", "H", "#ca61ff", true], 
-                "costruttore_stats": [[1750, 1750], 110, 100, 120, 0, 1, 0],
-                "costruttore_attacker":[[300, 500], [33, 4], ["strength", 10], "arcane", 1],
-                "costruttore_defender":[100, 100, 100], 
-                "costruttore_monster":[1000000], 
+            "ice giant" : {
+                "costruttore_entity":["ice giant", "I", "#87dbde", true], 
+                "costruttore_stats": [[100, 100], 10, 10, 10, 0, 1, 0],
+                "costruttore_attacker":[[20, 30], [40, 3], ["strength", 6], "physical", 1],
+                "costruttore_defender":[30, 40, 10], 
+                "costruttore_monster":[300], 
             },
             "gorgon" : {
                 "costruttore_entity":["gorgon", "G", "#1f28db", true], 
-                "costruttore_stats": [[100, 100], 10, 20, 22, 3, 4, 50],
+                "costruttore_stats": [[120, 120], 10, 20, 22, 3, 4, 50],
                 "costruttore_attacker":[[30, 40], [40, 3], ["intelligence", 10], "arcane", 1],
                 "costruttore_defender":[10, 20, 15], 
                 "costruttore_monster":[1000], 
             },
             "witch" : {
                 "costruttore_entity":["witch", "w", "#4f2045", true], 
-                "costruttore_stats": [[100, 100], 15, 25, 23, 0, 1, 0],
+                "costruttore_stats": [[110, 110], 15, 25, 23, 0, 1, 0],
                 "costruttore_attacker":[[40, 50], [60, 2], ["dexterity", 2], "elemental", 1],
                 "costruttore_defender":[20, 15, 15], 
                 "costruttore_monster":[1000], 
@@ -264,19 +264,26 @@ function giveMeObject(type, name) {
                 "costruttore_defender":[30, 20, 10], 
                 "costruttore_monster":[2000], 
             },
-            "unicorn" : {
-                "costruttore_entity":["unicorn", "U", "#a8168b", true], 
-                "costruttore_stats": [[200, 200],  15, 30, 15, 0, 1, 0],
-                "costruttore_attacker":[[45, 60], [30, 3], ["dexterity", 8], "arcane", 1],
-                "costruttore_defender":[30, 30, 40], 
-                "costruttore_monster":[-100], 
+            "titan" : {
+                "costruttore_entity":["titan", "T", "#665341", true], 
+                "costruttore_stats": [[400, 400], 100, 10, 10, 0, 1, 0],
+                "costruttore_attacker":[[20, 30], [20, 5], ["strength", 10], "physical", 1],
+                "costruttore_defender":[200, 120, 50], 
+                "costruttore_monster":[10000], 
             },
             "sand worm" : {
                 "costruttore_entity":["sand worm", "W", "#e1e88e", true], 
-                "costruttore_stats": [[200, 200], 30, 50, 30, 0, 1, 0],
-                "costruttore_attacker":[[70, 75], [40, 2], ["dexterity", 7], "elemental", 1],
+                "costruttore_stats": [[100, 100], 30, 50, 30, 0, 1, 0],
+                "costruttore_attacker":[[60, 75], [40, 2], ["dexterity", 7], "elemental", 1],
                 "costruttore_defender":[60, 50, 40], 
                 "costruttore_monster":[1500], 
+            },
+            "unicorn" : {
+                "costruttore_entity":["unicorn", "U", "#a8168b", true], 
+                "costruttore_stats": [[200, 200],  15, 30, 15, 0, 1, 0],
+                "costruttore_attacker":[[5, 10], [30, 3], ["dexterity", 8], "arcane", 1],
+                "costruttore_defender":[30, 30, 40], 
+                "costruttore_monster":[-100], 
             },
             "sphinx" : {
                 "costruttore_entity":["sphinx", "s", "#c47733", true], 
@@ -285,44 +292,38 @@ function giveMeObject(type, name) {
                 "costruttore_defender":[40, 40, 30], 
                 "costruttore_monster":[2500], 
             },
-            "titan" : {
-                "costruttore_entity":["titan", "T", "#665341", true], 
-                "costruttore_stats": [[1000, 1000], 100, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[70, 90], [20, 5], ["strength", 10], "physical", 1],
-                "costruttore_defender":[200, 120, 50], 
-                "costruttore_monster":[10000], 
+            "hydra" : {
+                "costruttore_entity":["hydra", "H", "#ca61ff", true], 
+                "costruttore_stats": [[1450, 1450], 110, 100, 120, 0, 1, 0],
+                "costruttore_attacker":[[300, 500], [33, 4], ["strength", 10], "arcane", 1],
+                "costruttore_defender":[100, 100, 100], 
+                "costruttore_monster":[1000000], 
             },
-            "ice giant" : {
-                "costruttore_entity":["ice giant", "I", "#87dbde", true], 
-                "costruttore_stats": [[400, 400], 10, 10, 10, 0, 1, 0],
-                "costruttore_attacker":[[20, 30], [40, 3], ["strength", 6], "physical", 1],
-                "costruttore_defender":[30, 40, 10], 
-                "costruttore_monster":[300], 
-            }
         },
     
         "drop_tables" : {
-            "goblin" : [["anello di totano", "rings",  10, 1], ["corazza di cuoio", "body_armors", 10, 1], ["spada di ferro", "weapon",  20, 1]],
+            "goblin" : [["anello di totano", "rings",  10, 1], ["corazza di cuoio", "body_armors", 10, 1], ["spada di ferro", "weapon",  20, 1], ["heal_potion", "potion",  5, 1]],
         
-            "ogre" : [["spada di grifondoro", "weapon", 5, 1], ["corazza di cuoio", "body_armors", 33, 1]],
+            "ogre" : [["axe", "weapon", 5, 1], ["corazza di cuoio", "body_armors", 33, 1], ["heal_potion", "potion",  5, 1]],
     
-            "hellhound" : [["dexterity_potion", "potion", 20, 2], ["dagger", "weapon", 15, 1], ["anello orvoloson", "rings",  10, 1]],
+            "hellhound" : [["dexterity_potion", "potion", 20, 2], ["dagger", "weapon", 15, 1], ["anello orvoloson", "rings",  10, 1], ["heal_potion", "potion",  , 1]],
+
+            "ice giant" : [["enchanted sword", "weapon",  10, 1], ["pantofole pucciose", "leg_armors", 10, 1], ["heal_potion", "potion",  5, 1]],
     
-            "gorgon" : [["schinieri di ferro", "leg_armors", 10, 1], ["strength_potion", "potion", 10, 2]],
+            "gorgon" : [["schinieri di ferro", "leg_armors", 10, 1], ["strength_potion", "potion", 10, 2], ["spada di grifondoro", "weapon", 20, 1], ["heal_potion", "potion",  5, 1]],
     
-            "witch" : [["bastone di shazam", "weapon", 7, 1], ["intelligence_potion", "potion", 20, 1]],
+            "witch" : [["bastone di shazam", "weapon", 7, 1], ["intelligence_potion", "potion", 20, 1], ["heal_potion", "potion",  5, 1]],
     
             "chaotic knight" : [["corazza a scaje", "body_armors", 33, 1], ["cosciali in scaje", "legs_armors", 33, 1], ["hammer", "weapon", 33, 1], ["strength_potion", "potion", 20, 2]],
-    
-            "unicorn" : [["heal_potion", "potion",  50, 2], ["calzari alati", "leg_armors", 10, 1]],
-    
-            "sand worm" : [["unico anello", "rings",  10, 1], ["bardatura da giostra", "body_armors", 10, 1]],
-    
+            
+            "titan" : [["tomahawk", "weapon",  10, 1], ["gambali speronati", "leg_armors", 10, 1], ["heal_potion", "potion",  5, 1]],
+
+            "sand worm" : [["unico anello", "rings",  10, 1], ["bardatura da giostra", "body_armors", 10, 1], ["heal_potion", "potion",  5, 1]],
+            
+            "unicorn" : [["heal_potion", "potion",  100, 2], ["calzari alati", "leg_armors", 10, 1], ["heal_potion", "potion",  5, 1]],
+        
             "sphinx" : [["magic wand", "weapon",  10, 1], ["armature di piastre", "body_armors", 10, 1]],
     
-            "titan" : [["tomahawk", "weapon",  10, 1], ["gambali speronati", "leg_armors", 10, 1]],
-    
-            "ice giant" : [["enchanted sword", "weapon",  10, 1], ["pantofole pucciose", "leg_armors", 10, 1]],
         },
     
         "potion" : {
@@ -542,7 +543,8 @@ const useAvailablePoint = function (game, number){
 const recuperaHP = function (game) {
     if (game.player.stats.life[0]<game.player.stats.life[1]){
         game.player.stats.life[0] += 1;
+        game.log.push("You healed yourself")
     }else{
-        //error recupero vita
+        game.log.push("We know how to do an if")
     }
 }
