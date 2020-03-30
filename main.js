@@ -22,6 +22,7 @@ let Game = {
 	init: () => {
 		myAudio = new Audio('soundtrack.mp3');
 		myAudio.loop = true;
+		myAudio.muted = false;
 		myAudio.play();
 		Game.player = create_player();
 		armor_weapon_giver(Game);

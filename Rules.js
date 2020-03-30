@@ -156,7 +156,8 @@ const spawn_entities = function(game, depth){
 
     monsters = FilterMonsters(depth)
     Object.keys(monsters).forEach(v => {
-        let control = monsters[v][2] -(depth-monsters[v][0]*2);
+        let number = (depth-monsters[v][0]*2)>0 ? depth-monsters[v][0]*2 : 0;  
+        let control = monsters[v][2] - number;
         if(control>0){
             for (let i = 0; i < control; i++) {
                 let counter = 0;
