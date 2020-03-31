@@ -208,7 +208,7 @@ function giveMeObject(type, name) {
 
             "anello orvoloson" : {
                 "costruttore_entity":["Anello Orvoloson", "*", "#3b3d40", false], 
-                "costruttore_defender":[10, 10, 100], 
+                "costruttore_defender":[100, 10, 100], 
                 "costruttore_wearable":["Leggendario", "ring_armor", "anello orvoloson"],
             }
     

@@ -6,7 +6,7 @@ const mostro_attaccato = null;
 const Damage_system = function(game, Attivo, Passivo){
     let danno=0;
     let stats_needed = Attivo.attacker.stat_bonus[0];
-    let type_of_damage=Attivo.attacker.damage_type;
+    let type_of_damage = Attivo.attacker.damage_type;
     let valore_difensivo = difesa_universale/(difesa_universale*Passivo.defender.getResistance(Passivo, type_of_damage));
     let danno_arma = Math.floor(Math.random() * Attivo.attacker.damage[1] + Attivo.attacker.damage[0]);
     let bonus_danno = (Attivo.stats[stats_needed]/2) * Attivo.attacker.stat_bonus[1] * attacco_universale;
@@ -89,7 +89,7 @@ const combattimento = function(game, player, mostro) {
             game.entities.splice(index, 1);
         }
         DropCalculator(game, mostro);
-        if(mostro.name=="hydra"){
+        if(mostro.name==="hydra"){
             game.log.push("YOU KILLED THE HYDRA, YOU HAVE CLEARED THE DUNGEON")
             game.log.push("YOU DID IT, CRAZY SON OF A B*TCH, YOU DID IT")
 
