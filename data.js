@@ -19,7 +19,7 @@ function giveMeObject(type, name) {
     let Oggetti = {
         "player" : {
             "player": {
-                "costruttore_entity": ["ayeye brazo", '@', '#000000', false],
+                "costruttore_entity": ["ayeye brazorf", '@', '#000000', false],
                 "costruttore_stats": [[100, 100], 10, 10, 10, [0, 1000], 1, 0],
                 "costruttore_defender": [5, 5, 5],
                 "costruttore_inventory": [undefined, undefined, undefined, undefined]

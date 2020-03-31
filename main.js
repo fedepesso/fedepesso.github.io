@@ -44,7 +44,6 @@ let Game = {
 				myAudio.play();
 				isplaying = true;
 			}
-			
 			switch(code) {
 				case 37: //freccia a sinistra
 					if (key.ctrlKey) { ranged_combat(Game, Game.player, -1, 0) }
@@ -114,6 +113,15 @@ let Game = {
 						move_player(Game, Game.player, 0, 0)
 					}
 					break
+				case 68: //D
+					for(let i=0; i<Game.entities.length; i++){
+						if((Game.entities[i].position[0] === Game.player.position[0]) && (Game.entities[i].position[1] === Game.player.position[1])){
+							const index = Game.entities.indexOf(Game.entities[i]);
+        					if (index > -1) {
+            					Game.entities.splice(index, 1);
+        					}
+						}
+					}
 			}
 			if (Game.take_turn) {
 				Game.take_turn = false;
